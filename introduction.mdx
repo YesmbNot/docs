@@ -1,0 +1,57 @@
+---
+title: "Introduction"
+description: "ApiTwitter — a REST API for Twitter/X with 56 endpoints, pay-per-use pricing, and instant access."
+icon: "book"
+---
+
+Welcome to ApiTwitter, a fast and reliable REST API that gives you programmatic access to Twitter/X. Read tweets, search users, post content, manage followers, send DMs, and more — without needing an official developer account.
+
+## Why ApiTwitter?
+
+<CardGroup cols={3}>
+  <Card title="56 Endpoints" icon="code">
+    Tweets, users, search, DMs, lists, communities, topics — everything in one API.
+  </Card>
+  <Card title="Pay-per-Use" icon="credit-card">
+    No subscriptions. Buy credits, use them forever. From $0.14 per 1,000 calls.
+  </Card>
+  <Card title="Instant Access" icon="bolt">
+    Register, get your API key, and start making requests in under 60 seconds.
+  </Card>
+</CardGroup>
+
+## How It Works
+
+<Steps>
+  <Step title="Create an Account">
+    Register at [apitwitter.com](https://apitwitter.com/register) to get your account and API key.
+  </Step>
+  <Step title="Add Credits">
+    Top up your balance from $10 via Stripe (card) or CryptoCloud (crypto). 1 USD = 100,000 credits.
+  </Step>
+  <Step title="Make API Calls">
+    Include your API key, Twitter cookies, and proxy with every request. Credits are deducted per call.
+  </Step>
+</Steps>
+
+## Base URL
+
+All API requests should be made to:
+
+```
+https://api.apitwitter.com
+```
+
+## Requirements
+
+Every API request requires three things:
+
+| Requirement | Description |
+|------------|-------------|
+| **API Key** | Your `X-API-Key` header (starts with `tda_`) |
+| **Cookies** | Your Twitter session cookies (`ct0` and `auth_token`) |
+| **Proxy** | Your own proxy URL (HTTP or SOCKS5) |
+
+<Warning>
+We do not provide proxies or cookies. You must supply your own with every request.
+</Warning>

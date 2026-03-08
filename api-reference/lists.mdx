@@ -1,0 +1,338 @@
+---
+title: "Lists"
+description: "Create, manage, and browse Twitter lists."
+icon: "list"
+---
+
+## POST /twitter/lists
+
+Create a new Twitter list.
+
+**Cost:** 225 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| name | string | body | Yes | Name of the list |
+| description | string | body | No | Description of the list |
+| is_private | boolean | body | No | Whether the list is private (default: false) |
+| cookie | string | body | Yes | Twitter auth cookie |
+| proxy | string | body | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.apitwitter.com/twitter/lists" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Tech Leaders",
+    "description": "Top voices in tech",
+    "is_private": false,
+    "cookie": "YOUR_COOKIE",
+    "proxy": "YOUR_PROXY"
+  }'
+```
+</CodeGroup>
+
+---
+
+## DELETE /twitter/lists/{list_id}
+
+Delete a Twitter list.
+
+**Cost:** 225 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| list_id | string | path | Yes | ID of the list to delete |
+| cookie | string | body | Yes | Twitter auth cookie |
+| proxy | string | body | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X DELETE "https://api.apitwitter.com/twitter/lists/123456789" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cookie": "YOUR_COOKIE",
+    "proxy": "YOUR_PROXY"
+  }'
+```
+</CodeGroup>
+
+---
+
+## PATCH /twitter/lists/{list_id}
+
+Update an existing Twitter list's name, description, or privacy setting.
+
+**Cost:** 225 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| list_id | string | path | Yes | ID of the list to update |
+| name | string | body | No | New name for the list |
+| description | string | body | No | New description for the list |
+| is_private | boolean | body | No | Updated privacy setting |
+| cookie | string | body | Yes | Twitter auth cookie |
+| proxy | string | body | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X PATCH "https://api.apitwitter.com/twitter/lists/123456789" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Updated List Name",
+    "description": "Updated description",
+    "is_private": true,
+    "cookie": "YOUR_COOKIE",
+    "proxy": "YOUR_PROXY"
+  }'
+```
+</CodeGroup>
+
+---
+
+## GET /twitter/lists/{list_id}
+
+Get information about a specific list.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| list_id | string | path | Yes | ID of the list |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/lists/123456789?cookie=YOUR_COOKIE" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>
+
+---
+
+## GET /twitter/lists/{list_id}/tweets
+
+Get a paginated feed of tweets from a list.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| list_id | string | path | Yes | ID of the list |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+| cursor | string | query | No | Pagination cursor for the next page |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/lists/123456789/tweets?cookie=YOUR_COOKIE&cursor=NEXT_CURSOR" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>
+
+---
+
+## GET /twitter/lists/{list_id}/members
+
+Get a paginated list of members in a list.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| list_id | string | path | Yes | ID of the list |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+| cursor | string | query | No | Pagination cursor for the next page |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/lists/123456789/members?cookie=YOUR_COOKIE&cursor=NEXT_CURSOR" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>
+
+---
+
+## POST /twitter/lists/{list_id}/members/{user_id}
+
+Add a member to a list.
+
+**Cost:** 225 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| list_id | string | path | Yes | ID of the list |
+| user_id | string | path | Yes | Numeric Twitter user ID to add |
+| cookie | string | body | Yes | Twitter auth cookie |
+| proxy | string | body | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.apitwitter.com/twitter/lists/123456789/members/44196397" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cookie": "YOUR_COOKIE",
+    "proxy": "YOUR_PROXY"
+  }'
+```
+</CodeGroup>
+
+---
+
+## DELETE /twitter/lists/{list_id}/members/{user_id}
+
+Remove a member from a list.
+
+**Cost:** 225 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| list_id | string | path | Yes | ID of the list |
+| user_id | string | path | Yes | Numeric Twitter user ID to remove |
+| cookie | string | body | Yes | Twitter auth cookie |
+| proxy | string | body | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X DELETE "https://api.apitwitter.com/twitter/lists/123456789/members/44196397" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cookie": "YOUR_COOKIE",
+    "proxy": "YOUR_PROXY"
+  }'
+```
+</CodeGroup>
+
+---
+
+## GET /twitter/lists/{list_id}/subscribers
+
+Get a paginated list of subscribers to a list.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| list_id | string | path | Yes | ID of the list |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+| cursor | string | query | No | Pagination cursor for the next page |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/lists/123456789/subscribers?cookie=YOUR_COOKIE&cursor=NEXT_CURSOR" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>
+
+---
+
+## POST /twitter/lists/{list_id}/subscribe
+
+Subscribe to a list.
+
+**Cost:** 225 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| list_id | string | path | Yes | ID of the list to subscribe to |
+| cookie | string | body | Yes | Twitter auth cookie |
+| proxy | string | body | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.apitwitter.com/twitter/lists/123456789/subscribe" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cookie": "YOUR_COOKIE",
+    "proxy": "YOUR_PROXY"
+  }'
+```
+</CodeGroup>
+
+---
+
+## DELETE /twitter/lists/{list_id}/subscribe
+
+Unsubscribe from a list.
+
+**Cost:** 225 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| list_id | string | path | Yes | ID of the list to unsubscribe from |
+| cookie | string | body | Yes | Twitter auth cookie |
+| proxy | string | body | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X DELETE "https://api.apitwitter.com/twitter/lists/123456789/subscribe" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cookie": "YOUR_COOKIE",
+    "proxy": "YOUR_PROXY"
+  }'
+```
+</CodeGroup>
+
+---
+
+## GET /twitter/lists/owned
+
+Get all lists owned by the authenticated user.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/lists/owned?cookie=YOUR_COOKIE" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>
+
+---
+
+## GET /twitter/lists/memberships
+
+Get all lists the authenticated user is a member of.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/lists/memberships?cookie=YOUR_COOKIE" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>

@@ -1,0 +1,96 @@
+---
+title: "Proxy & Cookies"
+description: "Every request requires your own proxy and Twitter cookies. Learn the formats and how to obtain them."
+icon: "shield-halved"
+---
+
+## Proxy — Required
+
+<Warning>
+**We do not provide proxies.** Every API request must include your own proxy URL. Requests without a proxy receive a `400 Bad Request` response.
+</Warning>
+
+### How to Pass Proxy
+
+| Method | How |
+|--------|-----|
+| **GET** requests | `proxy` as a **query parameter** |
+| **POST/DELETE/PATCH** requests | `"proxy"` in the **JSON body** |
+
+### Supported Proxy Formats
+
+```
+http://user:pass@host:port
+socks5://user:pass@host:port
+http://host:port
+```
+
+### Recommended Proxy Types
+
+| Type | Best For | Quality |
+|------|----------|---------|
+| Residential | All operations | Best |
+| ISP / Static | High-volume reads | Good |
+| Datacenter | Testing only | Fair |
+
+<Tip>
+For best results, use high-quality residential proxies and rotate them across requests.
+</Tip>
+
+---
+
+## Cookies — Required
+
+<Warning>
+**We do not provide cookies.** Every request must include your own Twitter session cookies. We never store your cookies.
+</Warning>
+
+### How to Pass Cookies
+
+| Method | How |
+|--------|-----|
+| **GET** requests | `cookie` as a **query parameter** |
+| **POST/DELETE/PATCH** requests | `"cookie"` in the **JSON body** |
+
+### Cookie Format
+
+A raw cookie string with semicolon-separated key=value pairs.
+
+**Required keys:** `ct0` and `auth_token`
+
+```
+ct0=YOUR_CT0_VALUE;auth_token=YOUR_AUTH_TOKEN
+```
+
+### How to Get Your Cookies
+
+<Steps>
+  <Step title="Log in to X.com">
+    Open [x.com](https://x.com) in your browser and log in to your Twitter account.
+  </Step>
+  <Step title="Open Developer Tools">
+    Press **F12** (or right-click → Inspect). Go to the **Application** tab.
+  </Step>
+  <Step title="Navigate to Cookies">
+    In the left sidebar: **Cookies** → `https://x.com`
+  </Step>
+  <Step title="Copy Values">
+    Find and copy the values of `ct0` and `auth_token`.
+  </Step>
+  <Step title="Format the String">
+    Combine them: `ct0=YOUR_CT0;auth_token=YOUR_AUTH_TOKEN`
+  </Step>
+</Steps>
+
+### Verifying Your Cookies
+
+Use the session verify endpoint to check if your cookies are valid:
+
+```bash
+curl -X POST "https://api.apitwitter.com/twitter/session/verify" \
+  -H "X-API-Key: tda_your_key" \
+  -H "Content-Type: application/json" \
+  -d '{"cookie": "ct0=abc123;auth_token=xyz", "proxy": "http://user:pass@proxy:8080"}'
+```
+
+This returns the username associated with the cookies, costing only **5 credits**.

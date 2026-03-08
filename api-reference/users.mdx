@@ -1,0 +1,303 @@
+---
+title: "Users"
+description: "Retrieve user profiles, followers, following, and manage user relationships."
+icon: "user"
+---
+
+## GET /twitter/user/{userName}
+
+Get a user's profile information by their screen name.
+
+**Cost:** 16 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| userName | string | path | Yes | Twitter screen name |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/user/elonmusk?cookie=YOUR_COOKIE&proxy=YOUR_PROXY" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>
+
+---
+
+## GET /twitter/user/id/{userId}
+
+Get a user's profile information by their numeric Twitter ID.
+
+**Cost:** 16 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| userId | string | path | Yes | Numeric Twitter user ID |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/user/id/44196397?cookie=YOUR_COOKIE&proxy=YOUR_PROXY" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>
+
+---
+
+## GET /twitter/users/batch
+
+Batch retrieve multiple user profiles by their IDs in a single request.
+
+**Cost:** 16 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| userIds | string | query | Yes | Comma-separated list of user IDs |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/users/batch?userIds=44196397,123456789&cookie=YOUR_COOKIE&proxy=YOUR_PROXY" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>
+
+---
+
+## GET /twitter/user/{userName}/followers
+
+Get a paginated list of a user's followers.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| userName | string | path | Yes | Twitter screen name |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+| pageSize | integer | query | No | Number of results per page (default: 200) |
+| cursor | string | query | No | Pagination cursor for the next page |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/user/elonmusk/followers?cookie=YOUR_COOKIE&pageSize=100&cursor=NEXT_CURSOR" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>
+
+---
+
+## GET /twitter/user/{userName}/following
+
+Get a paginated list of accounts a user is following.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| userName | string | path | Yes | Twitter screen name |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+| pageSize | integer | query | No | Number of results per page (default: 200) |
+| cursor | string | query | No | Pagination cursor for the next page |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/user/elonmusk/following?cookie=YOUR_COOKIE&pageSize=100&cursor=NEXT_CURSOR" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>
+
+---
+
+## GET /twitter/user/{userName}/likes
+
+Get tweets liked by a user.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| userName | string | path | Yes | Twitter screen name |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+| cursor | string | query | No | Pagination cursor for the next page |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/user/elonmusk/likes?cookie=YOUR_COOKIE&cursor=NEXT_CURSOR" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>
+
+---
+
+## GET /twitter/user/{userName}/media
+
+Get media tweets posted by a user.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| userName | string | path | Yes | Twitter screen name |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+| cursor | string | query | No | Pagination cursor for the next page |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/user/elonmusk/media?cookie=YOUR_COOKIE&cursor=NEXT_CURSOR" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>
+
+---
+
+## GET /twitter/user/{userName}/replies
+
+Get tweets and replies posted by a user.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| userName | string | path | Yes | Twitter screen name |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+| cursor | string | query | No | Pagination cursor for the next page |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/user/elonmusk/replies?cookie=YOUR_COOKIE&cursor=NEXT_CURSOR" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>
+
+---
+
+## GET /twitter/user/{userName}/followers-you-know
+
+Get mutual followers (followers you know) for a given user.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| userName | string | path | Yes | Twitter screen name |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/user/elonmusk/followers-you-know?cookie=YOUR_COOKIE" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>
+
+---
+
+## POST /twitter/user/{user_id}/remove-follower
+
+Remove a follower from your account.
+
+**Cost:** 225 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| user_id | string | path | Yes | Numeric Twitter user ID of the follower to remove |
+| cookie | string | body | Yes | Twitter auth cookie |
+| proxy | string | body | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.apitwitter.com/twitter/user/44196397/remove-follower" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cookie": "YOUR_COOKIE",
+    "proxy": "YOUR_PROXY"
+  }'
+```
+</CodeGroup>
+
+---
+
+## POST /twitter/session/verify
+
+Verify that the provided cookies are still valid and the session is active.
+
+**Cost:** 5 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| cookie | string | body | Yes | Twitter auth cookie to verify |
+| proxy | string | body | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.apitwitter.com/twitter/session/verify" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cookie": "YOUR_COOKIE",
+    "proxy": "YOUR_PROXY"
+  }'
+```
+</CodeGroup>
+
+---
+
+## GET /twitter/blocked
+
+Get a list of accounts you have blocked.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/blocked?cookie=YOUR_COOKIE" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>
+
+---
+
+## GET /twitter/muted
+
+Get a list of accounts you have muted.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/muted?cookie=YOUR_COOKIE" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>

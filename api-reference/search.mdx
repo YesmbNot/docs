@@ -1,0 +1,32 @@
+---
+title: "Search"
+description: "Search tweets with advanced filtering options."
+icon: "search"
+---
+
+## GET /twitter/search
+
+Search for tweets using a query string with optional filtering by product type.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| query | string | query | Yes | Search query string |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+| product | string | query | No | Result type filter: `Top`, `Latest`, `People`, `Photos`, or `Videos` (default: `Top`) |
+| count | integer | query | No | Number of results to return, 1–100 (default: 20) |
+| cursor | string | query | No | Pagination cursor for the next page |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/search?query=OpenAI&product=Latest&count=50&cookie=YOUR_COOKIE" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>
+
+<Tip>
+Use Twitter's advanced search operators in the `query` parameter for more precise results. For example: `from:elonmusk since:2025-01-01` or `"exact phrase" filter:media`.
+</Tip>

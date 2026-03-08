@@ -1,0 +1,58 @@
+---
+title: "Rate Limits (QPS)"
+description: "QPS limits scale automatically with your balance. Free users get 0.2 QPS. Paid users get up to 30 QPS."
+icon: "gauge-high"
+---
+
+## Understanding QPS
+
+QPS (Queries Per Second) determines the maximum number of API requests you can make per second. Your limit scales automatically based on your account balance.
+
+## QPS Tiers
+
+| Tier | Balance | QPS Limit | Requests/Sec |
+|------|---------|-----------|-------------|
+| **Free** | $0 | 0.2 | 1 every 5 seconds |
+| **Starter** | > $0 | 3 | 3 per second |
+| **Basic** | > $1 | 5 | 5 per second |
+| **Pro** | > $5 | 10 | 10 per second |
+| **Business** | > $50 | 30 | 30 per second |
+
+<Info>
+Your QPS tier upgrades **instantly** when you add credits. No plan changes needed.
+</Info>
+
+## Rate Limit Headers
+
+Every API response includes these headers:
+
+| Header | Description | Example |
+|--------|-------------|---------|
+| `X-RateLimit-Limit` | Your current QPS limit | `10` |
+| `X-RateLimit-Remaining` | Remaining requests in window | `7` |
+| `X-RateLimit-Tier` | Your current tier name | `Pro` |
+| `Retry-After` | Seconds to wait (only on 429) | `1.5` |
+
+## Exceeding the Limit
+
+When you exceed your QPS limit, you receive a `429 Too Many Requests` response:
+
+```json
+{
+  "status": "error",
+  "msg": "Rate limit exceeded. Your tier (Free) allows 0.2 QPS. Top up your balance to unlock higher request rates.",
+  "tier": "Free",
+  "qps_limit": 0.2,
+  "retry_after": 1.5
+}
+```
+
+<Tip>
+If you're hitting rate limits, add credits to instantly upgrade your tier, or add a delay between requests.
+</Tip>
+
+## Free User Limitations
+
+Free users (balance = $0) can make **one request every 5 seconds** (0.2 QPS). This is intentionally restrictive to encourage recharging.
+
+To unlock higher rates, top up any amount starting from $10.

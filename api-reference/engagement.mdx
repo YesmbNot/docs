@@ -1,0 +1,111 @@
+---
+title: "Engagement"
+description: "Like, unlike, follow, and unfollow users."
+icon: "heart"
+---
+
+## POST /twitter/tweets/{tweet_id}/like
+
+Like a tweet.
+
+**Cost:** 225 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| tweet_id | string | path | Yes | ID of the tweet to like |
+| cookie | string | body | Yes | Twitter auth cookie |
+| proxy | string | body | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.apitwitter.com/twitter/tweets/1234567890/like" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cookie": "YOUR_COOKIE",
+    "proxy": "YOUR_PROXY"
+  }'
+```
+</CodeGroup>
+
+---
+
+## POST /twitter/tweets/{tweet_id}/unlike
+
+Unlike a previously liked tweet.
+
+**Cost:** 225 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| tweet_id | string | path | Yes | ID of the tweet to unlike |
+| cookie | string | body | Yes | Twitter auth cookie |
+| proxy | string | body | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.apitwitter.com/twitter/tweets/1234567890/unlike" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cookie": "YOUR_COOKIE",
+    "proxy": "YOUR_PROXY"
+  }'
+```
+</CodeGroup>
+
+---
+
+## POST /twitter/user/{user_id}/follow
+
+Follow a user.
+
+**Cost:** 225 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| user_id | string | path | Yes | Numeric Twitter user ID to follow |
+| cookie | string | body | Yes | Twitter auth cookie |
+| proxy | string | body | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.apitwitter.com/twitter/user/44196397/follow" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cookie": "YOUR_COOKIE",
+    "proxy": "YOUR_PROXY"
+  }'
+```
+</CodeGroup>
+
+---
+
+## POST /twitter/user/{user_id}/unfollow
+
+Unfollow a user.
+
+**Cost:** 225 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| user_id | string | path | Yes | Numeric Twitter user ID to unfollow |
+| cookie | string | body | Yes | Twitter auth cookie |
+| proxy | string | body | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.apitwitter.com/twitter/user/44196397/unfollow" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cookie": "YOUR_COOKIE",
+    "proxy": "YOUR_PROXY"
+  }'
+```
+</CodeGroup>

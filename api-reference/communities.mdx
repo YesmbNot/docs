@@ -1,0 +1,146 @@
+---
+title: "Communities"
+description: "Get community info, join/leave, and browse community content."
+icon: "users"
+---
+
+## GET /twitter/communities/{community_id}
+
+Get information about a specific community.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| community_id | string | path | Yes | ID of the community |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/communities/123456789?cookie=YOUR_COOKIE" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>
+
+---
+
+## POST /twitter/communities/{community_id}/join
+
+Join a community.
+
+**Cost:** 225 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| community_id | string | path | Yes | ID of the community to join |
+| cookie | string | body | Yes | Twitter auth cookie |
+| proxy | string | body | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.apitwitter.com/twitter/communities/123456789/join" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cookie": "YOUR_COOKIE",
+    "proxy": "YOUR_PROXY"
+  }'
+```
+</CodeGroup>
+
+---
+
+## DELETE /twitter/communities/{community_id}/join
+
+Leave a community.
+
+**Cost:** 225 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| community_id | string | path | Yes | ID of the community to leave |
+| cookie | string | body | Yes | Twitter auth cookie |
+| proxy | string | body | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X DELETE "https://api.apitwitter.com/twitter/communities/123456789/join" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cookie": "YOUR_COOKIE",
+    "proxy": "YOUR_PROXY"
+  }'
+```
+</CodeGroup>
+
+---
+
+## GET /twitter/communities/{community_id}/tweets
+
+Get a paginated feed of tweets from a community.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| community_id | string | path | Yes | ID of the community |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+| cursor | string | query | No | Pagination cursor for the next page |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/communities/123456789/tweets?cookie=YOUR_COOKIE&cursor=NEXT_CURSOR" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>
+
+---
+
+## GET /twitter/communities/{community_id}/media
+
+Get media content from a community.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| community_id | string | path | Yes | ID of the community |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+| cursor | string | query | No | Pagination cursor for the next page |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/communities/123456789/media?cookie=YOUR_COOKIE&cursor=NEXT_CURSOR" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>
+
+---
+
+## GET /twitter/communities/explore
+
+Explore and discover communities.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/communities/explore?cookie=YOUR_COOKIE" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>

@@ -1,0 +1,65 @@
+---
+title: "Authentication"
+description: "Authenticate your API requests using the X-API-Key header."
+icon: "key"
+---
+
+All API requests to ApiTwitter require authentication via the `X-API-Key` header.
+
+## API Key
+
+Your API key is automatically generated when you register. You can view it in your [Dashboard → API Key](https://apitwitter.com/api-keys) page.
+
+API keys follow the format: `tda_` followed by a random string.
+
+```bash
+X-API-Key: tda_k8x2mN3s_8epqsGQe6PkDJ2KUscjq13j16F9CQGfa_w
+```
+
+## Using the API Key
+
+Include the `X-API-Key` header in every request:
+
+<CodeGroup>
+
+```bash cURL
+curl -H "X-API-Key: tda_your_key_here" \
+  "https://api.apitwitter.com/twitter/user/elonmusk?cookie=...&proxy=..."
+```
+
+```python Python
+headers = {"X-API-Key": "tda_your_key_here"}
+response = requests.get("https://api.apitwitter.com/twitter/user/elonmusk", headers=headers, params={...})
+```
+
+```javascript JavaScript
+const response = await fetch(url, {
+  headers: { "X-API-Key": "tda_your_key_here" }
+});
+```
+
+</CodeGroup>
+
+## Error Responses
+
+| Status | Meaning |
+|--------|---------|
+| `401` | Missing `X-API-Key` header |
+| `401` | Invalid or revoked API key |
+
+```json
+{
+  "status": "error",
+  "msg": "X-API-Key header is required"
+}
+```
+
+<Warning>
+Keep your API key secret. Do not expose it in client-side code, public repositories, or logs.
+</Warning>
+
+## Key Management
+
+- Each account receives **one API key** at registration
+- Your key is always visible in your dashboard (show/hide toggle)
+- If compromised, contact support to rotate your key

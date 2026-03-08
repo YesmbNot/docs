@@ -1,0 +1,66 @@
+---
+title: "Error Handling"
+description: "HTTP status codes and error response format for the ApiTwitter API."
+icon: "triangle-exclamation"
+---
+
+## Error Response Format
+
+All errors return a JSON object with `status` and `msg` fields:
+
+```json
+{
+  "status": "error",
+  "msg": "Description of what went wrong"
+}
+```
+
+## HTTP Status Codes
+
+| Code | Meaning | Common Cause |
+|------|---------|-------------|
+| `400` | Bad Request | Missing proxy, invalid cookies, missing required parameter |
+| `401` | Unauthorized | Missing or invalid `X-API-Key` header |
+| `402` | Payment Required | Insufficient credit balance |
+| `404` | Not Found | User, tweet, or resource doesn't exist |
+| `422` | Unprocessable Entity | Invalid request body or parameter format |
+| `429` | Too Many Requests | QPS rate limit exceeded |
+| `500` | Internal Server Error | Unexpected server error |
+
+## Common Errors & Solutions
+
+### Missing API Key (401)
+
+```json
+{"status": "error", "msg": "X-API-Key header is required"}
+```
+
+**Fix:** Add the `X-API-Key` header to your request.
+
+### Missing Proxy (400)
+
+```json
+{"status": "error", "msg": "proxy is required. We do not provide proxies — you must supply your own proxy URL with every request."}
+```
+
+**Fix:** Include a `proxy` parameter (query param for GET, body field for POST).
+
+### Insufficient Credits (402)
+
+```json
+{"status": "error", "msg": "Insufficient credits. Please top up your balance.", "required_credits": 225}
+```
+
+**Fix:** Top up your credit balance at [apitwitter.com/billing](https://apitwitter.com/billing).
+
+### Rate Limited (429)
+
+```json
+{"status": "error", "msg": "Rate limit exceeded.", "tier": "Free", "qps_limit": 0.2, "retry_after": 1.5}
+```
+
+**Fix:** Wait for `retry_after` seconds, or top up balance to increase your QPS tier.
+
+<Tip>
+Always check the `status` field in response JSON. Successful responses return `"status": "success"`.
+</Tip>

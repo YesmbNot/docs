@@ -1,0 +1,50 @@
+---
+title: "Billing & Credits"
+description: "Understand the pay-per-use credit system. 1 USD = 100,000 credits. No subscriptions, credits never expire."
+icon: "credit-card"
+---
+
+## Credit System
+
+ApiTwitter uses a **pay-per-use** credit system. You buy credits and each API call deducts a set amount.
+
+| Key Info | |
+|----------|---|
+| **Exchange rate** | 1 USD = 100,000 credits |
+| **Minimum top-up** | $10 (1,000,000 credits) |
+| **Expiration** | Credits never expire |
+| **Payment methods** | Stripe (card) / CryptoCloud (crypto) |
+
+## Pricing Tiers
+
+| Tier | Cost per Call | USD per 1K Calls | Endpoints |
+|------|-------------|-------------------|-----------|
+| **Session** | 5 credits | $0.05 | Session verify |
+| **Read (data)** | 14 credits | $0.14 | Tweets, search, followers, timelines, lists, topics, communities, bookmarks |
+| **Read (profiles)** | 16 credits | $0.16 | User profile by name, user by ID, batch users |
+| **Write** | 225 credits | $2.25 | Create/delete tweets, like, follow, retweet, bookmark, pin, DM, list management, community, topic |
+
+## Cost Examples
+
+| Action | Credits | USD Cost |
+|--------|---------|----------|
+| Look up 1 user profile | 16 | $0.00016 |
+| Search tweets (1 call) | 14 | $0.00014 |
+| Post 1,000 tweets | 225,000 | $2.25 |
+| Read 100,000 tweets | 1,400,000 | $14.00 |
+| Fetch 10,000 user profiles | 160,000 | $1.60 |
+
+## Billing Rules
+
+<Info>
+- Credits are deducted **before** the request is processed
+- Failed requests (4xx/5xx from our platform) are **not charged**
+- You receive a `402 Payment Required` if your balance is insufficient
+</Info>
+
+## Top Up
+
+1. Go to [Dashboard → Billing](https://apitwitter.com/billing)
+2. Select an amount ($10, $25, $50, $100, $250, or custom)
+3. Choose **Pay with Card** (Stripe) or **Pay with Crypto** (CryptoCloud)
+4. Credits are added instantly after payment confirmation

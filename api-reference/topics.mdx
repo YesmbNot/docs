@@ -1,0 +1,79 @@
+---
+title: "Topics"
+description: "Get topic details and follow/unfollow topics."
+icon: "tag"
+---
+
+## GET /twitter/topics/{topic_id}
+
+Get information about a specific topic.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| topic_id | string | path | Yes | ID of the topic |
+| cookie | string | query | Yes | Twitter auth cookie |
+| proxy | string | query | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.apitwitter.com/twitter/topics/123456789?cookie=YOUR_COOKIE" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+</CodeGroup>
+
+---
+
+## POST /twitter/topics/{topic_id}/follow
+
+Follow a topic to see related content in your timeline.
+
+**Cost:** 225 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| topic_id | string | path | Yes | ID of the topic to follow |
+| cookie | string | body | Yes | Twitter auth cookie |
+| proxy | string | body | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.apitwitter.com/twitter/topics/123456789/follow" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cookie": "YOUR_COOKIE",
+    "proxy": "YOUR_PROXY"
+  }'
+```
+</CodeGroup>
+
+---
+
+## DELETE /twitter/topics/{topic_id}/follow
+
+Unfollow a topic.
+
+**Cost:** 225 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| topic_id | string | path | Yes | ID of the topic to unfollow |
+| cookie | string | body | Yes | Twitter auth cookie |
+| proxy | string | body | No | Proxy URL to use for the request |
+
+<CodeGroup>
+```bash cURL
+curl -X DELETE "https://api.apitwitter.com/twitter/topics/123456789/follow" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cookie": "YOUR_COOKIE",
+    "proxy": "YOUR_PROXY"
+  }'
+```
+</CodeGroup>

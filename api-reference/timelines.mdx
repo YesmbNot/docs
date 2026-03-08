@@ -1,0 +1,62 @@
+---
+title: "Timelines"
+description: "Access the For You and Following home timelines."
+icon: "clock"
+---
+
+## POST /twitter/timeline/for-you
+
+Retrieve the algorithmic "For You" home timeline.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| cookie | string | body | Yes | Twitter auth cookie |
+| proxy | string | body | No | Proxy URL to use for the request |
+| count | integer | body | No | Number of tweets to return (default: 20) |
+| cursor | string | body | No | Pagination cursor for the next page |
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.apitwitter.com/twitter/timeline/for-you" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cookie": "YOUR_COOKIE",
+    "proxy": "YOUR_PROXY",
+    "count": 20
+  }'
+```
+</CodeGroup>
+
+---
+
+## POST /twitter/timeline/latest
+
+Retrieve the chronological "Following" / "Latest" home timeline.
+
+**Cost:** 14 credits
+
+| Parameter | Type | In | Required | Description |
+|-----------|------|-----|----------|-------------|
+| X-API-Key | string | header | Yes | Your API key |
+| cookie | string | body | Yes | Twitter auth cookie |
+| proxy | string | body | No | Proxy URL to use for the request |
+| count | integer | body | No | Number of tweets to return (default: 20) |
+| cursor | string | body | No | Pagination cursor for the next page |
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.apitwitter.com/twitter/timeline/latest" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cookie": "YOUR_COOKIE",
+    "proxy": "YOUR_PROXY",
+    "count": 20,
+    "cursor": "NEXT_CURSOR"
+  }'
+```
+</CodeGroup>

@@ -1,0 +1,85 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "ApiTwitter",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#ffffff",
+    "light": "#ffffff",
+    "dark": "#08080A",
+    "background": {
+      "dark": "#08080A",
+      "light": "#ffffff"
+    },
+    "anchors": {
+      "from": "#ffffff",
+      "to": "#aaaaaa"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Dashboard",
+      "url": "https://apitwitter.com/dashboard"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Get API Key",
+    "url": "https://apitwitter.com/register"
+  },
+  "anchors": [
+    {
+      "name": "API Status",
+      "icon": "signal",
+      "url": "https://apitwitter.com/health"
+    },
+    {
+      "name": "Dashboard",
+      "icon": "browser",
+      "url": "https://apitwitter.com/dashboard"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Getting Started",
+      "pages": [
+        "introduction",
+        "quickstart",
+        "authentication",
+        "proxy-and-cookies"
+      ]
+    },
+    {
+      "group": "Billing & Limits",
+      "pages": [
+        "billing",
+        "rate-limits",
+        "errors"
+      ]
+    },
+    {
+      "group": "API Reference",
+      "pages": [
+        "api-reference/users",
+        "api-reference/tweets",
+        "api-reference/search",
+        "api-reference/timelines",
+        "api-reference/engagement",
+        "api-reference/direct-messages",
+        "api-reference/bookmarks",
+        "api-reference/lists",
+        "api-reference/communities",
+        "api-reference/topics"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "website": "https://apitwitter.com"
+  },
+  "backgroundImage": "/background.png",
+  "api": {
+    "baseUrl": "https://api.apitwitter.com"
+  }
+}
