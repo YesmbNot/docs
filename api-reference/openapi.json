@@ -5,248 +5,1255 @@
     "description": "Unofficial Twitter/X API for developers.",
     "version": "1.0.0"
   },
-  "servers": [{ "url": "https://api.apitwitter.com" }],
-  "security": [{ "apiKeyAuth": [] }],
+  "servers": [
+    {
+      "url": "https://api.apitwitter.com"
+    }
+  ],
+  "security": [
+    {
+      "apiKeyAuth": []
+    }
+  ],
   "paths": {
     "/twitter/user/{userName}": {
       "get": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Get User by Username",
         "description": "Get a user's profile information by their screen name.\n\n**Cost:** 16 credits",
         "operationId": "getUserByUsername",
         "parameters": [
-          { "name": "userName", "in": "path", "required": true, "description": "Twitter screen name", "schema": { "type": "string" }, "example": "elonmusk" },
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } }
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "description": "Twitter screen name",
+            "schema": {
+              "type": "string"
+            },
+            "example": "elonmusk"
+          },
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "User profile data", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "User profile data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "id": "44196397",
+                    "userName": "elonmusk",
+                    "name": "Elon Musk",
+                    "screen_name": "elonmusk",
+                    "description": "",
+                    "location": "",
+                    "url": "",
+                    "created_at": "Tue Jun 02 20:12:29 +0000 2009",
+                    "followers": 236242504,
+                    "following": 1292,
+                    "favourites_count": 215441,
+                    "statuses_count": 98757,
+                    "listed_count": 167614,
+                    "media_count": 4387,
+                    "verified": false,
+                    "is_blue_verified": true,
+                    "profile_image_url": "https://pbs.twimg.com/profile_images/2008546467615580160/57KcqsTA_normal.jpg",
+                    "profile_banner_url": "https://pbs.twimg.com/profile_banners/44196397/1739948056",
+                    "protected": false,
+                    "can_dm": false
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/user/id/{userId}": {
       "get": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Get User by ID",
         "description": "Get a user's profile information by their numeric Twitter ID.\n\n**Cost:** 16 credits",
         "operationId": "getUserById",
         "parameters": [
-          { "name": "userId", "in": "path", "required": true, "description": "Numeric Twitter user ID", "schema": { "type": "string" }, "example": "44196397" },
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } }
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "Numeric Twitter user ID",
+            "schema": {
+              "type": "string"
+            },
+            "example": "44196397"
+          },
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "User profile data", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "User profile data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "id": "44196397",
+                    "userName": "elonmusk",
+                    "name": "Elon Musk",
+                    "screen_name": "elonmusk",
+                    "description": "",
+                    "location": "",
+                    "url": "",
+                    "created_at": "Tue Jun 02 20:12:29 +0000 2009",
+                    "followers": 236242529,
+                    "following": 1292,
+                    "favourites_count": 215441,
+                    "statuses_count": 98757,
+                    "listed_count": 167614,
+                    "media_count": 4387,
+                    "verified": false,
+                    "is_blue_verified": true,
+                    "profile_image_url": "https://pbs.twimg.com/profile_images/2008546467615580160/57KcqsTA_normal.jpg",
+                    "profile_banner_url": "https://pbs.twimg.com/profile_banners/44196397/1739948056",
+                    "protected": false,
+                    "can_dm": false
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/users/batch": {
       "get": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Batch Get Users",
         "description": "Batch retrieve multiple user profiles by their IDs in a single request.\n\n**Cost:** 16 credits",
         "operationId": "batchGetUsers",
         "parameters": [
-          { "name": "userIds", "in": "query", "required": true, "description": "Comma-separated list of user IDs", "schema": { "type": "string" }, "example": "44196397,123456789" },
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } }
+          {
+            "name": "userIds",
+            "in": "query",
+            "required": true,
+            "description": "Comma-separated list of user IDs",
+            "schema": {
+              "type": "string"
+            },
+            "example": "44196397,123456789"
+          },
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of user profiles", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List of user profiles",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "users": [
+                      {
+                        "id": "44196397",
+                        "userName": "elonmusk",
+                        "name": "Elon Musk",
+                        "screen_name": "elonmusk",
+                        "description": "",
+                        "location": "",
+                        "url": "",
+                        "created_at": "Tue Jun 02 20:12:29 +0000 2009",
+                        "followers": 236242504,
+                        "following": 1292,
+                        "favourites_count": 215441,
+                        "statuses_count": 98757,
+                        "listed_count": 167614,
+                        "media_count": 4387,
+                        "verified": false,
+                        "is_blue_verified": true,
+                        "profile_image_url": "https://pbs.twimg.com/profile_images/2008546467615580160/57KcqsTA_normal.jpg",
+                        "profile_banner_url": "https://pbs.twimg.com/profile_banners/44196397/1739948056",
+                        "protected": false,
+                        "can_dm": false
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/user/{userName}/followers": {
       "get": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Get User Followers",
         "description": "Get a paginated list of a user's followers.\n\n**Cost:** 14 credits",
         "operationId": "getUserFollowers",
         "parameters": [
-          { "name": "userName", "in": "path", "required": true, "description": "Twitter screen name", "schema": { "type": "string" }, "example": "elonmusk" },
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } },
-          { "name": "pageSize", "in": "query", "required": false, "description": "Number of results per page (default: 200)", "schema": { "type": "integer", "default": 200 } },
-          { "name": "cursor", "in": "query", "required": false, "description": "Pagination cursor for the next page", "schema": { "type": "string" } }
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "description": "Twitter screen name",
+            "schema": {
+              "type": "string"
+            },
+            "example": "elonmusk"
+          },
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "description": "Number of results per page (default: 200)",
+            "schema": {
+              "type": "integer",
+              "default": 200
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Pagination cursor for the next page",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of followers", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List of followers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "followers": [
+                      {
+                        "id": "95092020",
+                        "userName": "jordanbpeterson",
+                        "name": "Dr Jordan B Peterson",
+                        "screen_name": "jordanbpeterson",
+                        "description": "Best-Selling Author | Clinical Psychologist | #1 Education Podcast",
+                        "location": "",
+                        "url": "https://t.co/KgUEvmxeQD",
+                        "created_at": "Sun Dec 06 23:33:02 +0000 2009",
+                        "followers": 6193163,
+                        "following": 1659,
+                        "favourites_count": 227,
+                        "statuses_count": 51539,
+                        "listed_count": 14851,
+                        "media_count": 7370,
+                        "verified": false,
+                        "is_blue_verified": true,
+                        "profile_image_url": "https://pbs.twimg.com/profile_images/1407056014776614923/TKBC60e1_normal.jpg",
+                        "profile_banner_url": "https://pbs.twimg.com/profile_banners/95092020/1768079001",
+                        "protected": false,
+                        "can_dm": true
+                      }
+                    ],
+                    "next_cursor": "1859204159630258669|2031051037955063736"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/user/{userName}/following": {
       "get": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Get User Following",
         "description": "Get a paginated list of accounts a user is following.\n\n**Cost:** 14 credits",
         "operationId": "getUserFollowing",
         "parameters": [
-          { "name": "userName", "in": "path", "required": true, "description": "Twitter screen name", "schema": { "type": "string" }, "example": "elonmusk" },
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } },
-          { "name": "pageSize", "in": "query", "required": false, "description": "Number of results per page (default: 200)", "schema": { "type": "integer", "default": 200 } },
-          { "name": "cursor", "in": "query", "required": false, "description": "Pagination cursor for the next page", "schema": { "type": "string" } }
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "description": "Twitter screen name",
+            "schema": {
+              "type": "string"
+            },
+            "example": "elonmusk"
+          },
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "description": "Number of results per page (default: 200)",
+            "schema": {
+              "type": "integer",
+              "default": 200
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Pagination cursor for the next page",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of following", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List of following",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "following": [
+                      {
+                        "id": "95092020",
+                        "userName": "jordanbpeterson",
+                        "name": "Dr Jordan B Peterson",
+                        "screen_name": "jordanbpeterson",
+                        "description": "Best-Selling Author | Clinical Psychologist | #1 Education Podcast",
+                        "location": "",
+                        "url": "https://t.co/KgUEvmxeQD",
+                        "created_at": "Sun Dec 06 23:33:02 +0000 2009",
+                        "followers": 6193164,
+                        "following": 1659,
+                        "favourites_count": 227,
+                        "statuses_count": 51539,
+                        "listed_count": 14851,
+                        "media_count": 7370,
+                        "verified": false,
+                        "is_blue_verified": true,
+                        "profile_image_url": "https://pbs.twimg.com/profile_images/1407056014776614923/TKBC60e1_normal.jpg",
+                        "profile_banner_url": "https://pbs.twimg.com/profile_banners/95092020/1768079001",
+                        "protected": false,
+                        "can_dm": true
+                      }
+                    ],
+                    "next_cursor": "1851827852357371417|2031051047128006584"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/user/{userName}/likes": {
       "get": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Get User Likes",
         "description": "Get tweets liked by a user.\n\n**Cost:** 14 credits",
         "operationId": "getUserLikes",
         "parameters": [
-          { "name": "userName", "in": "path", "required": true, "description": "Twitter screen name", "schema": { "type": "string" }, "example": "elonmusk" },
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } },
-          { "name": "cursor", "in": "query", "required": false, "description": "Pagination cursor for the next page", "schema": { "type": "string" } }
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "description": "Twitter screen name",
+            "schema": {
+              "type": "string"
+            },
+            "example": "elonmusk"
+          },
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Pagination cursor for the next page",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of liked tweets", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List of liked tweets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "tweets": [
+                      {
+                        "id": "1879298220892504449",
+                        "text": "Example liked tweet",
+                        "created_at": "Mon Jan 15 12:00:00 +0000 2025",
+                        "author": {
+                          "id": "44196397",
+                          "userName": "elonmusk",
+                          "name": "Elon Musk",
+                          "screen_name": "elonmusk"
+                        },
+                        "likeCount": 1000,
+                        "retweetCount": 200,
+                        "replyCount": 50,
+                        "viewCount": 50000,
+                        "isRetweet": false,
+                        "isReply": false
+                      }
+                    ],
+                    "has_next_page": true,
+                    "next_cursor": "DAACCgABHC..."
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/user/{userName}/media": {
       "get": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Get User Media",
         "description": "Get media tweets posted by a user.\n\n**Cost:** 14 credits",
         "operationId": "getUserMedia",
         "parameters": [
-          { "name": "userName", "in": "path", "required": true, "description": "Twitter screen name", "schema": { "type": "string" }, "example": "elonmusk" },
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } },
-          { "name": "cursor", "in": "query", "required": false, "description": "Pagination cursor for the next page", "schema": { "type": "string" } }
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "description": "Twitter screen name",
+            "schema": {
+              "type": "string"
+            },
+            "example": "elonmusk"
+          },
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Pagination cursor for the next page",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of media tweets", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List of media tweets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "tweets": [
+                      {
+                        "id": "1879298220892504449",
+                        "text": "Example media tweet",
+                        "created_at": "Mon Jan 15 12:00:00 +0000 2025",
+                        "author": {
+                          "id": "44196397",
+                          "userName": "elonmusk",
+                          "name": "Elon Musk",
+                          "screen_name": "elonmusk"
+                        },
+                        "likeCount": 5000,
+                        "retweetCount": 800,
+                        "replyCount": 200,
+                        "viewCount": 100000,
+                        "isRetweet": false,
+                        "isReply": false
+                      }
+                    ],
+                    "has_next_page": true,
+                    "next_cursor": "DAABCgABHC..."
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/user/{userName}/replies": {
       "get": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Get User Replies",
         "description": "Get tweets and replies posted by a user.\n\n**Cost:** 14 credits",
         "operationId": "getUserReplies",
         "parameters": [
-          { "name": "userName", "in": "path", "required": true, "description": "Twitter screen name", "schema": { "type": "string" }, "example": "elonmusk" },
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } },
-          { "name": "cursor", "in": "query", "required": false, "description": "Pagination cursor for the next page", "schema": { "type": "string" } }
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "description": "Twitter screen name",
+            "schema": {
+              "type": "string"
+            },
+            "example": "elonmusk"
+          },
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Pagination cursor for the next page",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of replies", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List of replies",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "tweets": [
+                      {
+                        "id": "2031024982797529484",
+                        "text": "Example reply tweet",
+                        "created_at": "Mon Mar 09 15:11:05 +0000 2026",
+                        "author": {
+                          "id": "1655936149733654530",
+                          "userName": "IterIntellectus",
+                          "name": "vittorio",
+                          "screen_name": "IterIntellectus",
+                          "followers_count": 173558,
+                          "friends_count": 2344,
+                          "statuses_count": 78525,
+                          "favourites_count": 449322,
+                          "listed_count": 1183,
+                          "description": "practice expert",
+                          "location": "",
+                          "profile_image_url_https": "",
+                          "profile_image_url": "",
+                          "profile_banner_url": "https://pbs.twimg.com/profile_banners/1655936149733654530/1721688332",
+                          "verified": false,
+                          "is_blue_verified": true,
+                          "created_at": "",
+                          "can_dm": false
+                        },
+                        "likeCount": 3323,
+                        "retweetCount": 232,
+                        "replyCount": 38,
+                        "viewCount": 0,
+                        "isRetweet": false,
+                        "isReply": false
+                      }
+                    ],
+                    "has_next_page": true,
+                    "next_cursor": "DAAHCgABHC..."
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/user/{userName}/followers-you-know": {
       "get": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Get Mutual Followers",
         "description": "Get mutual followers (followers you know) for a given user.\n\n**Cost:** 14 credits",
         "operationId": "getMutualFollowers",
         "parameters": [
-          { "name": "userName", "in": "path", "required": true, "description": "Twitter screen name", "schema": { "type": "string" }, "example": "elonmusk" },
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } }
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "description": "Twitter screen name",
+            "schema": {
+              "type": "string"
+            },
+            "example": "elonmusk"
+          },
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of mutual followers", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List of mutual followers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "users": [
+                      {
+                        "id": "2026362104849276928",
+                        "userName": "DGuevarra70072",
+                        "name": "Dominique Guevarra",
+                        "screen_name": "DGuevarra70072",
+                        "description": "",
+                        "location": "",
+                        "url": "",
+                        "created_at": "Tue Feb 24 18:23:38 +0000 2026",
+                        "followers": 1,
+                        "following": 3,
+                        "favourites_count": 0,
+                        "statuses_count": 0,
+                        "listed_count": 0,
+                        "media_count": 0,
+                        "verified": false,
+                        "is_blue_verified": false,
+                        "profile_image_url": "https://pbs.twimg.com/profile_images/2026362400669335552/qypPi6su_normal.jpg",
+                        "profile_banner_url": "",
+                        "protected": false,
+                        "can_dm": false
+                      }
+                    ],
+                    "next_cursor": "0|2031051090681659374"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/user/{user_id}/remove-follower": {
       "post": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Remove Follower",
         "description": "Remove a follower from your account.\n\n**Cost:** 225 credits",
         "operationId": "removeFollower",
         "parameters": [
-          { "name": "user_id", "in": "path", "required": true, "description": "Numeric Twitter user ID of the follower to remove", "schema": { "type": "string" }, "example": "44196397" }
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "Numeric Twitter user ID of the follower to remove",
+            "schema": {
+              "type": "string"
+            },
+            "example": "44196397"
+          }
         ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
         "responses": {
-          "200": { "description": "Follower removed", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Follower removed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/session/verify": {
       "post": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Verify Session",
         "description": "Verify that the provided cookies are still valid and the session is active.\n\n**Cost:** 5 credits",
         "operationId": "verifySession",
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
         "responses": {
-          "200": { "description": "Session verification result", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Session verification result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "username": "johndoe"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/blocked": {
       "get": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Get Blocked Users",
         "description": "Get a list of accounts you have blocked.\n\n**Cost:** 14 credits",
         "operationId": "getBlockedUsers",
         "parameters": [
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } }
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of blocked users", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List of blocked users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "users": [
+                      {
+                        "id": "123456789",
+                        "userName": "blockeduser",
+                        "name": "Blocked User",
+                        "screen_name": "blockeduser",
+                        "description": "",
+                        "location": "",
+                        "url": "",
+                        "created_at": "Mon Jan 01 00:00:00 +0000 2020",
+                        "followers": 100,
+                        "following": 50,
+                        "favourites_count": 0,
+                        "statuses_count": 10,
+                        "listed_count": 0,
+                        "media_count": 0,
+                        "verified": false,
+                        "is_blue_verified": false,
+                        "profile_image_url": "",
+                        "profile_banner_url": "",
+                        "protected": false,
+                        "can_dm": false
+                      }
+                    ],
+                    "next_cursor": "0|2031051110231310334"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/muted": {
       "get": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Get Muted Users",
         "description": "Get a list of accounts you have muted.\n\n**Cost:** 14 credits",
         "operationId": "getMutedUsers",
         "parameters": [
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } }
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of muted users", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List of muted users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "users": [
+                      {
+                        "id": "123456789",
+                        "userName": "muteduser",
+                        "name": "Muted User",
+                        "screen_name": "muteduser",
+                        "description": "",
+                        "location": "",
+                        "url": "",
+                        "created_at": "Mon Jan 01 00:00:00 +0000 2020",
+                        "followers": 100,
+                        "following": 50,
+                        "favourites_count": 0,
+                        "statuses_count": 10,
+                        "listed_count": 0,
+                        "media_count": 0,
+                        "verified": false,
+                        "is_blue_verified": false,
+                        "profile_image_url": "",
+                        "profile_banner_url": "",
+                        "protected": false,
+                        "can_dm": false
+                      }
+                    ],
+                    "next_cursor": "0|2031051115600019454"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/tweets": {
       "get": {
-        "tags": ["Tweets"],
+        "tags": [
+          "Tweets"
+        ],
         "summary": "Get Tweets",
         "description": "Retrieve one or more tweets by their IDs.\n\n**Cost:** 14 credits",
         "operationId": "getTweets",
         "parameters": [
-          { "name": "tweet_ids", "in": "query", "required": true, "description": "Comma-separated list of tweet IDs", "schema": { "type": "string" }, "example": "1234567890,9876543210" },
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } }
+          {
+            "name": "tweet_ids",
+            "in": "query",
+            "required": true,
+            "description": "Comma-separated list of tweet IDs",
+            "schema": {
+              "type": "string"
+            },
+            "example": "1234567890,9876543210"
+          },
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "Tweet data", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Tweet data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "tweets": [
+                      {
+                        "id": "1879298220892504449",
+                        "text": "Example tweet content",
+                        "created_at": "Mon Jan 15 12:00:00 +0000 2025",
+                        "author": {
+                          "id": "44196397",
+                          "userName": "elonmusk",
+                          "name": "Elon Musk",
+                          "screen_name": "elonmusk",
+                          "followers_count": 236242550,
+                          "friends_count": 1292,
+                          "statuses_count": 98757,
+                          "favourites_count": 215441,
+                          "listed_count": 167614,
+                          "description": "",
+                          "location": "",
+                          "profile_image_url_https": "",
+                          "profile_image_url": "",
+                          "profile_banner_url": "https://pbs.twimg.com/profile_banners/44196397/1739948056",
+                          "verified": false,
+                          "is_blue_verified": true,
+                          "created_at": "",
+                          "can_dm": false
+                        },
+                        "likeCount": 5000,
+                        "retweetCount": 1000,
+                        "replyCount": 200,
+                        "viewCount": 500000,
+                        "isRetweet": false,
+                        "isReply": false
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       },
       "post": {
-        "tags": ["Tweets"],
+        "tags": [
+          "Tweets"
+        ],
         "summary": "Create Tweet",
         "description": "Create a new tweet or reply to an existing tweet.\n\n**Cost:** 225 credits",
         "operationId": "createTweet",
@@ -256,140 +1263,586 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["tweet_text", "cookie"],
+                "required": [
+                  "tweet_text",
+                  "cookie",
+                  "proxy"
+                ],
                 "properties": {
-                  "tweet_text": { "type": "string", "description": "The text content of the tweet" },
-                  "cookie": { "type": "string", "description": "Twitter auth cookie" },
-                  "proxy": { "type": "string", "description": "Proxy URL to use for the request" },
-                  "reply_to_tweet_id": { "type": "string", "description": "Tweet ID to reply to" }
+                  "tweet_text": {
+                    "type": "string",
+                    "description": "The text content of the tweet"
+                  },
+                  "cookie": {
+                    "type": "string",
+                    "description": "Twitter auth cookie"
+                  },
+                  "proxy": {
+                    "type": "string",
+                    "description": "Proxy URL to use for the request"
+                  },
+                  "reply_to_tweet_id": {
+                    "type": "string",
+                    "description": "Tweet ID to reply to"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "Tweet created", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Tweet created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "tweet_id": "2031089570253757233",
+                  "msg": "Tweet created"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/user/{userName}/tweets": {
       "get": {
-        "tags": ["Tweets"],
+        "tags": [
+          "Tweets"
+        ],
         "summary": "Get User Tweets",
         "description": "Get a paginated list of tweets posted by a user.\n\n**Cost:** 14 credits",
         "operationId": "getUserTweets",
         "parameters": [
-          { "name": "userName", "in": "path", "required": true, "description": "Twitter screen name", "schema": { "type": "string" }, "example": "elonmusk" },
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } },
-          { "name": "cursor", "in": "query", "required": false, "description": "Pagination cursor for the next page", "schema": { "type": "string" } }
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "description": "Twitter screen name",
+            "schema": {
+              "type": "string"
+            },
+            "example": "elonmusk"
+          },
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Pagination cursor for the next page",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of tweets", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List of tweets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "tweets": [
+                      {
+                        "id": "2031049845881139316",
+                        "text": "This is the way",
+                        "created_at": "Mon Mar 09 16:49:52 +0000 2026",
+                        "author": {
+                          "id": "44196397",
+                          "userName": "elonmusk",
+                          "name": "Elon Musk",
+                          "screen_name": "elonmusk",
+                          "followers_count": 236242550,
+                          "friends_count": 1292,
+                          "statuses_count": 98757,
+                          "favourites_count": 215441,
+                          "listed_count": 167614,
+                          "description": "",
+                          "location": "",
+                          "profile_image_url_https": "",
+                          "profile_image_url": "",
+                          "profile_banner_url": "https://pbs.twimg.com/profile_banners/44196397/1739948056",
+                          "verified": false,
+                          "is_blue_verified": true,
+                          "created_at": "",
+                          "can_dm": false
+                        },
+                        "likeCount": 1567,
+                        "retweetCount": 181,
+                        "replyCount": 454,
+                        "viewCount": 0,
+                        "isRetweet": false,
+                        "isReply": false
+                      }
+                    ],
+                    "has_next_page": true,
+                    "next_cursor": "DAAHCgABHC..."
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/tweets/{tweet_id}": {
       "delete": {
-        "tags": ["Tweets"],
+        "tags": [
+          "Tweets"
+        ],
         "summary": "Delete Tweet",
         "description": "Delete a tweet by its ID.\n\n**Cost:** 225 credits",
         "operationId": "deleteTweet",
         "parameters": [
-          { "name": "tweet_id", "in": "path", "required": true, "description": "ID of the tweet to delete", "schema": { "type": "string" }, "example": "1234567890" }
+          {
+            "name": "tweet_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the tweet to delete",
+            "schema": {
+              "type": "string"
+            },
+            "example": "1234567890"
+          }
         ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
         "responses": {
-          "200": { "description": "Tweet deleted", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Tweet deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/tweets/{tweet_id}/retweet": {
       "post": {
-        "tags": ["Tweets"],
+        "tags": [
+          "Tweets"
+        ],
         "summary": "Retweet",
         "description": "Retweet a tweet.\n\n**Cost:** 225 credits",
         "operationId": "retweet",
         "parameters": [
-          { "name": "tweet_id", "in": "path", "required": true, "description": "ID of the tweet to retweet", "schema": { "type": "string" }, "example": "1234567890" }
+          {
+            "name": "tweet_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the tweet to retweet",
+            "schema": {
+              "type": "string"
+            },
+            "example": "1234567890"
+          }
         ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
         "responses": {
-          "200": { "description": "Retweeted", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Retweeted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "Retweeted"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       },
       "delete": {
-        "tags": ["Tweets"],
+        "tags": [
+          "Tweets"
+        ],
         "summary": "Undo Retweet",
         "description": "Undo a retweet.\n\n**Cost:** 225 credits",
         "operationId": "undoRetweet",
         "parameters": [
-          { "name": "tweet_id", "in": "path", "required": true, "description": "ID of the tweet to un-retweet", "schema": { "type": "string" }, "example": "1234567890" }
+          {
+            "name": "tweet_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the tweet to un-retweet",
+            "schema": {
+              "type": "string"
+            },
+            "example": "1234567890"
+          }
         ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
         "responses": {
-          "200": { "description": "Retweet undone", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Retweet undone",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/tweets/{tweet_id}/pin": {
       "post": {
-        "tags": ["Tweets"],
+        "tags": [
+          "Tweets"
+        ],
         "summary": "Pin Tweet",
         "description": "Pin a tweet to the top of your profile.\n\n**Cost:** 225 credits",
         "operationId": "pinTweet",
         "parameters": [
-          { "name": "tweet_id", "in": "path", "required": true, "description": "ID of the tweet to pin", "schema": { "type": "string" }, "example": "1234567890" }
+          {
+            "name": "tweet_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the tweet to pin",
+            "schema": {
+              "type": "string"
+            },
+            "example": "1234567890"
+          }
         ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
         "responses": {
-          "200": { "description": "Tweet pinned", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Tweet pinned",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       },
       "delete": {
-        "tags": ["Tweets"],
+        "tags": [
+          "Tweets"
+        ],
         "summary": "Unpin Tweet",
         "description": "Unpin a tweet from your profile.\n\n**Cost:** 225 credits",
         "operationId": "unpinTweet",
         "parameters": [
-          { "name": "tweet_id", "in": "path", "required": true, "description": "ID of the tweet to unpin", "schema": { "type": "string" }, "example": "1234567890" }
+          {
+            "name": "tweet_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the tweet to unpin",
+            "schema": {
+              "type": "string"
+            },
+            "example": "1234567890"
+          }
         ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
         "responses": {
-          "200": { "description": "Tweet unpinned", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Tweet unpinned",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/search": {
       "get": {
-        "tags": ["Search"],
+        "tags": [
+          "Search"
+        ],
         "summary": "Search Tweets",
         "description": "Search for tweets using a query string with optional filtering by product type.\n\n**Cost:** 14 credits",
         "operationId": "searchTweets",
         "parameters": [
-          { "name": "query", "in": "query", "required": true, "description": "Search query string", "schema": { "type": "string" }, "example": "OpenAI" },
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } },
-          { "name": "product", "in": "query", "required": false, "description": "Result type filter: Top, Latest, People, Photos, or Videos (default: Top)", "schema": { "type": "string", "enum": ["Top", "Latest", "People", "Photos", "Videos"], "default": "Top" } },
-          { "name": "count", "in": "query", "required": false, "description": "Number of results to return, 1-100 (default: 20)", "schema": { "type": "integer", "default": 20, "minimum": 1, "maximum": 100 } },
-          { "name": "cursor", "in": "query", "required": false, "description": "Pagination cursor for the next page", "schema": { "type": "string" } }
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "description": "Search query string",
+            "schema": {
+              "type": "string"
+            },
+            "example": "OpenAI"
+          },
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "product",
+            "in": "query",
+            "required": false,
+            "description": "Result type filter: Top, Latest, People, Photos, or Videos (default: Top)",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Top",
+                "Latest",
+                "People",
+                "Photos",
+                "Videos"
+              ],
+              "default": "Top"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "description": "Number of results to return, 1-100 (default: 20)",
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Pagination cursor for the next page",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "Search results", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Search results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "tweets": [
+                      {
+                        "id": "2031008606922170547",
+                        "text": "BREAKING: BTC breaks above $69,000 and ETH breaks above $2,000.",
+                        "created_at": "Mon Mar 09 14:06:00 +0000 2026",
+                        "author": {
+                          "id": "815942827968495616",
+                          "userName": "BullTheoryio",
+                          "name": "Bull Theory",
+                          "screen_name": "BullTheoryio",
+                          "followers_count": 135150,
+                          "friends_count": 54,
+                          "statuses_count": 1413,
+                          "favourites_count": 1256,
+                          "listed_count": 880,
+                          "description": "News, Research, and all other Global market stuff simplified.",
+                          "location": "",
+                          "profile_image_url_https": "",
+                          "profile_image_url": "",
+                          "profile_banner_url": "https://pbs.twimg.com/profile_banners/815942827968495616/1756998072",
+                          "verified": false,
+                          "is_blue_verified": true,
+                          "created_at": "",
+                          "can_dm": false
+                        },
+                        "likeCount": 609,
+                        "retweetCount": 156,
+                        "replyCount": 107,
+                        "viewCount": 22182,
+                        "isRetweet": false,
+                        "isReply": false
+                      }
+                    ],
+                    "has_next_page": true,
+                    "next_cursor": "DAACCgACHC..."
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/timeline/for-you": {
       "post": {
-        "tags": ["Timelines"],
+        "tags": [
+          "Timelines"
+        ],
         "summary": "For You Timeline",
         "description": "Retrieve the algorithmic \"For You\" home timeline.\n\n**Cost:** 14 credits",
         "operationId": "forYouTimeline",
@@ -398,26 +1851,103 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object", "required": ["cookie"],
+                "type": "object",
+                "required": [
+                  "cookie",
+                  "proxy"
+                ],
                 "properties": {
-                  "cookie": { "type": "string", "description": "Twitter auth cookie" },
-                  "proxy": { "type": "string", "description": "Proxy URL to use for the request" },
-                  "count": { "type": "integer", "description": "Number of tweets to return (default: 20)", "default": 20 },
-                  "cursor": { "type": "string", "description": "Pagination cursor for the next page" }
+                  "cookie": {
+                    "type": "string",
+                    "description": "Twitter auth cookie"
+                  },
+                  "proxy": {
+                    "type": "string",
+                    "description": "Proxy URL to use for the request"
+                  },
+                  "count": {
+                    "type": "integer",
+                    "description": "Number of tweets to return (default: 20)",
+                    "default": 20
+                  },
+                  "cursor": {
+                    "type": "string",
+                    "description": "Pagination cursor for the next page"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "Timeline tweets", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Timeline tweets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "tweets": [
+                      {
+                        "id": "2031042859114369256",
+                        "text": "Example tweet from For You timeline",
+                        "created_at": "Mon Mar 09 16:22:07 +0000 2026",
+                        "author": {
+                          "id": "44196397",
+                          "userName": "elonmusk",
+                          "name": "Elon Musk",
+                          "screen_name": "elonmusk",
+                          "followers_count": 236242950,
+                          "friends_count": 1292,
+                          "statuses_count": 98757,
+                          "favourites_count": 215441,
+                          "listed_count": 167614,
+                          "description": "",
+                          "location": "",
+                          "profile_image_url_https": "",
+                          "profile_image_url": "",
+                          "profile_banner_url": "https://pbs.twimg.com/profile_banners/44196397/1739948056",
+                          "verified": false,
+                          "is_blue_verified": true,
+                          "created_at": "",
+                          "can_dm": false
+                        },
+                        "likeCount": 25604,
+                        "retweetCount": 3699,
+                        "replyCount": 1335,
+                        "viewCount": 1325114,
+                        "isRetweet": false,
+                        "isReply": false
+                      }
+                    ],
+                    "has_next_page": true,
+                    "next_cursor": "DAABCgABHC..."
+                  },
+                  "source": "for_you"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/timeline/latest": {
       "post": {
-        "tags": ["Timelines"],
+        "tags": [
+          "Timelines"
+        ],
         "summary": "Latest Timeline",
         "description": "Retrieve the chronological \"Following\" / \"Latest\" home timeline.\n\n**Cost:** 14 credits",
         "operationId": "latestTimeline",
@@ -426,197 +1956,705 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object", "required": ["cookie"],
+                "type": "object",
+                "required": [
+                  "cookie",
+                  "proxy"
+                ],
                 "properties": {
-                  "cookie": { "type": "string", "description": "Twitter auth cookie" },
-                  "proxy": { "type": "string", "description": "Proxy URL to use for the request" },
-                  "count": { "type": "integer", "description": "Number of tweets to return (default: 20)", "default": 20 },
-                  "cursor": { "type": "string", "description": "Pagination cursor for the next page" }
+                  "cookie": {
+                    "type": "string",
+                    "description": "Twitter auth cookie"
+                  },
+                  "proxy": {
+                    "type": "string",
+                    "description": "Proxy URL to use for the request"
+                  },
+                  "count": {
+                    "type": "integer",
+                    "description": "Number of tweets to return (default: 20)",
+                    "default": 20
+                  },
+                  "cursor": {
+                    "type": "string",
+                    "description": "Pagination cursor for the next page"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "Timeline tweets", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Timeline tweets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "tweets": [
+                      {
+                        "id": "2031042244380107161",
+                        "text": "RT @stackbtc_: We are excited to announce...",
+                        "created_at": "Mon Mar 09 16:19:40 +0000 2026",
+                        "author": {
+                          "id": "244647486",
+                          "userName": "saylor",
+                          "name": "Michael Saylor",
+                          "screen_name": "saylor",
+                          "followers_count": 4945574,
+                          "friends_count": 793,
+                          "statuses_count": 7230,
+                          "favourites_count": 10169,
+                          "listed_count": 27371,
+                          "description": "Bitcoin is Hope",
+                          "location": "",
+                          "profile_image_url_https": "",
+                          "profile_image_url": "",
+                          "profile_banner_url": "https://pbs.twimg.com/profile_banners/244647486/1738781752",
+                          "verified": false,
+                          "is_blue_verified": true,
+                          "created_at": "",
+                          "can_dm": false
+                        },
+                        "likeCount": 0,
+                        "retweetCount": 64,
+                        "replyCount": 0,
+                        "viewCount": 9,
+                        "isRetweet": true,
+                        "isReply": false
+                      }
+                    ],
+                    "has_next_page": true,
+                    "next_cursor": "DAABCgABHC..."
+                  },
+                  "source": "latest"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/tweets/{tweet_id}/like": {
       "post": {
-        "tags": ["Engagement"],
+        "tags": [
+          "Engagement"
+        ],
         "summary": "Like Tweet",
         "description": "Like a tweet.\n\n**Cost:** 225 credits",
         "operationId": "likeTweet",
         "parameters": [
-          { "name": "tweet_id", "in": "path", "required": true, "description": "ID of the tweet to like", "schema": { "type": "string" }, "example": "1234567890" }
-        ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
-        "responses": {
-          "200": { "description": "Tweet liked", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
-        }
-      }
-    },
-    "/twitter/tweets/{tweet_id}/unlike": {
-      "post": {
-        "tags": ["Engagement"],
-        "summary": "Unlike Tweet",
-        "description": "Unlike a previously liked tweet.\n\n**Cost:** 225 credits",
-        "operationId": "unlikeTweet",
-        "parameters": [
-          { "name": "tweet_id", "in": "path", "required": true, "description": "ID of the tweet to unlike", "schema": { "type": "string" }, "example": "1234567890" }
-        ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
-        "responses": {
-          "200": { "description": "Tweet unliked", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
-        }
-      }
-    },
-    "/twitter/user/{user_id}/follow": {
-      "post": {
-        "tags": ["Engagement"],
-        "summary": "Follow User",
-        "description": "Follow a user.\n\n**Cost:** 225 credits",
-        "operationId": "followUser",
-        "parameters": [
-          { "name": "user_id", "in": "path", "required": true, "description": "Numeric Twitter user ID to follow", "schema": { "type": "string" }, "example": "44196397" }
-        ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
-        "responses": {
-          "200": { "description": "User followed", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
-        }
-      }
-    },
-    "/twitter/user/{user_id}/unfollow": {
-      "post": {
-        "tags": ["Engagement"],
-        "summary": "Unfollow User",
-        "description": "Unfollow a user.\n\n**Cost:** 225 credits",
-        "operationId": "unfollowUser",
-        "parameters": [
-          { "name": "user_id", "in": "path", "required": true, "description": "Numeric Twitter user ID to unfollow", "schema": { "type": "string" }, "example": "44196397" }
-        ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
-        "responses": {
-          "200": { "description": "User unfollowed", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
-        }
-      }
-    },
-    "/twitter/dm/{user_id}": {
-      "post": {
-        "tags": ["Direct Messages"],
-        "summary": "Send Direct Message",
-        "description": "Send a direct message to a user.\n\n**Cost:** 225 credits",
-        "operationId": "sendDM",
-        "parameters": [
-          { "name": "user_id", "in": "path", "required": true, "description": "Numeric Twitter user ID of the recipient", "schema": { "type": "string" }, "example": "44196397" }
+          {
+            "name": "tweet_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the tweet to like",
+            "schema": {
+              "type": "string"
+            },
+            "example": "1234567890"
+          }
         ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object", "required": ["text", "cookie"],
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Tweet liked",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "Tweet liked"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/twitter/tweets/{tweet_id}/unlike": {
+      "post": {
+        "tags": [
+          "Engagement"
+        ],
+        "summary": "Unlike Tweet",
+        "description": "Unlike a previously liked tweet.\n\n**Cost:** 225 credits",
+        "operationId": "unlikeTweet",
+        "parameters": [
+          {
+            "name": "tweet_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the tweet to unlike",
+            "schema": {
+              "type": "string"
+            },
+            "example": "1234567890"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Tweet unliked",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "Tweet unliked"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/twitter/user/{user_id}/follow": {
+      "post": {
+        "tags": [
+          "Engagement"
+        ],
+        "summary": "Follow User",
+        "description": "Follow a user.\n\n**Cost:** 225 credits",
+        "operationId": "followUser",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "Numeric Twitter user ID to follow",
+            "schema": {
+              "type": "string"
+            },
+            "example": "44196397"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User followed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/twitter/user/{user_id}/unfollow": {
+      "post": {
+        "tags": [
+          "Engagement"
+        ],
+        "summary": "Unfollow User",
+        "description": "Unfollow a user.\n\n**Cost:** 225 credits",
+        "operationId": "unfollowUser",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "Numeric Twitter user ID to unfollow",
+            "schema": {
+              "type": "string"
+            },
+            "example": "44196397"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User unfollowed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/twitter/dm/{user_id}": {
+      "post": {
+        "tags": [
+          "Direct Messages"
+        ],
+        "summary": "Send Direct Message",
+        "description": "Send a direct message to a user.\n\n**Cost:** 225 credits",
+        "operationId": "sendDM",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "Numeric Twitter user ID of the recipient",
+            "schema": {
+              "type": "string"
+            },
+            "example": "44196397"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "text",
+                  "cookie",
+                  "proxy"
+                ],
                 "properties": {
-                  "text": { "type": "string", "description": "Message text to send" },
-                  "cookie": { "type": "string", "description": "Twitter auth cookie" },
-                  "proxy": { "type": "string", "description": "Proxy URL to use for the request" }
+                  "text": {
+                    "type": "string",
+                    "description": "Message text to send"
+                  },
+                  "cookie": {
+                    "type": "string",
+                    "description": "Twitter auth cookie"
+                  },
+                  "proxy": {
+                    "type": "string",
+                    "description": "Proxy URL to use for the request"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "Message sent", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Message sent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "message_id": "e1814743-4cdc-4151-916d-17cf2fa7771a",
+                  "conversation_id": "1693583885060202496-1818311005698678784",
+                  "delivered": true,
+                  "msg": "DM sent"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/dm/block/{user_id}": {
       "post": {
-        "tags": ["Direct Messages"],
+        "tags": [
+          "Direct Messages"
+        ],
         "summary": "Block User in DMs",
         "description": "Block a user in direct messages.\n\n**Cost:** 225 credits",
         "operationId": "blockDM",
         "parameters": [
-          { "name": "user_id", "in": "path", "required": true, "description": "Numeric Twitter user ID to block in DMs", "schema": { "type": "string" }, "example": "44196397" }
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "Numeric Twitter user ID to block in DMs",
+            "schema": {
+              "type": "string"
+            },
+            "example": "44196397"
+          }
         ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
         "responses": {
-          "200": { "description": "User blocked in DMs", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "User blocked in DMs",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       },
       "delete": {
-        "tags": ["Direct Messages"],
+        "tags": [
+          "Direct Messages"
+        ],
         "summary": "Unblock User in DMs",
         "description": "Unblock a user in direct messages.\n\n**Cost:** 225 credits",
         "operationId": "unblockDM",
         "parameters": [
-          { "name": "user_id", "in": "path", "required": true, "description": "Numeric Twitter user ID to unblock in DMs", "schema": { "type": "string" }, "example": "44196397" }
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "Numeric Twitter user ID to unblock in DMs",
+            "schema": {
+              "type": "string"
+            },
+            "example": "44196397"
+          }
         ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
         "responses": {
-          "200": { "description": "User unblocked in DMs", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "User unblocked in DMs",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/tweets/{tweet_id}/bookmark": {
       "post": {
-        "tags": ["Bookmarks"],
+        "tags": [
+          "Bookmarks"
+        ],
         "summary": "Add Bookmark",
         "description": "Add a tweet to your bookmarks.\n\n**Cost:** 225 credits",
         "operationId": "addBookmark",
         "parameters": [
-          { "name": "tweet_id", "in": "path", "required": true, "description": "ID of the tweet to bookmark", "schema": { "type": "string" }, "example": "1234567890" }
+          {
+            "name": "tweet_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the tweet to bookmark",
+            "schema": {
+              "type": "string"
+            },
+            "example": "1234567890"
+          }
         ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
         "responses": {
-          "200": { "description": "Tweet bookmarked", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Tweet bookmarked",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       },
       "delete": {
-        "tags": ["Bookmarks"],
+        "tags": [
+          "Bookmarks"
+        ],
         "summary": "Remove Bookmark",
         "description": "Remove a tweet from your bookmarks.\n\n**Cost:** 225 credits",
         "operationId": "removeBookmark",
         "parameters": [
-          { "name": "tweet_id", "in": "path", "required": true, "description": "ID of the tweet to remove from bookmarks", "schema": { "type": "string" }, "example": "1234567890" }
+          {
+            "name": "tweet_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the tweet to remove from bookmarks",
+            "schema": {
+              "type": "string"
+            },
+            "example": "1234567890"
+          }
         ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
         "responses": {
-          "200": { "description": "Bookmark removed", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Bookmark removed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/bookmarks": {
       "get": {
-        "tags": ["Bookmarks"],
+        "tags": [
+          "Bookmarks"
+        ],
         "summary": "Get Bookmarks",
         "description": "Get a paginated list of your bookmarked tweets.\n\n**Cost:** 14 credits",
         "operationId": "getBookmarks",
         "parameters": [
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } },
-          { "name": "cursor", "in": "query", "required": false, "description": "Pagination cursor for the next page", "schema": { "type": "string" } }
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Pagination cursor for the next page",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of bookmarked tweets", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List of bookmarked tweets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "tweets": [
+                      {
+                        "id": "1879298220892504449",
+                        "text": "Example bookmarked tweet",
+                        "created_at": "Mon Jan 15 12:00:00 +0000 2025",
+                        "author": {
+                          "id": "44196397",
+                          "userName": "elonmusk",
+                          "name": "Elon Musk",
+                          "screen_name": "elonmusk"
+                        },
+                        "likeCount": 5000,
+                        "retweetCount": 1000,
+                        "replyCount": 200,
+                        "viewCount": 500000,
+                        "isRetweet": false,
+                        "isReply": false
+                      }
+                    ],
+                    "has_next_page": true,
+                    "next_cursor": "DAACCgABHC..."
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/lists": {
       "post": {
-        "tags": ["Lists"],
+        "tags": [
+          "Lists"
+        ],
         "summary": "Create List",
         "description": "Create a new Twitter list.\n\n**Cost:** 225 credits",
         "operationId": "createList",
@@ -625,376 +2663,1371 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object", "required": ["name", "cookie"],
+                "type": "object",
+                "required": [
+                  "name",
+                  "cookie",
+                  "proxy"
+                ],
                 "properties": {
-                  "name": { "type": "string", "description": "Name of the list" },
-                  "description": { "type": "string", "description": "Description of the list" },
-                  "is_private": { "type": "boolean", "description": "Whether the list is private (default: false)", "default": false },
-                  "cookie": { "type": "string", "description": "Twitter auth cookie" },
-                  "proxy": { "type": "string", "description": "Proxy URL to use for the request" }
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the list"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Description of the list"
+                  },
+                  "is_private": {
+                    "type": "boolean",
+                    "description": "Whether the list is private (default: false)",
+                    "default": false
+                  },
+                  "cookie": {
+                    "type": "string",
+                    "description": "Twitter auth cookie"
+                  },
+                  "proxy": {
+                    "type": "string",
+                    "description": "Proxy URL to use for the request"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "List created", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/lists/{list_id}": {
       "get": {
-        "tags": ["Lists"],
+        "tags": [
+          "Lists"
+        ],
         "summary": "Get List",
         "description": "Get information about a specific list.\n\n**Cost:** 14 credits",
         "operationId": "getList",
         "parameters": [
-          { "name": "list_id", "in": "path", "required": true, "description": "ID of the list", "schema": { "type": "string" }, "example": "123456789" },
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } }
+          {
+            "name": "list_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the list",
+            "schema": {
+              "type": "string"
+            },
+            "example": "123456789"
+          },
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List data", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       },
       "patch": {
-        "tags": ["Lists"],
+        "tags": [
+          "Lists"
+        ],
         "summary": "Update List",
         "description": "Update an existing Twitter list's name, description, or privacy setting.\n\n**Cost:** 225 credits",
         "operationId": "updateList",
         "parameters": [
-          { "name": "list_id", "in": "path", "required": true, "description": "ID of the list to update", "schema": { "type": "string" }, "example": "123456789" }
+          {
+            "name": "list_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the list to update",
+            "schema": {
+              "type": "string"
+            },
+            "example": "123456789"
+          }
         ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object", "required": ["cookie"],
+                "type": "object",
+                "required": [
+                  "cookie",
+                  "proxy"
+                ],
                 "properties": {
-                  "name": { "type": "string", "description": "New name for the list" },
-                  "description": { "type": "string", "description": "New description for the list" },
-                  "is_private": { "type": "boolean", "description": "Updated privacy setting" },
-                  "cookie": { "type": "string", "description": "Twitter auth cookie" },
-                  "proxy": { "type": "string", "description": "Proxy URL to use for the request" }
+                  "name": {
+                    "type": "string",
+                    "description": "New name for the list"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "New description for the list"
+                  },
+                  "is_private": {
+                    "type": "boolean",
+                    "description": "Updated privacy setting"
+                  },
+                  "cookie": {
+                    "type": "string",
+                    "description": "Twitter auth cookie"
+                  },
+                  "proxy": {
+                    "type": "string",
+                    "description": "Proxy URL to use for the request"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "List updated", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       },
       "delete": {
-        "tags": ["Lists"],
+        "tags": [
+          "Lists"
+        ],
         "summary": "Delete List",
         "description": "Delete a Twitter list.\n\n**Cost:** 225 credits",
         "operationId": "deleteList",
         "parameters": [
-          { "name": "list_id", "in": "path", "required": true, "description": "ID of the list to delete", "schema": { "type": "string" }, "example": "123456789" }
+          {
+            "name": "list_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the list to delete",
+            "schema": {
+              "type": "string"
+            },
+            "example": "123456789"
+          }
         ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
         "responses": {
-          "200": { "description": "List deleted", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/lists/{list_id}/tweets": {
       "get": {
-        "tags": ["Lists"],
+        "tags": [
+          "Lists"
+        ],
         "summary": "Get List Tweets",
         "description": "Get a paginated feed of tweets from a list.\n\n**Cost:** 14 credits",
         "operationId": "getListTweets",
         "parameters": [
-          { "name": "list_id", "in": "path", "required": true, "description": "ID of the list", "schema": { "type": "string" }, "example": "123456789" },
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } },
-          { "name": "cursor", "in": "query", "required": false, "description": "Pagination cursor for the next page", "schema": { "type": "string" } }
+          {
+            "name": "list_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the list",
+            "schema": {
+              "type": "string"
+            },
+            "example": "123456789"
+          },
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Pagination cursor for the next page",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of tweets", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List of tweets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/lists/{list_id}/members": {
       "get": {
-        "tags": ["Lists"],
+        "tags": [
+          "Lists"
+        ],
         "summary": "Get List Members",
         "description": "Get a paginated list of members in a list.\n\n**Cost:** 14 credits",
         "operationId": "getListMembers",
         "parameters": [
-          { "name": "list_id", "in": "path", "required": true, "description": "ID of the list", "schema": { "type": "string" }, "example": "123456789" },
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } },
-          { "name": "cursor", "in": "query", "required": false, "description": "Pagination cursor for the next page", "schema": { "type": "string" } }
+          {
+            "name": "list_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the list",
+            "schema": {
+              "type": "string"
+            },
+            "example": "123456789"
+          },
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Pagination cursor for the next page",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of members", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List of members",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/lists/{list_id}/members/{user_id}": {
       "post": {
-        "tags": ["Lists"],
+        "tags": [
+          "Lists"
+        ],
         "summary": "Add List Member",
         "description": "Add a member to a list.\n\n**Cost:** 225 credits",
         "operationId": "addListMember",
         "parameters": [
-          { "name": "list_id", "in": "path", "required": true, "description": "ID of the list", "schema": { "type": "string" }, "example": "123456789" },
-          { "name": "user_id", "in": "path", "required": true, "description": "Numeric Twitter user ID to add", "schema": { "type": "string" }, "example": "44196397" }
+          {
+            "name": "list_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the list",
+            "schema": {
+              "type": "string"
+            },
+            "example": "123456789"
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "Numeric Twitter user ID to add",
+            "schema": {
+              "type": "string"
+            },
+            "example": "44196397"
+          }
         ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
         "responses": {
-          "200": { "description": "Member added", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Member added",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       },
       "delete": {
-        "tags": ["Lists"],
+        "tags": [
+          "Lists"
+        ],
         "summary": "Remove List Member",
         "description": "Remove a member from a list.\n\n**Cost:** 225 credits",
         "operationId": "removeListMember",
         "parameters": [
-          { "name": "list_id", "in": "path", "required": true, "description": "ID of the list", "schema": { "type": "string" }, "example": "123456789" },
-          { "name": "user_id", "in": "path", "required": true, "description": "Numeric Twitter user ID to remove", "schema": { "type": "string" }, "example": "44196397" }
+          {
+            "name": "list_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the list",
+            "schema": {
+              "type": "string"
+            },
+            "example": "123456789"
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "Numeric Twitter user ID to remove",
+            "schema": {
+              "type": "string"
+            },
+            "example": "44196397"
+          }
         ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
         "responses": {
-          "200": { "description": "Member removed", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Member removed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/lists/{list_id}/subscribers": {
       "get": {
-        "tags": ["Lists"],
+        "tags": [
+          "Lists"
+        ],
         "summary": "Get List Subscribers",
         "description": "Get a paginated list of subscribers to a list.\n\n**Cost:** 14 credits",
         "operationId": "getListSubscribers",
         "parameters": [
-          { "name": "list_id", "in": "path", "required": true, "description": "ID of the list", "schema": { "type": "string" }, "example": "123456789" },
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } },
-          { "name": "cursor", "in": "query", "required": false, "description": "Pagination cursor for the next page", "schema": { "type": "string" } }
+          {
+            "name": "list_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the list",
+            "schema": {
+              "type": "string"
+            },
+            "example": "123456789"
+          },
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Pagination cursor for the next page",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of subscribers", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List of subscribers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/lists/{list_id}/subscribe": {
       "post": {
-        "tags": ["Lists"],
+        "tags": [
+          "Lists"
+        ],
         "summary": "Subscribe to List",
         "description": "Subscribe to a list.\n\n**Cost:** 225 credits",
         "operationId": "subscribeToList",
         "parameters": [
-          { "name": "list_id", "in": "path", "required": true, "description": "ID of the list to subscribe to", "schema": { "type": "string" }, "example": "123456789" }
+          {
+            "name": "list_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the list to subscribe to",
+            "schema": {
+              "type": "string"
+            },
+            "example": "123456789"
+          }
         ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
         "responses": {
-          "200": { "description": "Subscribed", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Subscribed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       },
       "delete": {
-        "tags": ["Lists"],
+        "tags": [
+          "Lists"
+        ],
         "summary": "Unsubscribe from List",
         "description": "Unsubscribe from a list.\n\n**Cost:** 225 credits",
         "operationId": "unsubscribeFromList",
         "parameters": [
-          { "name": "list_id", "in": "path", "required": true, "description": "ID of the list to unsubscribe from", "schema": { "type": "string" }, "example": "123456789" }
+          {
+            "name": "list_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the list to unsubscribe from",
+            "schema": {
+              "type": "string"
+            },
+            "example": "123456789"
+          }
         ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
         "responses": {
-          "200": { "description": "Unsubscribed", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Unsubscribed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/lists/owned": {
       "get": {
-        "tags": ["Lists"],
+        "tags": [
+          "Lists"
+        ],
         "summary": "Get Owned Lists",
         "description": "Get all lists owned by the authenticated user.\n\n**Cost:** 14 credits",
         "operationId": "getOwnedLists",
         "parameters": [
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } }
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of owned lists", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List of owned lists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "lists": [
+                      {
+                        "id": "123456789",
+                        "name": "My List",
+                        "description": "A sample list",
+                        "member_count": 10,
+                        "subscriber_count": 5,
+                        "is_private": false
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/lists/memberships": {
       "get": {
-        "tags": ["Lists"],
+        "tags": [
+          "Lists"
+        ],
         "summary": "Get List Memberships",
         "description": "Get all lists the authenticated user is a member of.\n\n**Cost:** 14 credits",
         "operationId": "getListMemberships",
         "parameters": [
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } }
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of memberships", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List of memberships",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "lists": [
+                      {
+                        "id": "123456789",
+                        "name": "Tech Leaders",
+                        "description": "Top tech leaders",
+                        "member_count": 50,
+                        "subscriber_count": 1000,
+                        "is_private": false
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/communities/{community_id}": {
       "get": {
-        "tags": ["Communities"],
+        "tags": [
+          "Communities"
+        ],
         "summary": "Get Community",
         "description": "Get information about a specific community.\n\n**Cost:** 14 credits",
         "operationId": "getCommunity",
         "parameters": [
-          { "name": "community_id", "in": "path", "required": true, "description": "ID of the community", "schema": { "type": "string" }, "example": "123456789" },
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } }
+          {
+            "name": "community_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the community",
+            "schema": {
+              "type": "string"
+            },
+            "example": "123456789"
+          },
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "Community data", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Community data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/communities/{community_id}/join": {
       "post": {
-        "tags": ["Communities"],
+        "tags": [
+          "Communities"
+        ],
         "summary": "Join Community",
         "description": "Join a community.\n\n**Cost:** 225 credits",
         "operationId": "joinCommunity",
         "parameters": [
-          { "name": "community_id", "in": "path", "required": true, "description": "ID of the community to join", "schema": { "type": "string" }, "example": "123456789" }
+          {
+            "name": "community_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the community to join",
+            "schema": {
+              "type": "string"
+            },
+            "example": "123456789"
+          }
         ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
         "responses": {
-          "200": { "description": "Joined community", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Joined community",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       },
       "delete": {
-        "tags": ["Communities"],
+        "tags": [
+          "Communities"
+        ],
         "summary": "Leave Community",
         "description": "Leave a community.\n\n**Cost:** 225 credits",
         "operationId": "leaveCommunity",
         "parameters": [
-          { "name": "community_id", "in": "path", "required": true, "description": "ID of the community to leave", "schema": { "type": "string" }, "example": "123456789" }
+          {
+            "name": "community_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the community to leave",
+            "schema": {
+              "type": "string"
+            },
+            "example": "123456789"
+          }
         ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
         "responses": {
-          "200": { "description": "Left community", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Left community",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/communities/{community_id}/tweets": {
       "get": {
-        "tags": ["Communities"],
+        "tags": [
+          "Communities"
+        ],
         "summary": "Get Community Tweets",
         "description": "Get a paginated feed of tweets from a community.\n\n**Cost:** 14 credits",
         "operationId": "getCommunityTweets",
         "parameters": [
-          { "name": "community_id", "in": "path", "required": true, "description": "ID of the community", "schema": { "type": "string" }, "example": "123456789" },
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } },
-          { "name": "cursor", "in": "query", "required": false, "description": "Pagination cursor for the next page", "schema": { "type": "string" } }
+          {
+            "name": "community_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the community",
+            "schema": {
+              "type": "string"
+            },
+            "example": "123456789"
+          },
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Pagination cursor for the next page",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of community tweets", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List of community tweets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/communities/{community_id}/media": {
       "get": {
-        "tags": ["Communities"],
+        "tags": [
+          "Communities"
+        ],
         "summary": "Get Community Media",
         "description": "Get media content from a community.\n\n**Cost:** 14 credits",
         "operationId": "getCommunityMedia",
         "parameters": [
-          { "name": "community_id", "in": "path", "required": true, "description": "ID of the community", "schema": { "type": "string" }, "example": "123456789" },
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } },
-          { "name": "cursor", "in": "query", "required": false, "description": "Pagination cursor for the next page", "schema": { "type": "string" } }
+          {
+            "name": "community_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the community",
+            "schema": {
+              "type": "string"
+            },
+            "example": "123456789"
+          },
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Pagination cursor for the next page",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of community media", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List of community media",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/communities/explore": {
       "get": {
-        "tags": ["Communities"],
+        "tags": [
+          "Communities"
+        ],
         "summary": "Explore Communities",
         "description": "Explore and discover communities.\n\n**Cost:** 14 credits",
         "operationId": "exploreCommunities",
         "parameters": [
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } }
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of communities", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "List of communities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "communities": [
+                      {
+                        "id": "123456789",
+                        "name": "Tech Community",
+                        "description": "A community for tech enthusiasts",
+                        "member_count": 5000
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/topics/{topic_id}": {
       "get": {
-        "tags": ["Topics"],
+        "tags": [
+          "Topics"
+        ],
         "summary": "Get Topic",
         "description": "Get information about a specific topic.\n\n**Cost:** 14 credits",
         "operationId": "getTopic",
         "parameters": [
-          { "name": "topic_id", "in": "path", "required": true, "description": "ID of the topic", "schema": { "type": "string" }, "example": "123456789" },
-          { "name": "cookie", "in": "query", "required": true, "description": "Twitter auth cookie", "schema": { "type": "string" } },
-          { "name": "proxy", "in": "query", "required": false, "description": "Proxy URL to use for the request", "schema": { "type": "string" } }
+          {
+            "name": "topic_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the topic",
+            "schema": {
+              "type": "string"
+            },
+            "example": "123456789"
+          },
+          {
+            "name": "cookie",
+            "in": "query",
+            "required": true,
+            "description": "Twitter auth cookie",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proxy",
+            "in": "query",
+            "required": true,
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "Topic data", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Topic data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/twitter/topics/{topic_id}/follow": {
       "post": {
-        "tags": ["Topics"],
+        "tags": [
+          "Topics"
+        ],
         "summary": "Follow Topic",
         "description": "Follow a topic to see related content in your timeline.\n\n**Cost:** 225 credits",
         "operationId": "followTopic",
         "parameters": [
-          { "name": "topic_id", "in": "path", "required": true, "description": "ID of the topic to follow", "schema": { "type": "string" }, "example": "123456789" }
+          {
+            "name": "topic_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the topic to follow",
+            "schema": {
+              "type": "string"
+            },
+            "example": "123456789"
+          }
         ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
         "responses": {
-          "200": { "description": "Topic followed", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Topic followed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       },
       "delete": {
-        "tags": ["Topics"],
+        "tags": [
+          "Topics"
+        ],
         "summary": "Unfollow Topic",
         "description": "Unfollow a topic.\n\n**Cost:** 225 credits",
         "operationId": "unfollowTopic",
         "parameters": [
-          { "name": "topic_id", "in": "path", "required": true, "description": "ID of the topic to unfollow", "schema": { "type": "string" }, "example": "123456789" }
+          {
+            "name": "topic_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the topic to unfollow",
+            "schema": {
+              "type": "string"
+            },
+            "example": "123456789"
+          }
         ],
-        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CookieProxyBody" } } } },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookieProxyBody"
+              }
+            }
+          }
+        },
         "responses": {
-          "200": { "description": "Topic unfollowed", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessResponse" } } } },
-          "400": { "description": "Bad request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Topic unfollowed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -1003,26 +4036,52 @@
     "schemas": {
       "CookieProxyBody": {
         "type": "object",
-        "required": ["cookie"],
+        "required": [
+          "cookie",
+          "proxy"
+        ],
         "properties": {
-          "cookie": { "type": "string", "description": "Twitter auth cookie" },
-          "proxy": { "type": "string", "description": "Proxy URL to use for the request" }
+          "cookie": {
+            "type": "string",
+            "description": "Twitter auth cookie"
+          },
+          "proxy": {
+            "type": "string",
+            "description": "Proxy URL to use for the request (HTTP or SOCKS5)"
+          }
         }
       },
       "SuccessResponse": {
         "type": "object",
         "properties": {
-          "status": { "type": "string", "description": "Response status", "example": "success" },
-          "msg": { "type": "string", "description": "Response message" },
-          "data": { "description": "Response data" }
+          "status": {
+            "type": "string",
+            "description": "Response status",
+            "example": "success"
+          },
+          "msg": {
+            "type": "string",
+            "description": "Response message"
+          },
+          "data": {
+            "description": "Response data"
+          }
         }
       },
       "Error": {
         "type": "object",
-        "required": ["error", "message"],
+        "required": [
+          "error",
+          "message"
+        ],
         "properties": {
-          "error": { "type": "integer", "format": "int32" },
-          "message": { "type": "string" }
+          "error": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          }
         }
       }
     },
