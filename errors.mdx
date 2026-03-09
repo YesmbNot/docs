@@ -43,7 +43,7 @@ All errors return a JSON object with `status` and `msg` fields:
 {"status": "error", "msg": "proxy is required. We do not provide proxies — you must supply your own proxy URL with every request."}
 ```
 
-**Fix:** Include a `proxy` parameter (query param for GET, body field for POST).
+**Fix:** Include a `"proxy"` field in the JSON request body.
 
 ### Insufficient Credits (402)
 

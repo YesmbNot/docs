@@ -31,11 +31,6 @@
   },
   "anchors": [
     {
-      "name": "API Status",
-      "icon": "signal",
-      "url": "https://apitwitter.com/health"
-    },
-    {
       "name": "Dashboard",
       "icon": "browser",
       "url": "https://apitwitter.com/dashboard"

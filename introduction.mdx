@@ -16,7 +16,7 @@ ApiTwitter is a **third-party Twitter/X REST API** that gives you full programma
     Average response time under **700ms**. Fast and reliable.
   </Card>
   <Card title="High QPS" icon="bolt">
-    Up to **200 requests per second** per client.
+    Up to **30 requests per second** per client.
   </Card>
   <Card title="56 Endpoints" icon="code">
     Tweets, users, search, DMs, lists, communities, topics — everything in one API.
@@ -40,46 +40,46 @@ Minimum charge per request: **$0.00005**. Pay-per-use, no subscriptions — cred
 ## Explore Endpoints
 
 <CardGroup cols={2}>
-  <Card title="Tweet Endpoints" icon="pen" href="/api-reference/tweets">
-    Retrieve tweets by ID, get user timelines, create and delete tweets, retweet, pin, and unpin.
-  </Card>
-  <Card title="User Endpoints" icon="user" href="/api-reference/users">
+  <Card title="User Endpoints" icon="user" href="/api-reference/endpoint/users/get-by-username">
     Look up profiles by username or ID, batch users, get followers, following, likes, media, and replies.
   </Card>
-</CardGroup>
-
-<CardGroup cols={2}>
-  <Card title="Tweet Search" icon="magnifying-glass" href="/api-reference/search">
-    Advanced search with filters by date, keywords, product type (Top, Latest, People, Photos, Videos).
-  </Card>
-  <Card title="Timelines" icon="clock" href="/api-reference/timelines">
-    Access the algorithmic "For You" feed and the chronological "Following" timeline.
+  <Card title="Tweet Endpoints" icon="pen" href="/api-reference/endpoint/tweets/get-user-tweets">
+    Retrieve tweets by ID, get user timelines, create and delete tweets, retweet, pin, and unpin.
   </Card>
 </CardGroup>
 
 <CardGroup cols={2}>
-  <Card title="Engagement" icon="heart" href="/api-reference/engagement">
+  <Card title="Engagement" icon="heart" href="/api-reference/endpoint/engagement/like">
     Like and unlike tweets, follow and unfollow users.
   </Card>
-  <Card title="Direct Messages" icon="envelope" href="/api-reference/direct-messages">
+  <Card title="Tweet Search" icon="magnifying-glass" href="/api-reference/endpoint/search/search-tweets">
+    Advanced search with filters by date, keywords, product type (Top, Latest, People, Photos, Videos).
+  </Card>
+</CardGroup>
+
+<CardGroup cols={2}>
+  <Card title="Timelines" icon="clock" href="/api-reference/endpoint/timelines/for-you">
+    Access the algorithmic "For You" feed and the chronological "Following" timeline.
+  </Card>
+  <Card title="Direct Messages" icon="envelope" href="/api-reference/endpoint/direct-messages/send">
     Send DMs to users, block and unblock users in direct messages.
   </Card>
 </CardGroup>
 
 <CardGroup cols={2}>
-  <Card title="Bookmarks" icon="bookmark" href="/api-reference/bookmarks">
+  <Card title="Bookmarks" icon="bookmark" href="/api-reference/endpoint/bookmarks/list">
     Add and remove bookmarks, list all your bookmarked tweets.
   </Card>
-  <Card title="Lists" icon="list" href="/api-reference/lists">
+  <Card title="Lists" icon="list" href="/api-reference/endpoint/lists/owned">
     Create, update, delete lists. Manage members, subscribers, and browse list feeds.
   </Card>
 </CardGroup>
 
 <CardGroup cols={2}>
-  <Card title="Communities" icon="users" href="/api-reference/communities">
+  <Card title="Communities" icon="users" href="/api-reference/endpoint/communities/explore">
     Get community info, join/leave communities, browse community tweets and media.
   </Card>
-  <Card title="Topics" icon="tag" href="/api-reference/topics">
+  <Card title="Topics" icon="tag" href="/api-reference/endpoint/topics/get">
     Get topic details, follow and unfollow topics.
   </Card>
 </CardGroup>

@@ -12,10 +12,14 @@ icon: "shield-halved"
 
 ### How to Pass Proxy
 
-| Method | How |
-|--------|-----|
-| **GET** requests | `proxy` as a **query parameter** |
-| **POST/DELETE/PATCH** requests | `"proxy"` in the **JSON body** |
+All endpoints use **POST** with a JSON body. Include `"proxy"` as a field in the request body:
+
+```json
+{
+  "cookie": "ct0=...;auth_token=...",
+  "proxy": "http://user:pass@host:port"
+}
+```
 
 ### Supported Proxy Formats
 
@@ -47,10 +51,14 @@ For best results, use high-quality residential proxies and rotate them across re
 
 ### How to Pass Cookies
 
-| Method | How |
-|--------|-----|
-| **GET** requests | `cookie` as a **query parameter** |
-| **POST/DELETE/PATCH** requests | `"cookie"` in the **JSON body** |
+All endpoints use **POST** with a JSON body. Include `"cookie"` as a field in the request body:
+
+```json
+{
+  "cookie": "ct0=YOUR_CT0;auth_token=YOUR_AUTH_TOKEN",
+  "proxy": "http://user:pass@host:port"
+}
+```
 
 ### Cookie Format
 

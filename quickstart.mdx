@@ -31,19 +31,19 @@ Your key looks like: `tda_k8x2mN3s_...`
 <CodeGroup>
 
 ```bash cURL
-curl "https://api.apitwitter.com/twitter/user/elonmusk" \
+curl -X POST "https://api.apitwitter.com/twitter/user/elonmusk" \
   -H "X-API-Key: tda_your_key_here" \
-  --data-urlencode "cookie=ct0=abc123;auth_token=xyz789" \
-  --data-urlencode "proxy=http://user:pass@proxy:8080"
+  -H "Content-Type: application/json" \
+  -d '{"cookie": "ct0=abc123;auth_token=xyz789", "proxy": "http://user:pass@proxy:8080"}'
 ```
 
 ```python Python
 import requests
 
-response = requests.get(
+response = requests.post(
     "https://api.apitwitter.com/twitter/user/elonmusk",
     headers={"X-API-Key": "tda_your_key_here"},
-    params={
+    json={
         "cookie": "ct0=abc123;auth_token=xyz789",
         "proxy": "http://user:pass@proxy:8080"
     }
@@ -53,12 +53,18 @@ print(response.json())
 
 ```javascript JavaScript
 const response = await fetch(
-  "https://api.apitwitter.com/twitter/user/elonmusk?" +
-  new URLSearchParams({
-    cookie: "ct0=abc123;auth_token=xyz789",
-    proxy: "http://user:pass@proxy:8080"
-  }),
-  { headers: { "X-API-Key": "tda_your_key_here" } }
+  "https://api.apitwitter.com/twitter/user/elonmusk",
+  {
+    method: "POST",
+    headers: {
+      "X-API-Key": "tda_your_key_here",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      cookie: "ct0=abc123;auth_token=xyz789",
+      proxy: "http://user:pass@proxy:8080"
+    })
+  }
 );
 const data = await response.json();
 console.log(data);
@@ -70,14 +76,17 @@ console.log(data);
 
 ```json
 {
-  "id": "44196397",
-  "name": "Elon Musk",
-  "userName": "elonmusk",
-  "followers": 209000000,
-  "following": 800,
-  "verified": true,
-  "description": "...",
-  "profileImageUrl": "https://pbs.twimg.com/..."
+  "data": {
+    "id": "44196397",
+    "userName": "elonmusk",
+    "name": "Elon Musk",
+    "screen_name": "elonmusk",
+    "followers": 236242504,
+    "following": 1292,
+    "is_blue_verified": true,
+    "description": "...",
+    "profile_image_url": "https://pbs.twimg.com/..."
+  }
 }
 ```
 
