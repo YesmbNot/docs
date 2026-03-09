@@ -62,16 +62,113 @@
     {
       "group": "API Reference",
       "pages": [
-        "api-reference/users",
-        "api-reference/tweets",
-        "api-reference/search",
-        "api-reference/timelines",
-        "api-reference/engagement",
-        "api-reference/direct-messages",
-        "api-reference/bookmarks",
-        "api-reference/lists",
-        "api-reference/communities",
-        "api-reference/topics"
+        "api-reference/introduction"
+      ]
+    },
+    {
+      "group": "Users",
+      "pages": [
+        "api-reference/endpoint/users/get-by-username",
+        "api-reference/endpoint/users/get-by-id",
+        "api-reference/endpoint/users/batch",
+        "api-reference/endpoint/users/followers",
+        "api-reference/endpoint/users/following",
+        "api-reference/endpoint/users/likes",
+        "api-reference/endpoint/users/media",
+        "api-reference/endpoint/users/replies",
+        "api-reference/endpoint/users/mutual-followers",
+        "api-reference/endpoint/users/remove-follower",
+        "api-reference/endpoint/users/verify-session",
+        "api-reference/endpoint/users/blocked",
+        "api-reference/endpoint/users/muted"
+      ]
+    },
+    {
+      "group": "Tweets",
+      "pages": [
+        "api-reference/endpoint/tweets/get-tweets",
+        "api-reference/endpoint/tweets/create-tweet",
+        "api-reference/endpoint/tweets/get-user-tweets",
+        "api-reference/endpoint/tweets/delete-tweet",
+        "api-reference/endpoint/tweets/retweet",
+        "api-reference/endpoint/tweets/undo-retweet",
+        "api-reference/endpoint/tweets/pin-tweet",
+        "api-reference/endpoint/tweets/unpin-tweet"
+      ]
+    },
+    {
+      "group": "Search",
+      "pages": [
+        "api-reference/endpoint/search/search-tweets"
+      ]
+    },
+    {
+      "group": "Timelines",
+      "pages": [
+        "api-reference/endpoint/timelines/for-you",
+        "api-reference/endpoint/timelines/latest"
+      ]
+    },
+    {
+      "group": "Engagement",
+      "pages": [
+        "api-reference/endpoint/engagement/like",
+        "api-reference/endpoint/engagement/unlike",
+        "api-reference/endpoint/engagement/follow",
+        "api-reference/endpoint/engagement/unfollow"
+      ]
+    },
+    {
+      "group": "Direct Messages",
+      "pages": [
+        "api-reference/endpoint/direct-messages/send",
+        "api-reference/endpoint/direct-messages/block",
+        "api-reference/endpoint/direct-messages/unblock"
+      ]
+    },
+    {
+      "group": "Bookmarks",
+      "pages": [
+        "api-reference/endpoint/bookmarks/add",
+        "api-reference/endpoint/bookmarks/remove",
+        "api-reference/endpoint/bookmarks/list"
+      ]
+    },
+    {
+      "group": "Lists",
+      "pages": [
+        "api-reference/endpoint/lists/create",
+        "api-reference/endpoint/lists/get",
+        "api-reference/endpoint/lists/update",
+        "api-reference/endpoint/lists/delete",
+        "api-reference/endpoint/lists/tweets",
+        "api-reference/endpoint/lists/members",
+        "api-reference/endpoint/lists/add-member",
+        "api-reference/endpoint/lists/remove-member",
+        "api-reference/endpoint/lists/subscribers",
+        "api-reference/endpoint/lists/subscribe",
+        "api-reference/endpoint/lists/unsubscribe",
+        "api-reference/endpoint/lists/owned",
+        "api-reference/endpoint/lists/memberships"
+      ]
+    },
+    {
+      "group": "Communities",
+      "pages": [
+        "api-reference/endpoint/communities/get",
+        "api-reference/endpoint/communities/join",
+        "api-reference/endpoint/communities/leave",
+        "api-reference/endpoint/communities/tweets",
+        "api-reference/endpoint/communities/media",
+        "api-reference/endpoint/communities/explore"
+      ]
+    },
+    {
+      "group": "Topics",
+      "pages": [
+        "api-reference/endpoint/topics/get",
+        "api-reference/endpoint/topics/follow",
+        "api-reference/endpoint/topics/unfollow"
       ]
     }
   ],
@@ -81,5 +178,6 @@
   "backgroundImage": "/background.png",
   "api": {
     "baseUrl": "https://api.apitwitter.com"
-  }
+  },
+  "openapi": ["/api-reference/openapi.json"]
 }

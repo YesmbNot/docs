@@ -1,33 +1,63 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: 'API Reference'
+description: 'Complete reference for all ApiTwitter API endpoints'
 ---
-
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
 
 ## Welcome
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
-
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+Explore the full ApiTwitter API. Each endpoint page includes an interactive playground where you can test requests directly from the documentation.
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+All API endpoints require an `X-API-Key` header for authentication.
 
 ```json
-"security": [
-  {
-    "bearerAuth": []
+"securitySchemes": {
+  "apiKeyAuth": {
+    "type": "apiKey",
+    "in": "header",
+    "name": "X-API-Key"
   }
-]
+}
 ```
+
+## Base URL
+
+```
+https://api.apitwitter.com
+```
+
+## Endpoints Overview
+
+<CardGroup cols={2}>
+  <Card title="Users" icon="user" href="/api-reference/endpoint/users/get-by-username">
+    Retrieve user profiles, followers, following, and manage relationships.
+  </Card>
+  <Card title="Tweets" icon="pen" href="/api-reference/endpoint/tweets/get-tweets">
+    Get, create, delete, retweet, and pin tweets.
+  </Card>
+  <Card title="Search" icon="search" href="/api-reference/endpoint/search/search-tweets">
+    Search tweets with advanced filtering options.
+  </Card>
+  <Card title="Timelines" icon="clock" href="/api-reference/endpoint/timelines/for-you">
+    Access the For You and Following home timelines.
+  </Card>
+  <Card title="Engagement" icon="heart" href="/api-reference/endpoint/engagement/like">
+    Like, unlike, follow, and unfollow users.
+  </Card>
+  <Card title="Direct Messages" icon="envelope" href="/api-reference/endpoint/direct-messages/send">
+    Send DMs and manage DM blocking.
+  </Card>
+  <Card title="Bookmarks" icon="bookmark" href="/api-reference/endpoint/bookmarks/add">
+    Add, remove, and list bookmarked tweets.
+  </Card>
+  <Card title="Lists" icon="list" href="/api-reference/endpoint/lists/create">
+    Create, manage, and browse Twitter lists.
+  </Card>
+  <Card title="Communities" icon="users" href="/api-reference/endpoint/communities/get">
+    Get community info, join/leave, and browse content.
+  </Card>
+  <Card title="Topics" icon="tag" href="/api-reference/endpoint/topics/get">
+    Get topic details and follow/unfollow topics.
+  </Card>
+</CardGroup>

@@ -1,50 +1,112 @@
 ---
 title: "Introduction"
-description: "ApiTwitter — a REST API for Twitter/X with 56 endpoints, pay-per-use pricing, and instant access."
+description: "ApiTwitter — a third-party Twitter/X API: reliable, high-performance, supports high QPS, and cost-effective."
 icon: "book"
 ---
 
-Welcome to ApiTwitter, a fast and reliable REST API that gives you programmatic access to Twitter/X. Read tweets, search users, post content, manage followers, send DMs, and more — without needing an official developer account.
+ApiTwitter is a **third-party Twitter/X REST API** that gives you full programmatic access to Twitter data and actions — without needing an official developer account.
 
-## Why ApiTwitter?
+## Highlights
 
-<CardGroup cols={3}>
+<CardGroup cols={4}>
+  <Card title="Stability" icon="shield-check">
+    Over **1 million** API calls served. Battle-tested infrastructure.
+  </Card>
+  <Card title="Performance" icon="gauge-high">
+    Average response time under **700ms**. Fast and reliable.
+  </Card>
+  <Card title="High QPS" icon="bolt">
+    Up to **200 requests per second** per client.
+  </Card>
   <Card title="56 Endpoints" icon="code">
     Tweets, users, search, DMs, lists, communities, topics — everything in one API.
   </Card>
-  <Card title="Pay-per-Use" icon="credit-card">
-    No subscriptions. Buy credits, use them forever. From $0.14 per 1,000 calls.
+</CardGroup>
+
+## Pricing
+
+| Data Type | Cost per 1K Calls |
+|-----------|-------------------|
+| Tweets (read) | **$0.14** |
+| User profiles | **$0.16** |
+| Followers / following | **$0.14** |
+| Write actions (post, like, follow, DM) | **$2.25** |
+| Session verify | **$0.05** |
+
+<Info>
+Minimum charge per request: **$0.00005**. Pay-per-use, no subscriptions — credits never expire. [See full pricing →](/billing)
+</Info>
+
+## Explore Endpoints
+
+<CardGroup cols={2}>
+  <Card title="Tweet Endpoints" icon="pen" href="/api-reference/tweets">
+    Retrieve tweets by ID, get user timelines, create and delete tweets, retweet, pin, and unpin.
   </Card>
-  <Card title="Instant Access" icon="bolt">
-    Register, get your API key, and start making requests in under 60 seconds.
+  <Card title="User Endpoints" icon="user" href="/api-reference/users">
+    Look up profiles by username or ID, batch users, get followers, following, likes, media, and replies.
   </Card>
 </CardGroup>
 
-## How It Works
+<CardGroup cols={2}>
+  <Card title="Tweet Search" icon="magnifying-glass" href="/api-reference/search">
+    Advanced search with filters by date, keywords, product type (Top, Latest, People, Photos, Videos).
+  </Card>
+  <Card title="Timelines" icon="clock" href="/api-reference/timelines">
+    Access the algorithmic "For You" feed and the chronological "Following" timeline.
+  </Card>
+</CardGroup>
+
+<CardGroup cols={2}>
+  <Card title="Engagement" icon="heart" href="/api-reference/engagement">
+    Like and unlike tweets, follow and unfollow users.
+  </Card>
+  <Card title="Direct Messages" icon="envelope" href="/api-reference/direct-messages">
+    Send DMs to users, block and unblock users in direct messages.
+  </Card>
+</CardGroup>
+
+<CardGroup cols={2}>
+  <Card title="Bookmarks" icon="bookmark" href="/api-reference/bookmarks">
+    Add and remove bookmarks, list all your bookmarked tweets.
+  </Card>
+  <Card title="Lists" icon="list" href="/api-reference/lists">
+    Create, update, delete lists. Manage members, subscribers, and browse list feeds.
+  </Card>
+</CardGroup>
+
+<CardGroup cols={2}>
+  <Card title="Communities" icon="users" href="/api-reference/communities">
+    Get community info, join/leave communities, browse community tweets and media.
+  </Card>
+  <Card title="Topics" icon="tag" href="/api-reference/topics">
+    Get topic details, follow and unfollow topics.
+  </Card>
+</CardGroup>
+
+## Quick Start
 
 <Steps>
   <Step title="Create an Account">
-    Register at [apitwitter.com](https://apitwitter.com/register) to get your account and API key.
+    Register at [apitwitter.com](https://apitwitter.com/register) to get your API key.
   </Step>
   <Step title="Add Credits">
-    Top up your balance from $10 via Stripe (card) or CryptoCloud (crypto). 1 USD = 100,000 credits.
+    Top up from **$10** via Stripe (card) or CryptoCloud (crypto). 1 USD = 100,000 credits.
   </Step>
   <Step title="Make API Calls">
-    Include your API key, Twitter cookies, and proxy with every request. Credits are deducted per call.
+    Include your API key, Twitter cookies, and proxy with every request.
   </Step>
 </Steps>
 
 ## Base URL
 
-All API requests should be made to:
+All requests go to:
 
 ```
 https://api.apitwitter.com
 ```
 
 ## Requirements
-
-Every API request requires three things:
 
 | Requirement | Description |
 |------------|-------------|
