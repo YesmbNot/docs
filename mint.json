@@ -63,22 +63,15 @@
     {
       "group": "Users",
       "pages": [
-        "api-reference/endpoint/users/get-by-username",
         "api-reference/endpoint/users/get-by-username-pool",
-        "api-reference/endpoint/users/get-by-id",
         "api-reference/endpoint/users/get-by-id-pool",
-        "api-reference/endpoint/users/batch",
         "api-reference/endpoint/users/batch-pool",
-        "api-reference/endpoint/users/followers",
         "api-reference/endpoint/users/followers-pool",
-        "api-reference/endpoint/users/following",
         "api-reference/endpoint/users/following-pool",
         "api-reference/endpoint/users/verify-session",
         "api-reference/endpoint/users/likes",
         "api-reference/endpoint/users/media",
-        "api-reference/endpoint/users/replies",
         "api-reference/endpoint/users/replies-pool",
-        "api-reference/endpoint/users/mutual-followers",
         "api-reference/endpoint/users/mutual-followers-pool",
         "api-reference/endpoint/users/blocked",
         "api-reference/endpoint/users/muted",
@@ -88,9 +81,7 @@
     {
       "group": "Tweets",
       "pages": [
-        "api-reference/endpoint/tweets/get-user-tweets",
         "api-reference/endpoint/tweets/get-user-tweets-pool",
-        "api-reference/endpoint/tweets/get-tweets",
         "api-reference/endpoint/tweets/get-tweets-pool",
         "api-reference/endpoint/tweets/create-tweet",
         "api-reference/endpoint/tweets/delete-tweet",
@@ -112,7 +103,6 @@
     {
       "group": "Search",
       "pages": [
-        "api-reference/endpoint/search/search-tweets",
         "api-reference/endpoint/search/search-tweets-pool"
       ]
     },

@@ -63,46 +63,12 @@
     },
     "/twitter/user/{userName}": {
       "get": {
-        "tags": ["Users"],
-        "summary": "Get User by Username (Pool)",
-        "description": "Get a user's profile by screen name using the server-side cookie/proxy pool. No cookie or proxy required — only your API key.\n\n**Cost:** 16 credits",
-        "operationId": "getUserByUsernamePool",
-        "parameters": [
-          {
-            "name": "userName",
-            "in": "path",
-            "required": true,
-            "description": "Twitter screen name",
-            "schema": { "type": "string" },
-            "example": "elonmusk"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "User profile data",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessResponse" }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
-              }
-            }
-          }
-        }
-      },
-      "post": {
         "tags": [
           "Users"
         ],
         "summary": "Get User by Username",
-        "description": "Get a user's profile information by their screen name.\n\n**Cost:** 16 credits",
-        "operationId": "getUserByUsername",
+        "description": "Get a user's profile by screen name.\n\n**Cost:** 16 credits",
+        "operationId": "getUserByUsernamePool",
         "parameters": [
           {
             "name": "userName",
@@ -115,16 +81,6 @@
             "example": "elonmusk"
           }
         ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CookieProxyBody"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "User profile data",
@@ -132,30 +88,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
-                },
-                "example": {
-                  "data": {
-                    "id": "44196397",
-                    "userName": "elonmusk",
-                    "name": "Elon Musk",
-                    "screen_name": "elonmusk",
-                    "description": "",
-                    "location": "",
-                    "url": "",
-                    "created_at": "Tue Jun 02 20:12:29 +0000 2009",
-                    "followers": 236242504,
-                    "following": 1292,
-                    "favourites_count": 215441,
-                    "statuses_count": 98757,
-                    "listed_count": 167614,
-                    "media_count": 4387,
-                    "verified": false,
-                    "is_blue_verified": true,
-                    "profile_image_url": "https://pbs.twimg.com/profile_images/2008546467615580160/57KcqsTA_normal.jpg",
-                    "profile_banner_url": "https://pbs.twimg.com/profile_banners/44196397/1739948056",
-                    "protected": false,
-                    "can_dm": false
-                  }
                 }
               }
             }
@@ -175,46 +107,12 @@
     },
     "/twitter/user/id/{userId}": {
       "get": {
-        "tags": ["Users"],
-        "summary": "Get User by ID (Pool)",
-        "description": "Get a user's profile by numeric ID using the server-side pool. No cookie or proxy required.\n\n**Cost:** 16 credits",
-        "operationId": "getUserByIdPool",
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "path",
-            "required": true,
-            "description": "Numeric Twitter user ID",
-            "schema": { "type": "string" },
-            "example": "44196397"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "User profile data",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessResponse" }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
-              }
-            }
-          }
-        }
-      },
-      "post": {
         "tags": [
           "Users"
         ],
         "summary": "Get User by ID",
-        "description": "Get a user's profile information by their numeric Twitter ID.\n\n**Cost:** 16 credits",
-        "operationId": "getUserById",
+        "description": "Get a user's profile by numeric ID.\n\n**Cost:** 16 credits",
+        "operationId": "getUserByIdPool",
         "parameters": [
           {
             "name": "userId",
@@ -227,16 +125,6 @@
             "example": "44196397"
           }
         ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CookieProxyBody"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "User profile data",
@@ -244,30 +132,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
-                },
-                "example": {
-                  "data": {
-                    "id": "44196397",
-                    "userName": "elonmusk",
-                    "name": "Elon Musk",
-                    "screen_name": "elonmusk",
-                    "description": "",
-                    "location": "",
-                    "url": "",
-                    "created_at": "Tue Jun 02 20:12:29 +0000 2009",
-                    "followers": 236242529,
-                    "following": 1292,
-                    "favourites_count": 215441,
-                    "statuses_count": 98757,
-                    "listed_count": 167614,
-                    "media_count": 4387,
-                    "verified": false,
-                    "is_blue_verified": true,
-                    "profile_image_url": "https://pbs.twimg.com/profile_images/2008546467615580160/57KcqsTA_normal.jpg",
-                    "profile_banner_url": "https://pbs.twimg.com/profile_banners/44196397/1739948056",
-                    "protected": false,
-                    "can_dm": false
-                  }
                 }
               }
             }
@@ -287,9 +151,11 @@
     },
     "/twitter/users/batch": {
       "get": {
-        "tags": ["Users"],
-        "summary": "Batch Get Users (Pool)",
-        "description": "Batch retrieve multiple user profiles by their IDs using the server-side pool. No cookie or proxy required.\n\n**Cost:** 16 credits",
+        "tags": [
+          "Users"
+        ],
+        "summary": "Batch Get Users",
+        "description": "Batch retrieve multiple user profiles by their IDs.\n\n**Cost:** 16 credits",
         "operationId": "batchGetUsersPool",
         "parameters": [
           {
@@ -297,7 +163,9 @@
             "in": "query",
             "required": true,
             "description": "Comma-separated list of user IDs",
-            "schema": { "type": "string" },
+            "schema": {
+              "type": "string"
+            },
             "example": "44196397,123456789"
           }
         ],
@@ -306,92 +174,8 @@
             "description": "List of user profiles",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessResponse" }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Users"
-        ],
-        "summary": "Batch Get Users",
-        "description": "Batch retrieve multiple user profiles by their IDs in a single request.\n\n**Cost:** 16 credits",
-        "operationId": "batchGetUsers",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "cookie",
-                  "proxy",
-                  "userIds"
-                ],
-                "properties": {
-                  "cookie": {
-                    "type": "string",
-                    "description": "Twitter auth cookie"
-                  },
-                  "proxy": {
-                    "type": "string",
-                    "description": "Proxy URL to use for the request (HTTP or SOCKS5)"
-                  },
-                  "userIds": {
-                    "type": "string",
-                    "description": "Comma-separated list of user IDs",
-                    "example": "44196397,123456789"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "List of user profiles",
-            "content": {
-              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
-                },
-                "example": {
-                  "data": {
-                    "users": [
-                      {
-                        "id": "44196397",
-                        "userName": "elonmusk",
-                        "name": "Elon Musk",
-                        "screen_name": "elonmusk",
-                        "description": "",
-                        "location": "",
-                        "url": "",
-                        "created_at": "Tue Jun 02 20:12:29 +0000 2009",
-                        "followers": 236242504,
-                        "following": 1292,
-                        "favourites_count": 215441,
-                        "statuses_count": 98757,
-                        "listed_count": 167614,
-                        "media_count": 4387,
-                        "verified": false,
-                        "is_blue_verified": true,
-                        "profile_image_url": "https://pbs.twimg.com/profile_images/2008546467615580160/57KcqsTA_normal.jpg",
-                        "profile_banner_url": "https://pbs.twimg.com/profile_banners/44196397/1739948056",
-                        "protected": false,
-                        "can_dm": false
-                      }
-                    ]
-                  }
                 }
               }
             }
@@ -411,58 +195,12 @@
     },
     "/twitter/user/{userName}/followers": {
       "get": {
-        "tags": ["Users"],
-        "summary": "Get User Followers (Pool)",
-        "description": "Get a paginated list of a user's followers using the server-side pool. No cookie or proxy required.\n\n**Cost:** 14 credits",
-        "operationId": "getUserFollowersPool",
-        "parameters": [
-          {
-            "name": "userName",
-            "in": "path",
-            "required": true,
-            "description": "Twitter screen name",
-            "schema": { "type": "string" },
-            "example": "elonmusk"
-          },
-          {
-            "name": "count",
-            "in": "query",
-            "description": "Number of results (default: 200)",
-            "schema": { "type": "integer", "default": 200 }
-          },
-          {
-            "name": "cursor",
-            "in": "query",
-            "description": "Pagination cursor",
-            "schema": { "type": "string" }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of followers",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessResponse" }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
-              }
-            }
-          }
-        }
-      },
-      "post": {
         "tags": [
           "Users"
         ],
         "summary": "Get User Followers",
         "description": "Get a paginated list of a user's followers.\n\n**Cost:** 14 credits",
-        "operationId": "getUserFollowers",
+        "operationId": "getUserFollowersPool",
         "parameters": [
           {
             "name": "userName",
@@ -473,18 +211,25 @@
               "type": "string"
             },
             "example": "elonmusk"
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PaginatedLargeBody"
-              }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "Number of results (default: 200)",
+            "schema": {
+              "type": "integer",
+              "default": 200
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "Pagination cursor",
+            "schema": {
+              "type": "string"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "List of followers",
@@ -492,35 +237,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
-                },
-                "example": {
-                  "data": {
-                    "followers": [
-                      {
-                        "id": "95092020",
-                        "userName": "jordanbpeterson",
-                        "name": "Dr Jordan B Peterson",
-                        "screen_name": "jordanbpeterson",
-                        "description": "Best-Selling Author | Clinical Psychologist | #1 Education Podcast",
-                        "location": "",
-                        "url": "https://t.co/KgUEvmxeQD",
-                        "created_at": "Sun Dec 06 23:33:02 +0000 2009",
-                        "followers": 6193163,
-                        "following": 1659,
-                        "favourites_count": 227,
-                        "statuses_count": 51539,
-                        "listed_count": 14851,
-                        "media_count": 7370,
-                        "verified": false,
-                        "is_blue_verified": true,
-                        "profile_image_url": "https://pbs.twimg.com/profile_images/1407056014776614923/TKBC60e1_normal.jpg",
-                        "profile_banner_url": "https://pbs.twimg.com/profile_banners/95092020/1768079001",
-                        "protected": false,
-                        "can_dm": true
-                      }
-                    ],
-                    "next_cursor": "1859204159630258669|2031051037955063736"
-                  }
                 }
               }
             }
@@ -540,58 +256,12 @@
     },
     "/twitter/user/{userName}/following": {
       "get": {
-        "tags": ["Users"],
-        "summary": "Get User Following (Pool)",
-        "description": "Get a paginated list of accounts a user is following using the server-side pool. No cookie or proxy required.\n\n**Cost:** 14 credits",
-        "operationId": "getUserFollowingPool",
-        "parameters": [
-          {
-            "name": "userName",
-            "in": "path",
-            "required": true,
-            "description": "Twitter screen name",
-            "schema": { "type": "string" },
-            "example": "elonmusk"
-          },
-          {
-            "name": "count",
-            "in": "query",
-            "description": "Number of results (default: 200)",
-            "schema": { "type": "integer", "default": 200 }
-          },
-          {
-            "name": "cursor",
-            "in": "query",
-            "description": "Pagination cursor",
-            "schema": { "type": "string" }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of following",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessResponse" }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
-              }
-            }
-          }
-        }
-      },
-      "post": {
         "tags": [
           "Users"
         ],
         "summary": "Get User Following",
         "description": "Get a paginated list of accounts a user is following.\n\n**Cost:** 14 credits",
-        "operationId": "getUserFollowing",
+        "operationId": "getUserFollowingPool",
         "parameters": [
           {
             "name": "userName",
@@ -602,18 +272,25 @@
               "type": "string"
             },
             "example": "elonmusk"
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PaginatedLargeBody"
-              }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "Number of results (default: 200)",
+            "schema": {
+              "type": "integer",
+              "default": 200
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "Pagination cursor",
+            "schema": {
+              "type": "string"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "List of following",
@@ -621,35 +298,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
-                },
-                "example": {
-                  "data": {
-                    "following": [
-                      {
-                        "id": "95092020",
-                        "userName": "jordanbpeterson",
-                        "name": "Dr Jordan B Peterson",
-                        "screen_name": "jordanbpeterson",
-                        "description": "Best-Selling Author | Clinical Psychologist | #1 Education Podcast",
-                        "location": "",
-                        "url": "https://t.co/KgUEvmxeQD",
-                        "created_at": "Sun Dec 06 23:33:02 +0000 2009",
-                        "followers": 6193164,
-                        "following": 1659,
-                        "favourites_count": 227,
-                        "statuses_count": 51539,
-                        "listed_count": 14851,
-                        "media_count": 7370,
-                        "verified": false,
-                        "is_blue_verified": true,
-                        "profile_image_url": "https://pbs.twimg.com/profile_images/1407056014776614923/TKBC60e1_normal.jpg",
-                        "profile_banner_url": "https://pbs.twimg.com/profile_banners/95092020/1768079001",
-                        "protected": false,
-                        "can_dm": true
-                      }
-                    ],
-                    "next_cursor": "1851827852357371417|2031051047128006584"
-                  }
                 }
               }
             }
@@ -827,58 +475,12 @@
     },
     "/twitter/user/{userName}/replies": {
       "get": {
-        "tags": ["Users"],
-        "summary": "Get User Replies (Pool)",
-        "description": "Get tweets and replies posted by a user using the server-side pool. No cookie or proxy required.\n\n**Cost:** 14 credits",
-        "operationId": "getUserRepliesPool",
-        "parameters": [
-          {
-            "name": "userName",
-            "in": "path",
-            "required": true,
-            "description": "Twitter screen name",
-            "schema": { "type": "string" },
-            "example": "elonmusk"
-          },
-          {
-            "name": "count",
-            "in": "query",
-            "description": "Number of results (default: 20)",
-            "schema": { "type": "integer", "default": 20 }
-          },
-          {
-            "name": "cursor",
-            "in": "query",
-            "description": "Pagination cursor",
-            "schema": { "type": "string" }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of replies",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessResponse" }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
-              }
-            }
-          }
-        }
-      },
-      "post": {
         "tags": [
           "Users"
         ],
         "summary": "Get User Replies",
         "description": "Get tweets and replies posted by a user.\n\n**Cost:** 14 credits",
-        "operationId": "getUserReplies",
+        "operationId": "getUserRepliesPool",
         "parameters": [
           {
             "name": "userName",
@@ -889,18 +491,25 @@
               "type": "string"
             },
             "example": "elonmusk"
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PaginatedBody"
-              }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "Number of results (default: 20)",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "Pagination cursor",
+            "schema": {
+              "type": "string"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "List of replies",
@@ -908,45 +517,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
-                },
-                "example": {
-                  "data": {
-                    "tweets": [
-                      {
-                        "id": "2031024982797529484",
-                        "text": "Example reply tweet",
-                        "created_at": "Mon Mar 09 15:11:05 +0000 2026",
-                        "author": {
-                          "id": "1655936149733654530",
-                          "userName": "IterIntellectus",
-                          "name": "vittorio",
-                          "screen_name": "IterIntellectus",
-                          "followers_count": 173558,
-                          "friends_count": 2344,
-                          "statuses_count": 78525,
-                          "favourites_count": 449322,
-                          "listed_count": 1183,
-                          "description": "practice expert",
-                          "location": "",
-                          "profile_image_url_https": "",
-                          "profile_image_url": "",
-                          "profile_banner_url": "https://pbs.twimg.com/profile_banners/1655936149733654530/1721688332",
-                          "verified": false,
-                          "is_blue_verified": true,
-                          "created_at": "",
-                          "can_dm": false
-                        },
-                        "likeCount": 3323,
-                        "retweetCount": 232,
-                        "replyCount": 38,
-                        "viewCount": 0,
-                        "isRetweet": false,
-                        "isReply": false
-                      }
-                    ],
-                    "has_next_page": true,
-                    "next_cursor": "DAAHCgABHC..."
-                  }
                 }
               }
             }
@@ -966,58 +536,12 @@
     },
     "/twitter/user/{userName}/followers-you-know": {
       "get": {
-        "tags": ["Users"],
-        "summary": "Get Mutual Followers (Pool)",
-        "description": "Get mutual followers (followers you know) for a given user using the server-side pool. No cookie or proxy required.\n\n**Cost:** 14 credits",
-        "operationId": "getMutualFollowersPool",
-        "parameters": [
-          {
-            "name": "userName",
-            "in": "path",
-            "required": true,
-            "description": "Twitter screen name",
-            "schema": { "type": "string" },
-            "example": "elonmusk"
-          },
-          {
-            "name": "count",
-            "in": "query",
-            "description": "Number of results (default: 20)",
-            "schema": { "type": "integer", "default": 20 }
-          },
-          {
-            "name": "cursor",
-            "in": "query",
-            "description": "Pagination cursor",
-            "schema": { "type": "string" }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of mutual followers",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessResponse" }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
-              }
-            }
-          }
-        }
-      },
-      "post": {
         "tags": [
           "Users"
         ],
         "summary": "Get Mutual Followers",
         "description": "Get mutual followers (followers you know) for a given user.\n\n**Cost:** 14 credits",
-        "operationId": "getMutualFollowers",
+        "operationId": "getMutualFollowersPool",
         "parameters": [
           {
             "name": "userName",
@@ -1028,18 +552,25 @@
               "type": "string"
             },
             "example": "elonmusk"
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PaginatedBody"
-              }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "Number of results (default: 20)",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "Pagination cursor",
+            "schema": {
+              "type": "string"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "List of mutual followers",
@@ -1047,35 +578,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
-                },
-                "example": {
-                  "data": {
-                    "users": [
-                      {
-                        "id": "2026362104849276928",
-                        "userName": "DGuevarra70072",
-                        "name": "Dominique Guevarra",
-                        "screen_name": "DGuevarra70072",
-                        "description": "",
-                        "location": "",
-                        "url": "",
-                        "created_at": "Tue Feb 24 18:23:38 +0000 2026",
-                        "followers": 1,
-                        "following": 3,
-                        "favourites_count": 0,
-                        "statuses_count": 0,
-                        "listed_count": 0,
-                        "media_count": 0,
-                        "verified": false,
-                        "is_blue_verified": false,
-                        "profile_image_url": "https://pbs.twimg.com/profile_images/2026362400669335552/qypPi6su_normal.jpg",
-                        "profile_banner_url": "",
-                        "protected": false,
-                        "can_dm": false
-                      }
-                    ],
-                    "next_cursor": "0|2031051090681659374"
-                  }
                 }
               }
             }
@@ -1365,9 +867,11 @@
     },
     "/twitter/tweets/lookup": {
       "get": {
-        "tags": ["Tweets"],
-        "summary": "Get Tweets by IDs (Pool)",
-        "description": "Retrieve one or more tweets by their IDs using the server-side pool. No cookie or proxy required.\n\n**Cost:** 14 credits",
+        "tags": [
+          "Tweets"
+        ],
+        "summary": "Get Tweets by IDs",
+        "description": "Retrieve one or more tweets by their IDs.\n\n**Cost:** 14 credits",
         "operationId": "getTweetsPool",
         "parameters": [
           {
@@ -1375,7 +879,9 @@
             "in": "query",
             "required": true,
             "description": "Comma-separated list of tweet IDs",
-            "schema": { "type": "string" },
+            "schema": {
+              "type": "string"
+            },
             "example": "1234567890,9876543210"
           }
         ],
@@ -1384,101 +890,8 @@
             "description": "Tweet data",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessResponse" }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Tweets"
-        ],
-        "summary": "Get Tweets by IDs",
-        "description": "Retrieve one or more tweets by their IDs.\n\n**Cost:** 14 credits",
-        "operationId": "getTweets",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "tweet_ids",
-                  "cookie",
-                  "proxy"
-                ],
-                "properties": {
-                  "tweet_ids": {
-                    "type": "string",
-                    "description": "Comma-separated list of tweet IDs",
-                    "example": "1234567890,9876543210"
-                  },
-                  "cookie": {
-                    "type": "string",
-                    "description": "Twitter auth cookie"
-                  },
-                  "proxy": {
-                    "type": "string",
-                    "description": "Proxy URL to use for the request (HTTP or SOCKS5)"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Tweet data",
-            "content": {
-              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
-                },
-                "example": {
-                  "data": {
-                    "tweets": [
-                      {
-                        "id": "1879298220892504449",
-                        "text": "Example tweet content",
-                        "created_at": "Mon Jan 15 12:00:00 +0000 2025",
-                        "author": {
-                          "id": "44196397",
-                          "userName": "elonmusk",
-                          "name": "Elon Musk",
-                          "screen_name": "elonmusk",
-                          "followers_count": 236242550,
-                          "friends_count": 1292,
-                          "statuses_count": 98757,
-                          "favourites_count": 215441,
-                          "listed_count": 167614,
-                          "description": "",
-                          "location": "",
-                          "profile_image_url_https": "",
-                          "profile_image_url": "",
-                          "profile_banner_url": "https://pbs.twimg.com/profile_banners/44196397/1739948056",
-                          "verified": false,
-                          "is_blue_verified": true,
-                          "created_at": "",
-                          "can_dm": false
-                        },
-                        "likeCount": 5000,
-                        "retweetCount": 1000,
-                        "replyCount": 200,
-                        "viewCount": 500000,
-                        "isRetweet": false,
-                        "isReply": false
-                      }
-                    ]
-                  }
                 }
               }
             }
@@ -1498,52 +911,12 @@
     },
     "/twitter/user/{userName}/tweets": {
       "get": {
-        "tags": ["Tweets"],
-        "summary": "Get User Tweets (Pool)",
-        "description": "Get a paginated list of tweets posted by a user using the server-side pool. No cookie or proxy required.\n\n**Cost:** 14 credits",
-        "operationId": "getUserTweetsPool",
-        "parameters": [
-          {
-            "name": "userName",
-            "in": "path",
-            "required": true,
-            "description": "Twitter screen name",
-            "schema": { "type": "string" },
-            "example": "elonmusk"
-          },
-          {
-            "name": "cursor",
-            "in": "query",
-            "description": "Pagination cursor",
-            "schema": { "type": "string" }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of tweets",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessResponse" }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
-              }
-            }
-          }
-        }
-      },
-      "post": {
         "tags": [
           "Tweets"
         ],
         "summary": "Get User Tweets",
         "description": "Get a paginated list of tweets posted by a user.\n\n**Cost:** 14 credits",
-        "operationId": "getUserTweets",
+        "operationId": "getUserTweetsPool",
         "parameters": [
           {
             "name": "userName",
@@ -1554,36 +927,16 @@
               "type": "string"
             },
             "example": "elonmusk"
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "cookie",
-                  "proxy"
-                ],
-                "properties": {
-                  "cookie": {
-                    "type": "string",
-                    "description": "Twitter auth cookie"
-                  },
-                  "proxy": {
-                    "type": "string",
-                    "description": "Proxy URL to use for the request (HTTP or SOCKS5)"
-                  },
-                  "cursor": {
-                    "type": "string",
-                    "description": "Pagination cursor for the next page"
-                  }
-                }
-              }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "Pagination cursor",
+            "schema": {
+              "type": "string"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "List of tweets",
@@ -1591,45 +944,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
-                },
-                "example": {
-                  "data": {
-                    "tweets": [
-                      {
-                        "id": "2031049845881139316",
-                        "text": "This is the way",
-                        "created_at": "Mon Mar 09 16:49:52 +0000 2026",
-                        "author": {
-                          "id": "44196397",
-                          "userName": "elonmusk",
-                          "name": "Elon Musk",
-                          "screen_name": "elonmusk",
-                          "followers_count": 236242550,
-                          "friends_count": 1292,
-                          "statuses_count": 98757,
-                          "favourites_count": 215441,
-                          "listed_count": 167614,
-                          "description": "",
-                          "location": "",
-                          "profile_image_url_https": "",
-                          "profile_image_url": "",
-                          "profile_banner_url": "https://pbs.twimg.com/profile_banners/44196397/1739948056",
-                          "verified": false,
-                          "is_blue_verified": true,
-                          "created_at": "",
-                          "can_dm": false
-                        },
-                        "likeCount": 1567,
-                        "retweetCount": 181,
-                        "replyCount": 454,
-                        "viewCount": 0,
-                        "isRetweet": false,
-                        "isReply": false
-                      }
-                    ],
-                    "has_next_page": true,
-                    "next_cursor": "DAAHCgABHC..."
-                  }
                 }
               }
             }
@@ -1871,9 +1185,11 @@
     },
     "/twitter/search": {
       "get": {
-        "tags": ["Search"],
-        "summary": "Search Tweets (Pool)",
-        "description": "Search for tweets using the server-side pool. No cookie or proxy required.\n\n**Cost:** 14 credits",
+        "tags": [
+          "Search"
+        ],
+        "summary": "Search Tweets",
+        "description": "Search for tweets.\n\n**Cost:** 14 credits",
         "operationId": "searchTweetsPool",
         "parameters": [
           {
@@ -1881,107 +1197,47 @@
             "in": "query",
             "required": true,
             "description": "Search query string",
-            "schema": { "type": "string" },
+            "schema": {
+              "type": "string"
+            },
             "example": "OpenAI"
           },
           {
             "name": "product",
             "in": "query",
             "description": "Result type filter (default: Top)",
-            "schema": { "type": "string", "enum": ["Top", "Latest", "People", "Photos", "Videos"], "default": "Top" }
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Top",
+                "Latest",
+                "People",
+                "Photos",
+                "Videos"
+              ],
+              "default": "Top"
+            }
           },
           {
             "name": "count",
             "in": "query",
             "description": "Number of results, 1-100 (default: 20)",
-            "schema": { "type": "integer", "default": 20, "minimum": 1, "maximum": 100 }
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "minimum": 1,
+              "maximum": 100
+            }
           },
           {
             "name": "cursor",
             "in": "query",
             "description": "Pagination cursor",
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "Search results",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessResponse" }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Search"
-        ],
-        "summary": "Search Tweets",
-        "description": "Search for tweets using a query string with optional filtering by product type.\n\n**Cost:** 14 credits",
-        "operationId": "searchTweets",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "query",
-                  "cookie",
-                  "proxy"
-                ],
-                "properties": {
-                  "query": {
-                    "type": "string",
-                    "description": "Search query string",
-                    "example": "OpenAI"
-                  },
-                  "cookie": {
-                    "type": "string",
-                    "description": "Twitter auth cookie"
-                  },
-                  "proxy": {
-                    "type": "string",
-                    "description": "Proxy URL to use for the request (HTTP or SOCKS5)"
-                  },
-                  "product": {
-                    "type": "string",
-                    "description": "Result type filter (default: Top)",
-                    "enum": [
-                      "Top",
-                      "Latest",
-                      "People",
-                      "Photos",
-                      "Videos"
-                    ],
-                    "default": "Top"
-                  },
-                  "count": {
-                    "type": "integer",
-                    "description": "Number of results to return, 1-100 (default: 20)",
-                    "default": 20,
-                    "minimum": 1,
-                    "maximum": 100
-                  },
-                  "cursor": {
-                    "type": "string",
-                    "description": "Pagination cursor for the next page"
-                  }
-                }
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "Search results",
@@ -1989,45 +1245,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
-                },
-                "example": {
-                  "data": {
-                    "tweets": [
-                      {
-                        "id": "2031008606922170547",
-                        "text": "BREAKING: BTC breaks above $69,000 and ETH breaks above $2,000.",
-                        "created_at": "Mon Mar 09 14:06:00 +0000 2026",
-                        "author": {
-                          "id": "815942827968495616",
-                          "userName": "BullTheoryio",
-                          "name": "Bull Theory",
-                          "screen_name": "BullTheoryio",
-                          "followers_count": 135150,
-                          "friends_count": 54,
-                          "statuses_count": 1413,
-                          "favourites_count": 1256,
-                          "listed_count": 880,
-                          "description": "News, Research, and all other Global market stuff simplified.",
-                          "location": "",
-                          "profile_image_url_https": "",
-                          "profile_image_url": "",
-                          "profile_banner_url": "https://pbs.twimg.com/profile_banners/815942827968495616/1756998072",
-                          "verified": false,
-                          "is_blue_verified": true,
-                          "created_at": "",
-                          "can_dm": false
-                        },
-                        "likeCount": 609,
-                        "retweetCount": 156,
-                        "replyCount": 107,
-                        "viewCount": 22182,
-                        "isRetweet": false,
-                        "isReply": false
-                      }
-                    ],
-                    "has_next_page": true,
-                    "next_cursor": "DAACCgACHC..."
-                  }
                 }
               }
             }
