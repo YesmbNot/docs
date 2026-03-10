@@ -4,15 +4,28 @@ description: "Every request requires your own proxy and Twitter cookies. Learn t
 icon: "shield-halved"
 ---
 
-## Proxy — Required
+## GET Endpoints — No Proxy or Cookies Needed
+
+Read-only endpoints support **GET** requests that use a server-side pool of cookies and proxies. You only need your `X-API-Key` header:
+
+```bash
+curl "https://api.apitwitter.com/twitter/user/elonmusk" \
+  -H "X-API-Key: tda_your_key"
+```
+
+Supported GET endpoints include: user lookups (by username, ID, batch), followers, following, replies, mutual followers, user tweets, tweet lookups, and search.
+
+---
+
+## Proxy — Required for POST
 
 <Warning>
-**We do not provide proxies.** Every API request must include your own proxy URL. Requests without a proxy receive a `400 Bad Request` response.
+**We do not provide proxies.** Every **POST** request must include your own proxy URL. POST requests without a proxy receive a `400 Bad Request` response.
 </Warning>
 
 ### How to Pass Proxy
 
-All endpoints use **POST** with a JSON body. Include `"proxy"` as a field in the request body:
+POST endpoints use a JSON body. Include `"proxy"` as a field in the request body:
 
 ```json
 {
@@ -43,15 +56,15 @@ For best results, use high-quality residential proxies and rotate them across re
 
 ---
 
-## Cookies — Required
+## Cookies — Required for POST
 
 <Warning>
-**We do not provide cookies.** Every request must include your own Twitter session cookies. We never store your cookies.
+**We do not provide cookies.** Every **POST** request must include your own Twitter session cookies. We never store your cookies. GET endpoints handle this server-side.
 </Warning>
 
 ### How to Pass Cookies
 
-All endpoints use **POST** with a JSON body. Include `"cookie"` as a field in the request body:
+POST endpoints use a JSON body. Include `"cookie"` as a field in the request body:
 
 ```json
 {

@@ -20,6 +20,30 @@ X-API-Key: tda_k8x2mN3s_8epqsGQe6PkDJ2KUscjq13j16F9CQGfa_w
 
 Include the `X-API-Key` header in every request:
 
+### GET request (server-side pool — no cookies or proxy needed)
+
+<CodeGroup>
+
+```bash cURL
+curl "https://api.apitwitter.com/twitter/user/elonmusk" \
+  -H "X-API-Key: tda_your_key_here"
+```
+
+```python Python
+headers = {"X-API-Key": "tda_your_key_here"}
+response = requests.get("https://api.apitwitter.com/twitter/user/elonmusk", headers=headers)
+```
+
+```javascript JavaScript
+const response = await fetch("https://api.apitwitter.com/twitter/user/elonmusk", {
+  headers: { "X-API-Key": "tda_your_key_here" }
+});
+```
+
+</CodeGroup>
+
+### POST request (your own cookies and proxy)
+
 <CodeGroup>
 
 ```bash cURL

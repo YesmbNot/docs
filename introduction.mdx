@@ -94,7 +94,7 @@ Minimum charge per request: **$0.00005**. Pay-per-use, no subscriptions — cred
     Top up from **$10** via Stripe (card) or CryptoCloud (crypto). 1 USD = 100,000 credits.
   </Step>
   <Step title="Make API Calls">
-    Include your API key, Twitter cookies, and proxy with every request.
+    Use **GET** endpoints with just your API key, or **POST** with your own cookies and proxy.
   </Step>
 </Steps>
 
@@ -111,9 +111,13 @@ https://api.apitwitter.com
 | Requirement | Description |
 |------------|-------------|
 | **API Key** | Your `X-API-Key` header (starts with `tda_`) |
-| **Cookies** | Your Twitter session cookies (`ct0` and `auth_token`) |
-| **Proxy** | Your own proxy URL (HTTP or SOCKS5) |
+| **Cookies** | Your Twitter session cookies — needed for **POST** requests only |
+| **Proxy** | Your own proxy URL — needed for **POST** requests only |
+
+<Info>
+**GET endpoints** for read operations (user lookups, followers, tweets, search) use a server-side pool — you only need your API key. **POST endpoints** still require your own cookies and proxy for full control.
+</Info>
 
 <Warning>
-We do not provide proxies or cookies. You must supply your own with every request.
+We do not provide proxies or cookies for POST requests. You must supply your own.
 </Warning>

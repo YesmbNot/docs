@@ -62,6 +62,40 @@
       }
     },
     "/twitter/user/{userName}": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get User by Username (Pool)",
+        "description": "Get a user's profile by screen name using the server-side cookie/proxy pool. No cookie or proxy required — only your API key.\n\n**Cost:** 16 credits",
+        "operationId": "getUserByUsernamePool",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "description": "Twitter screen name",
+            "schema": { "type": "string" },
+            "example": "elonmusk"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile data",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SuccessResponse" }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Users"
@@ -140,6 +174,40 @@
       }
     },
     "/twitter/user/id/{userId}": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get User by ID (Pool)",
+        "description": "Get a user's profile by numeric ID using the server-side pool. No cookie or proxy required.\n\n**Cost:** 16 credits",
+        "operationId": "getUserByIdPool",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "Numeric Twitter user ID",
+            "schema": { "type": "string" },
+            "example": "44196397"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile data",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SuccessResponse" }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Users"
@@ -218,6 +286,40 @@
       }
     },
     "/twitter/users/batch": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Batch Get Users (Pool)",
+        "description": "Batch retrieve multiple user profiles by their IDs using the server-side pool. No cookie or proxy required.\n\n**Cost:** 16 credits",
+        "operationId": "batchGetUsersPool",
+        "parameters": [
+          {
+            "name": "userIds",
+            "in": "query",
+            "required": true,
+            "description": "Comma-separated list of user IDs",
+            "schema": { "type": "string" },
+            "example": "44196397,123456789"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of user profiles",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SuccessResponse" }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Users"
@@ -308,6 +410,52 @@
       }
     },
     "/twitter/user/{userName}/followers": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get User Followers (Pool)",
+        "description": "Get a paginated list of a user's followers using the server-side pool. No cookie or proxy required.\n\n**Cost:** 14 credits",
+        "operationId": "getUserFollowersPool",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "description": "Twitter screen name",
+            "schema": { "type": "string" },
+            "example": "elonmusk"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "Number of results (default: 200)",
+            "schema": { "type": "integer", "default": 200 }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "Pagination cursor",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of followers",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SuccessResponse" }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Users"
@@ -391,6 +539,52 @@
       }
     },
     "/twitter/user/{userName}/following": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get User Following (Pool)",
+        "description": "Get a paginated list of accounts a user is following using the server-side pool. No cookie or proxy required.\n\n**Cost:** 14 credits",
+        "operationId": "getUserFollowingPool",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "description": "Twitter screen name",
+            "schema": { "type": "string" },
+            "example": "elonmusk"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "Number of results (default: 200)",
+            "schema": { "type": "integer", "default": 200 }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "Pagination cursor",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of following",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SuccessResponse" }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Users"
@@ -632,6 +826,52 @@
       }
     },
     "/twitter/user/{userName}/replies": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get User Replies (Pool)",
+        "description": "Get tweets and replies posted by a user using the server-side pool. No cookie or proxy required.\n\n**Cost:** 14 credits",
+        "operationId": "getUserRepliesPool",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "description": "Twitter screen name",
+            "schema": { "type": "string" },
+            "example": "elonmusk"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "Number of results (default: 20)",
+            "schema": { "type": "integer", "default": 20 }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "Pagination cursor",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of replies",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SuccessResponse" }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Users"
@@ -725,6 +965,52 @@
       }
     },
     "/twitter/user/{userName}/followers-you-know": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get Mutual Followers (Pool)",
+        "description": "Get mutual followers (followers you know) for a given user using the server-side pool. No cookie or proxy required.\n\n**Cost:** 14 credits",
+        "operationId": "getMutualFollowersPool",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "description": "Twitter screen name",
+            "schema": { "type": "string" },
+            "example": "elonmusk"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "Number of results (default: 20)",
+            "schema": { "type": "integer", "default": 20 }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "Pagination cursor",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of mutual followers",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SuccessResponse" }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Users"
@@ -1078,6 +1364,40 @@
       }
     },
     "/twitter/tweets/lookup": {
+      "get": {
+        "tags": ["Tweets"],
+        "summary": "Get Tweets by IDs (Pool)",
+        "description": "Retrieve one or more tweets by their IDs using the server-side pool. No cookie or proxy required.\n\n**Cost:** 14 credits",
+        "operationId": "getTweetsPool",
+        "parameters": [
+          {
+            "name": "tweet_ids",
+            "in": "query",
+            "required": true,
+            "description": "Comma-separated list of tweet IDs",
+            "schema": { "type": "string" },
+            "example": "1234567890,9876543210"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tweet data",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SuccessResponse" }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Tweets"
@@ -1177,6 +1497,46 @@
       }
     },
     "/twitter/user/{userName}/tweets": {
+      "get": {
+        "tags": ["Tweets"],
+        "summary": "Get User Tweets (Pool)",
+        "description": "Get a paginated list of tweets posted by a user using the server-side pool. No cookie or proxy required.\n\n**Cost:** 14 credits",
+        "operationId": "getUserTweetsPool",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "description": "Twitter screen name",
+            "schema": { "type": "string" },
+            "example": "elonmusk"
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "Pagination cursor",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of tweets",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SuccessResponse" }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Tweets"
@@ -1510,6 +1870,58 @@
       }
     },
     "/twitter/search": {
+      "get": {
+        "tags": ["Search"],
+        "summary": "Search Tweets (Pool)",
+        "description": "Search for tweets using the server-side pool. No cookie or proxy required.\n\n**Cost:** 14 credits",
+        "operationId": "searchTweetsPool",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "description": "Search query string",
+            "schema": { "type": "string" },
+            "example": "OpenAI"
+          },
+          {
+            "name": "product",
+            "in": "query",
+            "description": "Result type filter (default: Top)",
+            "schema": { "type": "string", "enum": ["Top", "Latest", "People", "Photos", "Videos"], "default": "Top" }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "Number of results, 1-100 (default: 20)",
+            "schema": { "type": "integer", "default": 20, "minimum": 1, "maximum": 100 }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "Pagination cursor",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Search results",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SuccessResponse" }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Search"

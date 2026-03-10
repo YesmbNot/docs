@@ -10,6 +10,9 @@ Before making your first request, you need:
 
 1. An ApiTwitter account — [register here](https://apitwitter.com/register)
 2. Credits on your balance — minimum $10 top-up
+
+For **GET** read endpoints, that's all you need. For **POST** endpoints (which give you full control with your own cookies), you also need:
+
 3. Your Twitter cookies (`ct0` and `auth_token`)
 4. A proxy URL
 
@@ -27,6 +30,38 @@ Your key looks like: `tda_k8x2mN3s_...`
 4. Format them as: `ct0=YOUR_CT0;auth_token=YOUR_AUTH_TOKEN`
 
 ## Step 3: Make Your First Request
+
+### Option A: GET (simplest — uses server pool)
+
+<CodeGroup>
+
+```bash cURL
+curl "https://api.apitwitter.com/twitter/user/elonmusk" \
+  -H "X-API-Key: tda_your_key_here"
+```
+
+```python Python
+import requests
+
+response = requests.get(
+    "https://api.apitwitter.com/twitter/user/elonmusk",
+    headers={"X-API-Key": "tda_your_key_here"}
+)
+print(response.json())
+```
+
+```javascript JavaScript
+const response = await fetch(
+  "https://api.apitwitter.com/twitter/user/elonmusk",
+  { headers: { "X-API-Key": "tda_your_key_here" } }
+);
+const data = await response.json();
+console.log(data);
+```
+
+</CodeGroup>
+
+### Option B: POST (your own cookies & proxy)
 
 <CodeGroup>
 
@@ -103,7 +138,7 @@ This request costs **16 credits** (User Profile lookup). Check the [Billing](/bi
   <Card title="Proxy & Cookies" icon="shield" href="/proxy-and-cookies">
     Understand how to pass proxy and cookies
   </Card>
-  <Card title="API Reference" icon="code" href="/api-reference/users">
+  <Card title="API Reference" icon="code" href="/api-reference/introduction">
     Explore all 56 endpoints
   </Card>
   <Card title="Billing" icon="credit-card" href="/billing">
