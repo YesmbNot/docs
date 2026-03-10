@@ -1189,7 +1189,7 @@
           "Search"
         ],
         "summary": "Search Tweets",
-        "description": "Search for tweets.\n\n**Cost:** 14 credits",
+        "description": "Search for tweets.\n\n**Cost:** 225 credits",
         "operationId": "searchTweetsPool",
         "parameters": [
           {
