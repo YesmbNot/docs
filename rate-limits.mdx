@@ -1,6 +1,7 @@
 ---
-title: "Rate Limits (QPS)"
-description: "QPS limits scale automatically with your balance. Free users get 0.2 QPS. Paid users get up to 30 QPS."
+title: "Rate Limits & QPS Tiers — ApiTwitter"
+description: "ApiTwitter rate limits explained: 0.2 to 30 QPS based on balance. Auto-upgrading tiers, rate limit headers (X-RateLimit), Retry-After, and how to avoid HTTP 429 errors on the Twitter/X API."
+seo: "ApiTwitter rate limits QPS tiers Twitter API throttling 429"
 icon: "gauge-high"
 ---
 
@@ -56,3 +57,17 @@ If you're hitting rate limits, add credits to instantly upgrade your tier, or ad
 Free users (balance = $0) can make **one request every 5 seconds** (0.2 QPS). This is intentionally restrictive to encourage recharging.
 
 To unlock higher rates, top up any amount starting from $10.
+
+## Rate Limit FAQ
+
+<AccordionGroup>
+  <Accordion title="How do I increase my QPS limit?">
+    Simply add credits to your account. Your QPS tier upgrades instantly based on your balance — no plan changes or requests needed. A balance above $50 gives you the maximum 30 QPS.
+  </Accordion>
+  <Accordion title="Does each endpoint have its own rate limit?">
+    No. The QPS limit is global across all endpoints. If your limit is 10 QPS, that means 10 total requests per second to any combination of endpoints.
+  </Accordion>
+  <Accordion title="What should I do when I get a 429 error?">
+    Wait for the number of seconds indicated in the `Retry-After` header, then retry. To permanently avoid 429 errors, add credits to increase your QPS tier or add delays between requests.
+  </Accordion>
+</AccordionGroup>

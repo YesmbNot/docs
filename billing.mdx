@@ -1,6 +1,7 @@
 ---
-title: "Billing & Credits"
-description: "Understand the pay-per-use credit system. 1 USD = 100,000 credits. No subscriptions, credits never expire."
+title: "Billing & Pricing — ApiTwitter Pay-Per-Use Credits"
+description: "ApiTwitter pricing: pay-per-use from $0.14 per 1K calls. 1 USD = 100,000 credits, no subscription, credits never expire. Top up via Stripe or crypto. Twitter/X API cost calculator and tier breakdown."
+seo: "ApiTwitter pricing billing credits Twitter API cost pay per use"
 icon: "credit-card"
 ---
 
@@ -45,7 +46,27 @@ ApiTwitter uses a **pay-per-use** credit system. You buy credits and each API ca
 
 ## Top Up
 
-1. Go to [Dashboard → Billing](https://apitwitter.com/billing)
+1. Go to [Dashboard → Billing](https://www.apitwitter.com/billing)
 2. Select an amount ($10, $25, $50, $100, $250, or custom)
 3. Choose **Pay with Card** (Stripe) or **Pay with Crypto** (CryptoCloud)
 4. Credits are added instantly after payment confirmation
+
+## Billing FAQ
+
+<AccordionGroup>
+  <Accordion title="Do credits expire?">
+    No. Credits purchased on ApiTwitter never expire. You can use them at any time.
+  </Accordion>
+  <Accordion title="What payment methods are accepted?">
+    ApiTwitter accepts credit/debit cards via Stripe and cryptocurrency via CryptoCloud. The minimum top-up is $10.
+  </Accordion>
+  <Accordion title="Am I charged for failed requests?">
+    No. Failed requests that return 4xx or 5xx errors from the ApiTwitter platform are not charged. Credits are only deducted for successfully processed API calls.
+  </Accordion>
+  <Accordion title="What happens when my balance runs out?">
+    You receive a `402 Payment Required` response. No requests are processed until you top up your balance. There are no overages or surprise charges.
+  </Accordion>
+  <Accordion title="How do I check my remaining balance?">
+    Your current credit balance is always visible in the [Dashboard](https://www.apitwitter.com/dashboard). It updates in real time after each API call.
+  </Accordion>
+</AccordionGroup>

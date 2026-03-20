@@ -1,6 +1,26 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "ApiTwitter",
+  "name": "ApiTwitter — Twitter/X API Documentation",
+  "description": "Official ApiTwitter documentation: 56 REST endpoints for Twitter/X data — tweets, users, search, timelines, DMs, lists, communities & topics. Pay-per-use, no X developer approval needed. Python & JavaScript SDKs included.",
+  "seo": {
+    "indexHiddenPages": true,
+    "metatags": {
+      "og:site_name": "ApiTwitter Docs",
+      "og:type": "website",
+      "og:image": "https://www.apitwitter.com/og-image.png",
+      "og:image:width": "1200",
+      "og:image:height": "630",
+      "og:image:alt": "ApiTwitter — Third-party Twitter/X REST API with 56 endpoints",
+      "twitter:card": "summary_large_image",
+      "twitter:image": "https://www.apitwitter.com/og-image.png",
+      "twitter:site": "@apitwitter",
+      "twitter:creator": "@apitwitter",
+      "keywords": "ApiTwitter, Twitter API, X API, Twitter REST API, Twitter API alternative, Twitter data API, Twitter scraping API, Twitter API without developer account, unofficial Twitter API, Twitter API pay per use, Twitter user lookup API, Twitter search API, Twitter tweet API, Twitter followers API, Twitter DM API, Twitter timeline API, Twitter bookmarks API, Twitter lists API, Twitter communities API, X data extraction, tweet search API, bulk Twitter data, Python Twitter API, JavaScript Twitter SDK, Twitter API proxy, Twitter API no approval",
+      "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
+      "author": "ApiTwitter",
+      "publisher": "ApiTwitter"
+    }
+  },
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
@@ -22,18 +42,18 @@
   "topbarLinks": [
     {
       "name": "Dashboard",
-      "url": "https://apitwitter.com/dashboard"
+      "url": "https://www.apitwitter.com/dashboard"
     }
   ],
   "topbarCtaButton": {
     "name": "Get API Key",
-    "url": "https://apitwitter.com/register"
+    "url": "https://www.apitwitter.com/register"
   },
   "anchors": [
     {
       "name": "Dashboard",
       "icon": "browser",
-      "url": "https://apitwitter.com/dashboard"
+      "url": "https://www.apitwitter.com/dashboard"
     }
   ],
   "navigation": [
@@ -169,7 +189,7 @@
     }
   ],
   "footerSocials": {
-    "website": "https://apitwitter.com"
+    "website": "https://www.apitwitter.com"
   },
   "backgroundImage": "/background.png",
   "api": {

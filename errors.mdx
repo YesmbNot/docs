@@ -1,6 +1,7 @@
 ---
-title: "Error Handling"
-description: "HTTP status codes and error response format for the ApiTwitter API."
+title: "Error Handling & HTTP Status Codes — ApiTwitter"
+description: "ApiTwitter error reference: JSON error format, HTTP codes (400, 401, 402, 404, 422, 429, 500). Troubleshoot missing API key, insufficient credits, rate limits, and bad requests on the Twitter/X API."
+seo: "ApiTwitter errors HTTP status codes Twitter API troubleshooting"
 icon: "triangle-exclamation"
 ---
 
@@ -51,7 +52,7 @@ All errors return a JSON object with `status` and `msg` fields:
 {"status": "error", "msg": "Insufficient credits. Please top up your balance.", "required_credits": 225}
 ```
 
-**Fix:** Top up your credit balance at [apitwitter.com/billing](https://apitwitter.com/billing).
+**Fix:** Top up your credit balance at [apitwitter.com/billing](https://www.apitwitter.com/billing).
 
 ### Rate Limited (429)
 

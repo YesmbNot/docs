@@ -1,6 +1,7 @@
 ---
-title: "Introduction"
-description: "ApiTwitter — a third-party Twitter/X API: reliable, high-performance, supports high QPS, and cost-effective."
+title: "Introduction to ApiTwitter — Twitter/X REST API"
+description: "ApiTwitter is a third-party Twitter/X REST API with 56 endpoints. Pay-per-use pricing from $0.14/1K calls, 30 QPS, no X developer approval needed. Access tweets, users, search, DMs, lists, communities, topics. Python & JS SDKs."
+seo: "ApiTwitter introduction Twitter API alternative X API documentation"
 icon: "book"
 ---
 
@@ -88,7 +89,7 @@ Minimum charge per request: **$0.00005**. Pay-per-use, no subscriptions — cred
 
 <Steps>
   <Step title="Create an Account">
-    Register at [apitwitter.com](https://apitwitter.com/register) to get your API key.
+    Register at [apitwitter.com](https://www.apitwitter.com/register) to get your API key.
   </Step>
   <Step title="Add Credits">
     Top up from **$10** via Stripe (card) or CryptoCloud (crypto). 1 USD = 100,000 credits.
@@ -121,3 +122,26 @@ https://api.apitwitter.com
 <Warning>
 We do not provide proxies or cookies for POST requests. You must supply your own.
 </Warning>
+
+## Frequently Asked Questions
+
+<AccordionGroup>
+  <Accordion title="What is ApiTwitter?">
+    ApiTwitter is a third-party REST API that provides programmatic access to Twitter/X data and actions. It offers 56 endpoints covering users, tweets, search, timelines, DMs, lists, communities, and topics — all without needing an official X developer account.
+  </Accordion>
+  <Accordion title="Do I need an X/Twitter developer account?">
+    No. ApiTwitter works independently of the official X developer portal. For read-only (GET) endpoints, you only need an ApiTwitter API key. For write (POST) endpoints, you supply your own Twitter session cookies and proxy.
+  </Accordion>
+  <Accordion title="How much does ApiTwitter cost?">
+    ApiTwitter is pay-per-use with no monthly subscription. Prices start at $0.05 per 1,000 calls for session verification, $0.14/1K for tweet reads, $0.16/1K for user profiles, and $2.25/1K for write operations. Credits never expire. Minimum top-up is $10.
+  </Accordion>
+  <Accordion title="What programming languages are supported?">
+    ApiTwitter provides official SDKs for Python (`pip install apitwitter`) and JavaScript/TypeScript (`npm install @apitwitter/sdk`). You can also use any language that supports HTTP requests — the API is a standard REST API with JSON responses.
+  </Accordion>
+  <Accordion title="How fast is the API?">
+    Average response time is under 700ms. You can make up to 30 requests per second (QPS) with a Business-tier balance ($50+). Free users get 0.2 QPS.
+  </Accordion>
+  <Accordion title="Is my data safe?">
+    ApiTwitter never stores your Twitter cookies. Cookies are used only for the duration of the API call and are immediately discarded. Your API key is encrypted and only visible in your dashboard.
+  </Accordion>
+</AccordionGroup>

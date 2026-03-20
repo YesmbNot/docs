@@ -1,8 +1,8 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "ApiTwitter",
-    "description": "Unofficial Twitter/X API for developers.",
+    "title": "ApiTwitter API",
+    "description": "ApiTwitter REST API for Twitter/X: tweets, users, search, timelines, direct messages, lists, communities, and topics. Pay-per-use third-party Twitter API—documentation at https://docs.apitwitter.com",
     "version": "1.0.0"
   },
   "servers": [

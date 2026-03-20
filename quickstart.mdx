@@ -1,6 +1,7 @@
 ---
-title: "Quickstart"
-description: "Make your first API call to ApiTwitter in under 2 minutes."
+title: "Quickstart Guide — ApiTwitter Twitter/X API"
+description: "Get started with ApiTwitter in under 5 minutes. Get your API key, make your first Twitter/X REST API call with curl, Python, or JavaScript. Base URL: api.apitwitter.com. Code examples included."
+seo: "ApiTwitter quickstart tutorial Twitter API getting started"
 icon: "rocket"
 ---
 
@@ -8,7 +9,7 @@ icon: "rocket"
 
 Before making your first request, you need:
 
-1. An ApiTwitter account — [register here](https://apitwitter.com/register)
+1. An ApiTwitter account — [register here](https://www.apitwitter.com/register)
 2. Credits on your balance — minimum $10 top-up
 
 For **GET** read endpoints, that's all you need. For **POST** endpoints (which give you full control with your own cookies), you also need:
@@ -18,7 +19,7 @@ For **GET** read endpoints, that's all you need. For **POST** endpoints (which g
 
 ## Step 1: Get Your API Key
 
-After registration, your API key is automatically created. Find it in your [Dashboard → API Key](https://apitwitter.com/api-keys) page.
+After registration, your API key is automatically created. Find it in your [Dashboard → API Key](https://www.apitwitter.com/api-keys) page.
 
 Your key looks like: `tda_k8x2mN3s_...`
 
@@ -148,3 +149,17 @@ This request costs **16 credits** (User Profile lookup). Check the [Billing](/bi
     Understand pricing and credits
   </Card>
 </CardGroup>
+
+## Quickstart FAQ
+
+<AccordionGroup>
+  <Accordion title="How long does it take to get started?">
+    Under 5 minutes. Register, get your API key, add credits ($10 minimum), and make your first call. No approval process or waiting period.
+  </Accordion>
+  <Accordion title="Do I need cookies and a proxy for every request?">
+    No. Read-only GET endpoints (user lookups, followers, tweets, search) use a server-side pool — you only need your API key. POST endpoints for write actions (tweet, like, follow, DM) require your own Twitter cookies and proxy.
+  </Accordion>
+  <Accordion title="What's the base URL for all API requests?">
+    All requests go to `https://api.apitwitter.com`. The API key is passed via the `X-API-Key` HTTP header.
+  </Accordion>
+</AccordionGroup>
