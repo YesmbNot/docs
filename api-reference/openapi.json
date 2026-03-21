@@ -1053,10 +1053,6 @@
                   "reply_to_tweet_id": {
                     "type": "string",
                     "description": "Tweet ID to reply to"
-                  },
-                  "user_agent": {
-                    "type": "string",
-                    "description": "Custom User-Agent header"
                   }
                 }
               }
@@ -1333,10 +1329,6 @@
                   "cursor": {
                     "type": "string",
                     "description": "Pagination cursor for the next page"
-                  },
-                  "user_agent": {
-                    "type": "string",
-                    "description": "Custom User-Agent header"
                   }
                 }
               }
@@ -1444,10 +1436,6 @@
                   "cursor": {
                     "type": "string",
                     "description": "Pagination cursor for the next page"
-                  },
-                  "user_agent": {
-                    "type": "string",
-                    "description": "Custom User-Agent header"
                   }
                 }
               }
@@ -2198,10 +2186,6 @@
                   "proxy": {
                     "type": "string",
                     "description": "Proxy URL to use for the request (HTTP or SOCKS5)"
-                  },
-                  "user_agent": {
-                    "type": "string",
-                    "description": "Custom User-Agent header"
                   }
                 }
               }
@@ -2574,10 +2558,6 @@
                   "proxy": {
                     "type": "string",
                     "description": "Proxy URL to use for the request (HTTP or SOCKS5)"
-                  },
-                  "user_agent": {
-                    "type": "string",
-                    "description": "Custom User-Agent header"
                   }
                 }
               }
@@ -2721,10 +2701,6 @@
                   "proxy": {
                     "type": "string",
                     "description": "Proxy URL to use for the request (HTTP or SOCKS5)"
-                  },
-                  "user_agent": {
-                    "type": "string",
-                    "description": "Custom User-Agent header"
                   }
                 }
               }
@@ -4153,10 +4129,6 @@
           "proxy": {
             "type": "string",
             "description": "Proxy URL to use for the request (HTTP or SOCKS5)"
-          },
-          "user_agent": {
-            "type": "string",
-            "description": "Custom User-Agent header"
           }
         }
       },
