@@ -88,6 +88,30 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "id": "11348282",
+                    "userName": "NASA",
+                    "name": "NASA",
+                    "screen_name": "NASA",
+                    "description": "Official NASA account. Exploring the universe, advancing science, and inspiring the next generation of explorers.",
+                    "location": "Pale Blue Dot",
+                    "url": "https://t.co/9NkQJKAnuU",
+                    "created_at": "Wed Dec 19 20:20:32 +0000 2007",
+                    "followers": 90024447,
+                    "following": 116,
+                    "favourites_count": 16551,
+                    "statuses_count": 73493,
+                    "listed_count": 96550,
+                    "media_count": 27783,
+                    "verified": false,
+                    "is_blue_verified": true,
+                    "profile_image_url": "https://pbs.twimg.com/profile_images/1321163587679784960/0ZxKlEKB_normal.jpg",
+                    "profile_banner_url": "https://pbs.twimg.com/profile_banners/11348282/1718393721",
+                    "protected": false,
+                    "can_dm": false
+                  }
                 }
               }
             }
@@ -132,6 +156,30 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "id": "44196397",
+                    "userName": "elonmusk",
+                    "name": "Elon Musk",
+                    "screen_name": "elonmusk",
+                    "description": "",
+                    "location": "",
+                    "url": "",
+                    "created_at": "Tue Jun 02 20:12:29 +0000 2009",
+                    "followers": 237097815,
+                    "following": 1301,
+                    "favourites_count": 218243,
+                    "statuses_count": 99784,
+                    "listed_count": 167966,
+                    "media_count": 4408,
+                    "verified": false,
+                    "is_blue_verified": true,
+                    "profile_image_url": "https://pbs.twimg.com/profile_images/2035314704307081216/71U1ftM3_normal.jpg",
+                    "profile_banner_url": "https://pbs.twimg.com/profile_banners/44196397/1739948056",
+                    "protected": false,
+                    "can_dm": false
+                  }
                 }
               }
             }
@@ -176,6 +224,54 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "44196397",
+                      "userName": "elonmusk",
+                      "name": "Elon Musk",
+                      "screen_name": "elonmusk",
+                      "description": "",
+                      "location": "",
+                      "url": "",
+                      "created_at": "Tue Jun 02 20:12:29 +0000 2009",
+                      "followers": 237097815,
+                      "following": 1301,
+                      "favourites_count": 218243,
+                      "statuses_count": 99784,
+                      "listed_count": 167966,
+                      "media_count": 4408,
+                      "verified": false,
+                      "is_blue_verified": true,
+                      "profile_image_url": "https://pbs.twimg.com/profile_images/2035314704307081216/71U1ftM3_normal.jpg",
+                      "profile_banner_url": "https://pbs.twimg.com/profile_banners/44196397/1739948056",
+                      "protected": false,
+                      "can_dm": false
+                    },
+                    {
+                      "id": "50393960",
+                      "userName": "BillGates",
+                      "name": "Bill Gates",
+                      "screen_name": "BillGates",
+                      "description": "Sharing things I'm learning through my foundation work and other interests.",
+                      "location": "Seattle, WA",
+                      "url": "https://t.co/TiXXwOGE95",
+                      "created_at": "Wed Jun 24 18:44:10 +0000 2009",
+                      "followers": 62764248,
+                      "following": 572,
+                      "favourites_count": 545,
+                      "statuses_count": 4517,
+                      "listed_count": 115498,
+                      "media_count": 1530,
+                      "verified": false,
+                      "is_blue_verified": true,
+                      "profile_image_url": "https://pbs.twimg.com/profile_images/1879013694367252480/Gxa-Pspq_normal.jpg",
+                      "profile_banner_url": "https://pbs.twimg.com/profile_banners/50393960/1745250848",
+                      "protected": false,
+                      "can_dm": false
+                    }
+                  ]
                 }
               }
             }
@@ -237,6 +333,35 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "followers": [
+                      {
+                        "id": "34743251",
+                        "userName": "SpaceX",
+                        "name": "SpaceX",
+                        "screen_name": "SpaceX",
+                        "description": "SpaceX designs, manufactures and launches the world's most advanced rockets and spacecraft",
+                        "location": "Earth",
+                        "url": "https://t.co/VOJ6qEctND",
+                        "created_at": "Thu Apr 23 21:53:30 +0000 2009",
+                        "followers": 41307655,
+                        "following": 122,
+                        "favourites_count": 521,
+                        "statuses_count": 11158,
+                        "listed_count": 44332,
+                        "media_count": 4354,
+                        "verified": false,
+                        "is_blue_verified": true,
+                        "profile_image_url": "https://pbs.twimg.com/profile_images/1697749409851985920/HbrI04tM_normal.jpg",
+                        "profile_banner_url": "https://pbs.twimg.com/profile_banners/34743251/1681251194",
+                        "protected": false,
+                        "can_dm": false
+                      }
+                    ],
+                    "next_cursor": "0|2035407347207110654"
+                  }
                 }
               }
             }
@@ -298,6 +423,35 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "following": [
+                      {
+                        "id": "14091091",
+                        "userName": "NASAHubble",
+                        "name": "Hubble",
+                        "screen_name": "NASAHubble",
+                        "description": "The official X account for the NASA Hubble Space Telescope, managed and operated by NASA's Goddard Space Flight Center.",
+                        "location": "Goddard Space Flight Center",
+                        "url": "https://t.co/3bfzzswzV0",
+                        "created_at": "Thu Mar 06 20:15:02 +0000 2008",
+                        "followers": 8878030,
+                        "following": 42,
+                        "favourites_count": 1218,
+                        "statuses_count": 8300,
+                        "listed_count": 15154,
+                        "media_count": 3047,
+                        "verified": false,
+                        "is_blue_verified": true,
+                        "profile_image_url": "https://pbs.twimg.com/profile_images/3468011581/efb985f24af0a814a722457a768f3cc5_normal.jpeg",
+                        "profile_banner_url": "https://pbs.twimg.com/profile_banners/14091091/1669391293",
+                        "protected": false,
+                        "can_dm": false
+                      }
+                    ],
+                    "next_cursor": "0|2035407347207110654"
+                  }
                 }
               }
             }
@@ -517,6 +671,46 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "tweets": [
+                      {
+                        "id": "2035115386710925518",
+                        "text": "LIVE: After the X-59's successful second flight, NASA experts discuss our plans for upcoming tests of the experimental quiet supersonic aircraft.",
+                        "created_at": "Fri Mar 20 22:04:53 +0000 2026",
+                        "author": {
+                          "id": "11348282",
+                          "userName": "NASA",
+                          "name": "NASA",
+                          "screen_name": "NASA",
+                          "followers_count": 90024457,
+                          "friends_count": 116,
+                          "statuses_count": 73493,
+                          "favourites_count": 16551,
+                          "listed_count": 96550,
+                          "description": "Official NASA account. Exploring the universe, advancing science, and inspiring the next generation of explorers.",
+                          "location": "",
+                          "profile_image_url_https": "",
+                          "profile_image_url": "",
+                          "profile_banner_url": "https://pbs.twimg.com/profile_banners/11348282/1718393721",
+                          "verified": false,
+                          "is_blue_verified": true,
+                          "created_at": "",
+                          "can_dm": false
+                        },
+                        "likeCount": 1511,
+                        "retweetCount": 300,
+                        "replyCount": 129,
+                        "viewCount": null,
+                        "isRetweet": false,
+                        "isReply": false,
+                        "media": []
+                      }
+                    ],
+                    "has_next_page": true,
+                    "next_cursor": "DAABCgABHC..."
+                  }
                 }
               }
             }
@@ -578,6 +772,35 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "users": [
+                      {
+                        "id": "34743251",
+                        "userName": "SpaceX",
+                        "name": "SpaceX",
+                        "screen_name": "SpaceX",
+                        "description": "SpaceX designs, manufactures and launches the world's most advanced rockets and spacecraft",
+                        "location": "Earth",
+                        "url": "https://t.co/VOJ6qEctND",
+                        "created_at": "Thu Apr 23 21:53:30 +0000 2009",
+                        "followers": 41307655,
+                        "following": 122,
+                        "favourites_count": 521,
+                        "statuses_count": 11158,
+                        "listed_count": 44332,
+                        "media_count": 4354,
+                        "verified": false,
+                        "is_blue_verified": true,
+                        "profile_image_url": "https://pbs.twimg.com/profile_images/1697749409851985920/HbrI04tM_normal.jpg",
+                        "profile_banner_url": "https://pbs.twimg.com/profile_banners/34743251/1681251194",
+                        "protected": false,
+                        "can_dm": false
+                      }
+                    ],
+                    "next_cursor": "0|2035407347207110654"
+                  }
                 }
               }
             }
@@ -632,6 +855,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "Follower removed"
                 }
               }
             }
@@ -892,6 +1119,42 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "2035003700855407052",
+                      "text": "Happy vernal equinox! 🍀\n\nToday marks the first day of spring in the Northern Hemisphere and the first day of autumn in the Southern Hemisphere.",
+                      "created_at": "Fri Mar 20 14:41:05 +0000 2026",
+                      "author": {
+                        "id": "11348282",
+                        "userName": "NASA",
+                        "name": "NASA",
+                        "screen_name": "NASA",
+                        "followers_count": 90024457,
+                        "friends_count": 116,
+                        "statuses_count": 73493,
+                        "favourites_count": 16551,
+                        "listed_count": 96550,
+                        "description": "Official NASA account. Exploring the universe, advancing science, and inspiring the next generation of explorers.",
+                        "location": "",
+                        "profile_image_url_https": "",
+                        "profile_image_url": "",
+                        "profile_banner_url": "https://pbs.twimg.com/profile_banners/11348282/1718393721",
+                        "verified": false,
+                        "is_blue_verified": true,
+                        "created_at": "",
+                        "can_dm": false
+                      },
+                      "likeCount": 15230,
+                      "retweetCount": 2100,
+                      "replyCount": 450,
+                      "viewCount": 1250000,
+                      "isRetweet": false,
+                      "isReply": false,
+                      "media": []
+                    }
+                  ]
                 }
               }
             }
@@ -944,6 +1207,78 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "tweets": [
+                      {
+                        "id": "2035003700855407052",
+                        "text": "Happy vernal equinox! 🍀\n\nToday marks the first day of spring in the Northern Hemisphere and the first day of autumn in the Southern Hemisphere.",
+                        "created_at": "Fri Mar 20 14:41:05 +0000 2026",
+                        "author": {
+                          "id": "11348282",
+                          "userName": "NASA",
+                          "name": "NASA",
+                          "screen_name": "NASA",
+                          "followers_count": 90024457,
+                          "friends_count": 116,
+                          "statuses_count": 73493,
+                          "favourites_count": 16551,
+                          "listed_count": 96550,
+                          "description": "Official NASA account. Exploring the universe, advancing science, and inspiring the next generation of explorers.",
+                          "location": "",
+                          "profile_image_url_https": "",
+                          "profile_image_url": "",
+                          "profile_banner_url": "https://pbs.twimg.com/profile_banners/11348282/1718393721",
+                          "verified": false,
+                          "is_blue_verified": true,
+                          "created_at": "",
+                          "can_dm": false
+                        },
+                        "likeCount": 15230,
+                        "retweetCount": 2100,
+                        "replyCount": 450,
+                        "viewCount": 1250000,
+                        "isRetweet": false,
+                        "isReply": false,
+                        "media": []
+                      },
+                      {
+                        "id": "2035122401353031787",
+                        "text": "RT @NASASpox: As major missions draw closer, momentum is building across @NASA...",
+                        "created_at": "Fri Mar 20 22:32:45 +0000 2026",
+                        "author": {
+                          "id": "11348282",
+                          "userName": "NASA",
+                          "name": "NASA",
+                          "screen_name": "NASA",
+                          "followers_count": 90024457,
+                          "friends_count": 116,
+                          "statuses_count": 73493,
+                          "favourites_count": 16551,
+                          "listed_count": 96550,
+                          "description": "Official NASA account. Exploring the universe, advancing science, and inspiring the next generation of explorers.",
+                          "location": "",
+                          "profile_image_url_https": "",
+                          "profile_image_url": "",
+                          "profile_banner_url": "https://pbs.twimg.com/profile_banners/11348282/1718393721",
+                          "verified": false,
+                          "is_blue_verified": true,
+                          "created_at": "",
+                          "can_dm": false
+                        },
+                        "likeCount": 0,
+                        "retweetCount": 361,
+                        "replyCount": 0,
+                        "viewCount": null,
+                        "isRetweet": true,
+                        "isReply": false,
+                        "media": []
+                      }
+                    ],
+                    "has_next_page": true,
+                    "next_cursor": "DAABCgABHC..."
+                  }
                 }
               }
             }
@@ -1245,6 +1580,46 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "tweets": [
+                      {
+                        "id": "2035355605234299007",
+                        "text": "Building Sansa, it's an API AI router, selects the best model for each request in under 20ms.",
+                        "created_at": "Sat Mar 21 13:59:26 +0000 2026",
+                        "author": {
+                          "id": "1952361085048365056",
+                          "userName": "Jbm_dev",
+                          "name": "Joshua Martin",
+                          "screen_name": "Jbm_dev",
+                          "followers_count": 2274,
+                          "friends_count": 926,
+                          "statuses_count": 4971,
+                          "favourites_count": 20792,
+                          "listed_count": 32,
+                          "description": "Full-stack Dev | 3x Founder | Building Sansa",
+                          "location": "",
+                          "profile_image_url_https": "",
+                          "profile_image_url": "",
+                          "profile_banner_url": "",
+                          "verified": false,
+                          "is_blue_verified": true,
+                          "created_at": "",
+                          "can_dm": false
+                        },
+                        "likeCount": 3,
+                        "retweetCount": 0,
+                        "replyCount": 1,
+                        "viewCount": 21,
+                        "isRetweet": false,
+                        "isReply": true,
+                        "media": []
+                      }
+                    ],
+                    "has_next_page": true,
+                    "next_cursor": "DAACCgACHD84NpvAJxAKAAMcPzg2m7_Y8A..."
+                  }
                 }
               }
             }
@@ -1299,6 +1674,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "Tweet deleted"
                 }
               }
             }
@@ -1409,6 +1788,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "Retweet undone"
                 }
               }
             }
@@ -1463,6 +1846,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "Tweet pinned"
                 }
               }
             }
@@ -1515,6 +1902,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "Tweet unpinned"
                 }
               }
             }
@@ -1685,6 +2076,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "User followed"
                 }
               }
             }
@@ -1739,6 +2134,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "User unfollowed"
                 }
               }
             }
@@ -1877,6 +2276,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "User blocked"
                 }
               }
             }
@@ -1929,6 +2332,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "User unblocked"
                 }
               }
             }
@@ -1983,6 +2390,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "Bookmark added"
                 }
               }
             }
@@ -2035,6 +2446,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "Bookmark removed"
                 }
               }
             }
@@ -2176,6 +2591,13 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "List created",
+                  "data": {
+                    "list_id": "1879298220892504449"
+                  }
                 }
               }
             }
@@ -2230,6 +2652,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "List deleted"
                 }
               }
             }
@@ -2312,6 +2738,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "List updated"
                 }
               }
             }
@@ -2366,6 +2796,23 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "id": "1879298220892504449",
+                    "name": "Tech Leaders",
+                    "description": "Top voices in technology",
+                    "member_count": 25,
+                    "subscriber_count": 150,
+                    "created_at": "Mon Jan 15 12:00:00 +0000 2025",
+                    "is_private": false,
+                    "owner": {
+                      "id": "44196397",
+                      "userName": "elonmusk",
+                      "name": "Elon Musk",
+                      "screen_name": "elonmusk"
+                    }
+                  }
                 }
               }
             }
@@ -2420,6 +2867,46 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "tweets": [
+                      {
+                        "id": "2035003700855407052",
+                        "text": "Happy vernal equinox! 🍀\n\nToday marks the first day of spring in the Northern Hemisphere and the first day of autumn in the Southern Hemisphere.",
+                        "created_at": "Fri Mar 20 14:41:05 +0000 2026",
+                        "author": {
+                          "id": "11348282",
+                          "userName": "NASA",
+                          "name": "NASA",
+                          "screen_name": "NASA",
+                          "followers_count": 90024457,
+                          "friends_count": 116,
+                          "statuses_count": 73493,
+                          "favourites_count": 16551,
+                          "listed_count": 96550,
+                          "description": "Official NASA account. Exploring the universe, advancing science, and inspiring the next generation of explorers.",
+                          "location": "",
+                          "profile_image_url_https": "",
+                          "profile_image_url": "",
+                          "profile_banner_url": "https://pbs.twimg.com/profile_banners/11348282/1718393721",
+                          "verified": false,
+                          "is_blue_verified": true,
+                          "created_at": "",
+                          "can_dm": false
+                        },
+                        "likeCount": 15230,
+                        "retweetCount": 2100,
+                        "replyCount": 450,
+                        "viewCount": 1250000,
+                        "isRetweet": false,
+                        "isReply": false,
+                        "media": []
+                      }
+                    ],
+                    "has_next_page": true,
+                    "next_cursor": "DAABCgABHC..."
+                  }
                 }
               }
             }
@@ -2474,6 +2961,35 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "users": [
+                      {
+                        "id": "11348282",
+                        "userName": "NASA",
+                        "name": "NASA",
+                        "screen_name": "NASA",
+                        "description": "Official NASA account. Exploring the universe, advancing science, and inspiring the next generation of explorers.",
+                        "location": "Pale Blue Dot",
+                        "url": "https://t.co/9NkQJKAnuU",
+                        "created_at": "Wed Dec 19 20:20:32 +0000 2007",
+                        "followers": 90024447,
+                        "following": 116,
+                        "favourites_count": 16551,
+                        "statuses_count": 73493,
+                        "listed_count": 96550,
+                        "media_count": 27783,
+                        "verified": false,
+                        "is_blue_verified": true,
+                        "profile_image_url": "https://pbs.twimg.com/profile_images/1321163587679784960/0ZxKlEKB_normal.jpg",
+                        "profile_banner_url": "https://pbs.twimg.com/profile_banners/11348282/1718393721",
+                        "protected": false,
+                        "can_dm": false
+                      }
+                    ],
+                    "next_cursor": "0|2035407347207110654"
+                  }
                 }
               }
             }
@@ -2538,6 +3054,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "Member added to list"
                 }
               }
             }
@@ -2602,6 +3122,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "Member removed from list"
                 }
               }
             }
@@ -2656,6 +3180,35 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "users": [
+                      {
+                        "id": "11348282",
+                        "userName": "NASA",
+                        "name": "NASA",
+                        "screen_name": "NASA",
+                        "description": "Official NASA account. Exploring the universe, advancing science, and inspiring the next generation of explorers.",
+                        "location": "Pale Blue Dot",
+                        "url": "https://t.co/9NkQJKAnuU",
+                        "created_at": "Wed Dec 19 20:20:32 +0000 2007",
+                        "followers": 90024447,
+                        "following": 116,
+                        "favourites_count": 16551,
+                        "statuses_count": 73493,
+                        "listed_count": 96550,
+                        "media_count": 27783,
+                        "verified": false,
+                        "is_blue_verified": true,
+                        "profile_image_url": "https://pbs.twimg.com/profile_images/1321163587679784960/0ZxKlEKB_normal.jpg",
+                        "profile_banner_url": "https://pbs.twimg.com/profile_banners/11348282/1718393721",
+                        "protected": false,
+                        "can_dm": false
+                      }
+                    ],
+                    "next_cursor": "0|2035407347207110654"
+                  }
                 }
               }
             }
@@ -2710,6 +3263,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "Subscribed to list"
                 }
               }
             }
@@ -2762,6 +3319,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "Unsubscribed from list"
                 }
               }
             }
@@ -3038,6 +3599,23 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "id": "1708541793647808513",
+                    "name": "Tech Community",
+                    "description": "A community for tech enthusiasts",
+                    "member_count": 15000,
+                    "created_at": "Mon Oct 01 12:00:00 +0000 2024",
+                    "is_member": true,
+                    "admin": {
+                      "id": "44196397",
+                      "userName": "elonmusk",
+                      "name": "Elon Musk",
+                      "screen_name": "elonmusk"
+                    },
+                    "banner_url": "https://pbs.twimg.com/community_banner_img/1708541793647808513/example"
+                  }
                 }
               }
             }
@@ -3092,6 +3670,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "Joined community"
                 }
               }
             }
@@ -3144,6 +3726,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "Left community"
                 }
               }
             }
@@ -3198,6 +3784,46 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "tweets": [
+                      {
+                        "id": "2035003700855407052",
+                        "text": "Happy vernal equinox! 🍀\n\nToday marks the first day of spring in the Northern Hemisphere and the first day of autumn in the Southern Hemisphere.",
+                        "created_at": "Fri Mar 20 14:41:05 +0000 2026",
+                        "author": {
+                          "id": "11348282",
+                          "userName": "NASA",
+                          "name": "NASA",
+                          "screen_name": "NASA",
+                          "followers_count": 90024457,
+                          "friends_count": 116,
+                          "statuses_count": 73493,
+                          "favourites_count": 16551,
+                          "listed_count": 96550,
+                          "description": "Official NASA account. Exploring the universe, advancing science, and inspiring the next generation of explorers.",
+                          "location": "",
+                          "profile_image_url_https": "",
+                          "profile_image_url": "",
+                          "profile_banner_url": "https://pbs.twimg.com/profile_banners/11348282/1718393721",
+                          "verified": false,
+                          "is_blue_verified": true,
+                          "created_at": "",
+                          "can_dm": false
+                        },
+                        "likeCount": 15230,
+                        "retweetCount": 2100,
+                        "replyCount": 450,
+                        "viewCount": 1250000,
+                        "isRetweet": false,
+                        "isReply": false,
+                        "media": []
+                      }
+                    ],
+                    "has_next_page": true,
+                    "next_cursor": "DAABCgABHC..."
+                  }
                 }
               }
             }
@@ -3252,6 +3878,53 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "tweets": [
+                      {
+                        "id": "2035003700855407052",
+                        "text": "Happy vernal equinox! 🍀\n\nToday marks the first day of spring in the Northern Hemisphere and the first day of autumn in the Southern Hemisphere.",
+                        "created_at": "Fri Mar 20 14:41:05 +0000 2026",
+                        "author": {
+                          "id": "11348282",
+                          "userName": "NASA",
+                          "name": "NASA",
+                          "screen_name": "NASA",
+                          "followers_count": 90024457,
+                          "friends_count": 116,
+                          "statuses_count": 73493,
+                          "favourites_count": 16551,
+                          "listed_count": 96550,
+                          "description": "Official NASA account. Exploring the universe, advancing science, and inspiring the next generation of explorers.",
+                          "location": "",
+                          "profile_image_url_https": "",
+                          "profile_image_url": "",
+                          "profile_banner_url": "https://pbs.twimg.com/profile_banners/11348282/1718393721",
+                          "verified": false,
+                          "is_blue_verified": true,
+                          "created_at": "",
+                          "can_dm": false
+                        },
+                        "likeCount": 15230,
+                        "retweetCount": 2100,
+                        "replyCount": 450,
+                        "viewCount": 1250000,
+                        "isRetweet": false,
+                        "isReply": false,
+                        "media": [
+                          {
+                            "type": "photo",
+                            "url": "https://pbs.twimg.com/media/example.jpg",
+                            "width": 1200,
+                            "height": 675
+                          }
+                        ]
+                      }
+                    ],
+                    "has_next_page": true,
+                    "next_cursor": "DAABCgABHC..."
+                  }
                 }
               }
             }
@@ -3306,6 +3979,15 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "data": {
+                    "id": "848921413196984320",
+                    "name": "Space",
+                    "description": "All about space exploration, astronomy, and the universe",
+                    "following": true,
+                    "not_interested": false
+                  }
                 }
               }
             }
@@ -3360,6 +4042,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "Topic followed"
                 }
               }
             }
@@ -3412,6 +4098,10 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "msg": "Topic unfollowed"
                 }
               }
             }
