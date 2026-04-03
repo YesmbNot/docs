@@ -100,7 +100,7 @@ curl -X PATCH "https://api.apitwitter.com/twitter/lists/123456789" \
 
 Get information about a specific list.
 
-**Cost:** 14 credits
+**Cost:** 225 credits
 
 | Parameter | Type | In | Required | Description |
 |-----------|------|-----|----------|-------------|
@@ -224,19 +224,18 @@ curl -X DELETE "https://api.apitwitter.com/twitter/lists/123456789/members/44196
 
 Get a paginated list of subscribers to a list.
 
-**Cost:** 14 credits
+**Cost:** 225 credits
 
 | Parameter | Type | In | Required | Description |
 |-----------|------|-----|----------|-------------|
 | X-API-Key | string | header | Yes | Your API key |
 | list_id | string | path | Yes | ID of the list |
-| cookie | string | query | Yes | Twitter auth cookie |
-| proxy | string | query | No | Proxy URL to use for the request |
+| count | integer | query | No | Number of results per page (default: 200) |
 | cursor | string | query | No | Pagination cursor for the next page |
 
 <CodeGroup>
 ```bash cURL
-curl -X GET "https://api.apitwitter.com/twitter/lists/123456789/subscribers?cookie=YOUR_COOKIE&cursor=NEXT_CURSOR" \
+curl -X GET "https://api.apitwitter.com/twitter/lists/123456789/subscribers?count=20&cursor=NEXT_CURSOR" \
   -H "X-API-Key: YOUR_API_KEY"
 ```
 </CodeGroup>

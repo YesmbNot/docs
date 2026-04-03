@@ -3120,13 +3120,13 @@
       }
     },
     "/twitter/lists/{list_id}/subscribers": {
-      "post": {
+      "get": {
         "tags": [
           "Lists"
         ],
         "summary": "Get List Subscribers",
-        "description": "Get a paginated list of subscribers to a list.\n\n**Cost:** 14 credits",
-        "operationId": "getListSubscribers",
+        "description": "Get a paginated list of subscribers to a list.\n\n**Cost:** 225 credits",
+        "operationId": "getListSubscribersPool",
         "parameters": [
           {
             "name": "list_id",
@@ -3137,18 +3137,30 @@
               "type": "string"
             },
             "example": "123456789"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "description": "Number of results per page",
+            "schema": {
+              "type": "integer",
+              "default": 200,
+              "minimum": 1
+            },
+            "example": 20
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Pagination cursor",
+            "schema": {
+              "type": "string"
+            },
+            "example": "0|2035407347207110654"
           }
         ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PaginatedLargeBody"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "List of subscribers",
@@ -3159,7 +3171,7 @@
                 },
                 "example": {
                   "data": {
-                    "users": [
+                    "subscribers": [
                       {
                         "id": "11348282",
                         "userName": "NASA",
