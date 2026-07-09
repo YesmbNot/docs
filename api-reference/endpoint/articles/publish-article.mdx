@@ -1,0 +1,221 @@
+---
+title: "Publish Article"
+description: "Publish an X Article (long-form post) with title, cover image, formatted body, tweet embeds, and inline images. POST endpoint requiring cookies and proxy."
+openapi: "POST /twitter/articles"
+---
+
+Publish a full **X Article** — the long-form post format on X.com (formerly Twitter Articles / Notes). Supports rich text formatting, cover images, embedded tweets, and inline images in the body.
+
+**Cost:** 300 credits (~$0.003 per call)
+
+<Info>
+New to X Articles? Read the step-by-step [How to Publish X Articles](/articles-guide) guide first.
+</Info>
+
+<Warning>
+This is a **write** endpoint. You must provide your own `cookie` and `proxy` in the JSON body, same as [Create Tweet](/api-reference/endpoint/tweets/create-tweet).
+</Warning>
+
+## Request body
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `title` | string | Yes | Article headline (max 500 chars) |
+| `content_state` | object | Yes | Draft.js `content_state` — see below |
+| `cookie` | string | Yes | Twitter session cookie (`ct0=...; auth_token=...`) |
+| `proxy` | string | Yes | Proxy URL (`http://user:pass@host:port`) |
+| `cover_image_base64` | string | No | Cover image as base64 or `data:image/png;base64,...` |
+| `inline_images` | object | No | Map `ref_id` → base64 for inline body images |
+| `visibility` | string | No | `Public` (default), `Followers`, `Mentioned`, `Subscribers` |
+| `user_agent` | string | No | Custom User-Agent |
+
+## content_state format
+
+X Articles use **Draft.js** JSON with two keys:
+
+- `blocks` — array of content blocks (paragraphs, headings, lists, embeds)
+- `entity_map` — embed metadata (tweets, images)
+
+### Block types
+
+| `type` | Description |
+|--------|-------------|
+| `unstyled` | Normal paragraph |
+| `header-one` / `header-two` / `header-three` | H1 / H2 / H3 |
+| `blockquote` | Quote block |
+| `unordered-list-item` | Bullet list item |
+| `ordered-list-item` | Numbered list item |
+| `atomic` | Embed placeholder (tweet or image) — `text` must be `" "` |
+
+### Inline formatting
+
+Use `inline_style_ranges` on text blocks:
+
+```json
+{ "offset": 0, "length": 11, "style": "Bold" }
+```
+
+Supported styles: `Bold`, `Italic`, `Underline`, `Strikethrough`, `FontSizeS`, `FontSizeM`, `FontSizeL`, `FontSizeXL`.
+
+### Embed a tweet
+
+1. Add an `atomic` block with `entity_ranges: [{ "key": 0, "offset": 0, "length": 1 }]`
+2. Add to `entity_map`:
+
+```json
+{
+  "key": "0",
+  "value": {
+    "type": "TWEET",
+    "mutability": "Immutable",
+    "data": { "tweet_id": "2068969991735476253" }
+  }
+}
+```
+
+### Inline image in body
+
+1. Add image bytes to `inline_images`: `{ "img1": "BASE64..." }`
+2. Add `atomic` block + MEDIA entity with matching ref:
+
+```json
+{
+  "key": "1",
+  "value": {
+    "type": "MEDIA",
+    "mutability": "Immutable",
+    "data": { "file_id": "img1", "entity_key": "uuid-here", "local_media_id": 1 }
+  }
+}
+```
+
+You can also pass a pre-uploaded X `media_id` in `data.media_id` instead of `file_id`.
+
+## Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://api.apitwitter.com/twitter/articles" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cookie": "ct0=...; auth_token=...",
+    "proxy": "http://user:pass@host:port",
+    "title": "My Article Title",
+    "cover_image_base64": "iVBORw0KGgo...",
+    "content_state": {
+      "blocks": [
+        {
+          "key": "b1",
+          "type": "unstyled",
+          "text": "Introduction paragraph with rich formatting.",
+          "data": {},
+          "inline_style_ranges": [],
+          "entity_ranges": []
+        },
+        {
+          "key": "b2",
+          "type": "header-two",
+          "text": "Section Title",
+          "data": {},
+          "inline_style_ranges": [],
+          "entity_ranges": []
+        },
+        {
+          "key": "b3",
+          "type": "unordered-list-item",
+          "text": "First bullet point",
+          "data": {},
+          "inline_style_ranges": [],
+          "entity_ranges": []
+        },
+        {
+          "key": "b4",
+          "type": "atomic",
+          "text": " ",
+          "data": {},
+          "inline_style_ranges": [],
+          "entity_ranges": [{ "key": 0, "offset": 0, "length": 1 }]
+        }
+      ],
+      "entity_map": [
+        {
+          "key": "0",
+          "value": {
+            "type": "TWEET",
+            "mutability": "Immutable",
+            "data": { "tweet_id": "2068969991735476253" }
+          }
+        }
+      ]
+    },
+    "inline_images": {
+      "img1": "BASE64_INLINE_IMAGE..."
+    },
+    "visibility": "Public"
+  }'
+```
+
+```python Python
+import requests
+import base64
+
+with open("cover.jpg", "rb") as f:
+    cover_b64 = base64.b64encode(f.read()).decode()
+
+resp = requests.post(
+    "https://api.apitwitter.com/twitter/articles",
+    headers={"X-API-Key": "YOUR_API_KEY"},
+    json={
+        "cookie": "ct0=...; auth_token=...",
+        "proxy": "http://user:pass@host:port",
+        "title": "My Article Title",
+        "cover_image_base64": cover_b64,
+        "content_state": {
+            "blocks": [
+                {
+                    "key": "b1",
+                    "type": "unstyled",
+                    "text": "Hello from the API!",
+                    "data": {},
+                    "inline_style_ranges": [],
+                    "entity_ranges": [],
+                }
+            ],
+            "entity_map": [],
+        },
+        "visibility": "Public",
+    },
+)
+print(resp.json())
+```
+
+</CodeGroup>
+
+## Response
+
+```json
+{
+  "status": "success",
+  "article_id": "2075165537571581952",
+  "tweet_id": "2075166048056168554",
+  "title": "My Article Title",
+  "msg": "Article published"
+}
+```
+
+| Field | Description |
+|-------|-------------|
+| `article_id` | X Article entity ID |
+| `tweet_id` | ID of the timeline post that links to the article |
+
+## Publishing flow
+
+The API runs the same GraphQL sequence as the X web composer:
+
+1. `ArticleEntityDraftCreate`
+2. `ArticleEntityUpdateTitle`
+3. `ArticleEntityUpdateCoverMedia` (if cover provided)
+4. `ArticleEntityUpdateContent`
+5. `ArticleEntityPublish`

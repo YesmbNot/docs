@@ -62,6 +62,7 @@
       "pages": [
         "introduction",
         "quickstart",
+        "articles-guide",
         "sdks",
         "authentication",
         "proxy-and-cookies"
@@ -110,6 +111,12 @@
         "api-reference/endpoint/tweets/undo-retweet",
         "api-reference/endpoint/tweets/pin-tweet",
         "api-reference/endpoint/tweets/unpin-tweet"
+      ]
+    },
+    {
+      "group": "Articles",
+      "pages": [
+        "api-reference/endpoint/articles/publish-article"
       ]
     },
     {

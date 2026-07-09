@@ -1,0 +1,414 @@
+---
+title: "How to Publish X Articles — Step-by-Step Guide"
+description: "User guide for publishing X Articles (long-form posts) via ApiTwitter API. Covers title, cover image, formatted text, tweet embeds, and inline images with copy-paste examples."
+seo: "ApiTwitter publish X Article guide long-form post tutorial"
+icon: "newspaper"
+---
+
+## What is an X Article?
+
+An **X Article** is a long-form post on X.com (similar to a blog article inside a tweet). It supports:
+
+- Title and cover image
+- Headings, bold/italic text, lists, quotes
+- Embedded tweets (cards inside the article)
+- Images inside the article body
+
+You publish articles through **`POST /twitter/articles`** — same requirements as posting a tweet: your API key, Twitter cookies, and proxy.
+
+**Cost:** 300 credits per published article (~$0.003)
+
+---
+
+## What you need
+
+| Item | Where to get it |
+|------|-----------------|
+| **API key** | [Dashboard → API Keys](https://www.apitwitter.com/api-keys) |
+| **Twitter cookies** | `ct0` + `auth_token` from browser — see [Proxy & Cookies](/proxy-and-cookies) |
+| **Proxy** | Your own HTTP/SOCKS5 proxy (required for POST) |
+| **Article content** | Title + body in `content_state` format (see below) |
+
+<Warning>
+ApiTwitter does **not** provide proxies. Every article publish request must include `"proxy"` in the JSON body.
+</Warning>
+
+---
+
+## Quick start — minimal article
+
+The smallest working article: a title + one paragraph.
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://api.apitwitter.com/twitter/articles" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cookie": "ct0=YOUR_CT0; auth_token=YOUR_AUTH_TOKEN",
+    "proxy": "http://user:pass@host:port",
+    "title": "My First Article",
+    "content_state": {
+      "blocks": [
+        {
+          "key": "b1",
+          "type": "unstyled",
+          "text": "This is my first article published via ApiTwitter.",
+          "data": {},
+          "inline_style_ranges": [],
+          "entity_ranges": []
+        }
+      ],
+      "entity_map": []
+    }
+  }'
+```
+
+```python Python
+import requests
+
+resp = requests.post(
+    "https://api.apitwitter.com/twitter/articles",
+    headers={"X-API-Key": "YOUR_API_KEY"},
+    json={
+        "cookie": "ct0=...; auth_token=...",
+        "proxy": "http://user:pass@host:port",
+        "title": "My First Article",
+        "content_state": {
+            "blocks": [{
+                "key": "b1",
+                "type": "unstyled",
+                "text": "This is my first article published via ApiTwitter.",
+                "data": {},
+                "inline_style_ranges": [],
+                "entity_ranges": [],
+            }],
+            "entity_map": [],
+        },
+    },
+)
+print(resp.json())
+```
+
+</CodeGroup>
+
+**Success response:**
+
+```json
+{
+  "status": "success",
+  "article_id": "2075165537571581952",
+  "tweet_id": "2075166048056168554",
+  "title": "My First Article",
+  "msg": "Article published"
+}
+```
+
+- `tweet_id` — the post in the timeline that links to your article
+- `article_id` — internal X Article ID
+
+---
+
+## Step 1 — Write the title
+
+Put your headline in the `title` field (max 500 characters):
+
+```json
+"title": "ORACLE: Official AI Agents Trade on Polymarket"
+```
+
+---
+
+## Step 2 — Build the body (`content_state`)
+
+The article body is a JSON object with two parts:
+
+```json
+{
+  "blocks": [ /* paragraphs, headings, lists, embeds */ ],
+  "entity_map": [ /* tweet & image metadata */ ]
+}
+```
+
+Think of `blocks` as a list of sections, read top to bottom.
+
+### Paragraph
+
+```json
+{
+  "key": "b1",
+  "type": "unstyled",
+  "text": "Your paragraph text here.",
+  "data": {},
+  "inline_style_ranges": [],
+  "entity_ranges": []
+}
+```
+
+### Heading (H2)
+
+```json
+{
+  "key": "b2",
+  "type": "header-two",
+  "text": "How It Works",
+  "data": {},
+  "inline_style_ranges": [],
+  "entity_ranges": []
+}
+```
+
+| Type | Heading level |
+|------|---------------|
+| `header-one` | H1 |
+| `header-two` | H2 |
+| `header-three` | H3 |
+
+### Bullet list
+
+Each list item is a separate block:
+
+```json
+{
+  "key": "b3",
+  "type": "unordered-list-item",
+  "text": "First benefit",
+  "data": {},
+  "inline_style_ranges": [],
+  "entity_ranges": []
+}
+```
+
+### Bold text
+
+Add `inline_style_ranges` to mark which characters are bold:
+
+```json
+{
+  "key": "b4",
+  "type": "unstyled",
+  "text": "Get Started",
+  "data": {},
+  "inline_style_ranges": [
+    { "offset": 0, "length": 11, "style": "Bold" }
+  ],
+  "entity_ranges": []
+}
+```
+
+Other styles: `Italic`, `Underline`, `Strikethrough`.
+
+### Quote
+
+```json
+{
+  "key": "b5",
+  "type": "blockquote",
+  "text": "Over $118 million under management.",
+  "data": {},
+  "inline_style_ranges": [
+    { "offset": 0, "length": 36, "style": "Italic" }
+  ],
+  "entity_ranges": []
+}
+```
+
+---
+
+## Step 3 — Add a cover image (optional)
+
+Encode your image as base64 and pass it in `cover_image_base64`:
+
+```python
+import base64
+
+with open("cover.jpg", "rb") as f:
+    cover_b64 = base64.b64encode(f.read()).decode()
+```
+
+```json
+"cover_image_base64": "iVBORw0KGgoAAAANSUhEUgAA..."
+```
+
+You can also use a data URI: `data:image/jpeg;base64,iVBORw0KGgo...`
+
+---
+
+## Step 4 — Embed a tweet inside the article
+
+To show a tweet card inside your article:
+
+**1.** Add an `atomic` block (placeholder):
+
+```json
+{
+  "key": "embed1",
+  "type": "atomic",
+  "text": " ",
+  "data": {},
+  "inline_style_ranges": [],
+  "entity_ranges": [{ "key": 0, "offset": 0, "length": 1 }]
+}
+```
+
+**2.** Add the tweet to `entity_map`:
+
+```json
+{
+  "key": "0",
+  "value": {
+    "type": "TWEET",
+    "mutability": "Immutable",
+    "data": { "tweet_id": "2068969991735476253" }
+  }
+}
+```
+
+Use the numeric ID from the tweet URL: `https://x.com/user/status/2068969991735476253` → `2068969991735476253`.
+
+---
+
+## Step 5 — Add images inside the body
+
+**1.** Put base64 images in `inline_images`:
+
+```json
+"inline_images": {
+  "chart": "BASE64_OF_YOUR_IMAGE...",
+  "screenshot": "BASE64_OF_ANOTHER_IMAGE..."
+}
+```
+
+**2.** For each image, add an `atomic` block + MEDIA entity:
+
+```json
+{
+  "key": "img1",
+  "type": "atomic",
+  "text": " ",
+  "data": {},
+  "inline_style_ranges": [],
+  "entity_ranges": [{ "key": 1, "offset": 0, "length": 1 }]
+}
+```
+
+```json
+{
+  "key": "1",
+  "value": {
+    "type": "MEDIA",
+    "mutability": "Immutable",
+    "data": {
+      "file_id": "chart",
+      "entity_key": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "local_media_id": 1
+    }
+  }
+}
+```
+
+The `file_id` must match the key in `inline_images` (`"chart"` in this example).
+
+<Tip>
+Generate a random UUID for `entity_key` — any unique string works.
+</Tip>
+
+---
+
+## Full example — promo article structure
+
+Typical marketing article layout:
+
+```
+[Intro paragraph]
+[Second paragraph]
+[CTA text]
+
+[EMBED TWEET]
+
+## Section heading
+[Bullet point 1]
+[Bullet point 2]
+
+[INLINE IMAGE]
+
+## Another section
+[More text]
+
+[INLINE IMAGE]
+
+**Bold CTA**
+```
+
+See the [API Reference](/api-reference/endpoint/articles/publish-article) for a complete JSON payload you can copy.
+
+---
+
+## Visibility
+
+Control who can see the article:
+
+| Value | Who sees it |
+|-------|-------------|
+| `Public` | Everyone (default) |
+| `Followers` | Followers only |
+| `Mentioned` | Mentioned users |
+| `Subscribers` | Subscribers only |
+
+```json
+"visibility": "Public"
+```
+
+---
+
+## Common mistakes
+
+<AccordionGroup>
+  <Accordion title="400 — proxy is required">
+    Every POST request needs `"proxy": "http://..."` in the body. We don't provide proxies.
+  </Accordion>
+  <Accordion title="400 — content_state must contain at least one block">
+    `blocks` array cannot be empty. Add at least one paragraph block.
+  </Accordion>
+  <Accordion title="Atomic block has wrong text">
+    Embed blocks (`type: "atomic"`) must have `"text": " "` (a single space), not empty string.
+  </Accordion>
+  <Accordion title="Inline image not found">
+    The `file_id` in MEDIA entity must exactly match a key in `inline_images`.
+  </Accordion>
+  <Accordion title="402 — Insufficient credits">
+    Publishing costs **300 credits**. [Top up your balance](https://www.apitwitter.com/billing).
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Checklist before publishing
+
+- [ ] API key in `X-API-Key` header
+- [ ] Valid `cookie` and `proxy` in body
+- [ ] `title` is not empty
+- [ ] At least one block in `content_state.blocks`
+- [ ] Tweet embeds: `atomic` block + matching `entity_map` entry
+- [ ] Inline images: `inline_images` keys match `file_id` in MEDIA entities
+- [ ] Balance has at least 300 credits
+
+---
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="API Reference" icon="code" href="/api-reference/endpoint/articles/publish-article">
+    Full endpoint schema and OpenAPI spec
+  </Card>
+  <Card title="Proxy & Cookies" icon="shield-halved" href="/proxy-and-cookies">
+  How to get cookies and configure proxy
+  </Card>
+  <Card title="Billing" icon="credit-card" href="/billing">
+    Credit pricing and top-up
+  </Card>
+  <Card title="Errors" icon="triangle-exclamation" href="/errors">
+    Error codes and troubleshooting
+  </Card>
+</CardGroup>

@@ -1088,6 +1088,106 @@
         }
       }
     },
+    "/twitter/articles": {
+      "post": {
+        "tags": [
+          "Articles"
+        ],
+        "summary": "Publish Article",
+        "description": "Publish an X Article (long-form post) with title, optional cover image, Draft.js content_state body, tweet embeds, and inline images.\n\n**Cost:** 300 credits",
+        "operationId": "publishArticle",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "title",
+                  "content_state",
+                  "cookie",
+                  "proxy"
+                ],
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "Article title",
+                    "maxLength": 500
+                  },
+                  "content_state": {
+                    "type": "object",
+                    "description": "Draft.js content_state with blocks and entity_map"
+                  },
+                  "cookie": {
+                    "type": "string",
+                    "description": "Twitter auth cookie"
+                  },
+                  "proxy": {
+                    "type": "string",
+                    "description": "Proxy URL (HTTP or SOCKS5)"
+                  },
+                  "cover_image_base64": {
+                    "type": "string",
+                    "description": "Optional cover image as base64 or data URI"
+                  },
+                  "inline_images": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Map ref_id to base64 image for inline MEDIA entities in content_state"
+                  },
+                  "visibility": {
+                    "type": "string",
+                    "enum": [
+                      "Public",
+                      "Followers",
+                      "Mentioned",
+                      "Subscribers"
+                    ],
+                    "default": "Public",
+                    "description": "Article visibility setting"
+                  },
+                  "user_agent": {
+                    "type": "string",
+                    "description": "Custom User-Agent"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Article published",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "status": "success",
+                  "article_id": "2075165537571581952",
+                  "tweet_id": "2075166048056168554",
+                  "title": "My Article Title",
+                  "msg": "Article published"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/twitter/tweets/lookup": {
       "get": {
         "tags": [
