@@ -1,15 +1,29 @@
 ---
 title: "Rate Limits & QPS Tiers — ApiTwitter"
-description: "ApiTwitter rate limits explained: 0.2 to 30 QPS based on balance. Auto-upgrading tiers, rate limit headers (X-RateLimit), Retry-After, and how to avoid HTTP 429 errors on the Twitter/X API."
-seo: "ApiTwitter rate limits QPS tiers Twitter API throttling 429"
+description: "ApiTwitter rate limits explained: write endpoints have no QPS limit, read endpoints scale from 0.2 to 100 QPS with your balance. Rate limit headers (X-RateLimit), Retry-After, and how to avoid HTTP 429 errors on the Twitter/X API."
+seo: "ApiTwitter rate limits QPS tiers Twitter API throttling 429 unlimited writes"
 icon: "gauge-high"
 ---
 
-## Understanding QPS
+## Writes are unlimited, reads are tiered
 
-QPS (Queries Per Second) determines the maximum number of API requests you can make per second. Your limit scales automatically based on your account balance.
+ApiTwitter applies rate limits based on **whose X account serves the request**:
 
-## QPS Tiers
+| | Endpoints | QPS limit |
+|---|---|---|
+| **Writes** | `POST`, `DELETE`, `PATCH` | **None.** Paced only by X.com |
+| **Reads** | `GET` | Tiered by balance (see below) |
+
+<Info>
+**Write endpoints have no QPS limit.** They run on the cookies and proxy *you* supply, so the
+only pacing that applies is X.com's own per-account quota. Post as fast as your accounts allow —
+to go faster, add more accounts rather than upgrading anything here.
+</Info>
+
+Read endpoints are served by our shared account pool, which every customer draws from. That pool
+is a finite resource with its own X.com quotas, so reads carry a QPS limit.
+
+## Read QPS Tiers
 
 | Tier | Balance | QPS Limit | Requests/Sec |
 |------|---------|-----------|-------------|
@@ -18,10 +32,14 @@ QPS (Queries Per Second) determines the maximum number of API requests you can m
 | **Basic** | > $1 | 5 | 5 per second |
 | **Pro** | > $5 | 10 | 10 per second |
 | **Business** | > $50 | 30 | 30 per second |
+| **Enterprise** | > $200 | 100 | 100 per second |
 
 <Info>
 Your QPS tier upgrades **instantly** when you add credits. No plan changes needed.
 </Info>
+
+Need more than 100 QPS on reads? We provision custom limits on request — [contact us](mailto:support@apitwitter.com)
+with your target throughput.
 
 ## Rate Limit Headers
 
@@ -29,45 +47,102 @@ Every API response includes these headers:
 
 | Header | Description | Example |
 |--------|-------------|---------|
-| `X-RateLimit-Limit` | Your current QPS limit | `10` |
-| `X-RateLimit-Remaining` | Remaining requests in window | `7` |
+| `X-RateLimit-Scope` | Which limit applied: `read` or `write` | `read` |
+| `X-RateLimit-Limit` | Current QPS limit (`unlimited` on writes) | `10` |
+| `X-RateLimit-Remaining` | Remaining requests in the window | `7` |
 | `X-RateLimit-Tier` | Your current tier name | `Pro` |
-| `Retry-After` | Seconds to wait (only on 429) | `1.5` |
+| `X-RateLimit-Pool-Limited` | `1` when the pool, not your plan, is the constraint | `0` |
+| `Retry-After` | Seconds to wait (only on 429 / 503) | `1.5` |
+
+### Pool capacity
+
+Read throughput also depends on how many pool accounts are healthy at any moment. If accounts go
+into cooldown, the read ceiling drops temporarily to protect the ones still serving traffic. When
+that happens you get `X-RateLimit-Pool-Limited: 1` and a 429 that says so explicitly.
+
+<Tip>
+`X-RateLimit-Pool-Limited: 1` is temporary and lifts automatically as accounts recover. Retry with
+backoff — there is no need to downgrade your integration or top up your balance.
+</Tip>
 
 ## Exceeding the Limit
 
-When you exceed your QPS limit, you receive a `429 Too Many Requests` response:
+When you exceed your read QPS limit, you receive a `429 Too Many Requests`:
 
 ```json
 {
   "status": "error",
-  "msg": "Rate limit exceeded. Your tier (Free) allows 0.2 QPS. Top up your balance to unlock higher request rates.",
+  "source": "apitwitter",
+  "msg": "Rate limit exceeded. Your tier (Free) allows 0.2 QPS. Top up your balance to unlock higher request rates. Write endpoints (POST/DELETE) have no QPS limit.",
   "tier": "Free",
   "qps_limit": 0.2,
+  "scope": "read",
+  "pool_limited": false,
   "retry_after": 1.5
 }
 ```
 
+Always check the **`source`** field to know who throttled you:
+
+| `source` | Meaning | What to do |
+|---|---|---|
+| `apitwitter` | Our read QPS limit | Slow down, or top up to raise your tier |
+| `twitter` | X.com throttled the account in your `cookie` | Spread load across more accounts |
+
+## X.com limits on writes
+
+Since writes carry no QPS limit from us, X.com's own quota is the only ceiling. `POST /twitter/tweets`
+allows roughly **300 posts per 15-minute window per account**. Every write response reports the
+account's live window so you can pace yourself instead of discovering the limit through a 429:
+
+| Header | Description |
+|--------|-------------|
+| `X-Twitter-RateLimit-Limit` | Calls allowed in the window |
+| `X-Twitter-RateLimit-Remaining` | Calls left |
+| `X-Twitter-RateLimit-Reset` | Unix timestamp when the window resets |
+| `X-Twitter-RateLimit-Reset-In` | Seconds until reset |
+
+The same values are returned in the response body as a `twitter_rate_limit` object.
+
 <Tip>
-If you're hitting rate limits, add credits to instantly upgrade your tier, or add a delay between requests.
+Use `X-Twitter-RateLimit-Remaining` to rotate to another account *before* it hits zero. Posting far
+faster than one call every few seconds can trip X's automation defences even while quota remains.
 </Tip>
 
 ## Free User Limitations
 
-Free users (balance = $0) can make **one request every 5 seconds** (0.2 QPS). This is intentionally restrictive to encourage recharging.
-
-To unlock higher rates, top up any amount starting from $10.
+Free users (balance = $0) can make **one read request every 5 seconds** (0.2 QPS). This is
+intentionally restrictive to encourage recharging. Top up any amount starting from $10 to unlock
+higher read rates.
 
 ## Rate Limit FAQ
 
 <AccordionGroup>
-  <Accordion title="How do I increase my QPS limit?">
-    Simply add credits to your account. Your QPS tier upgrades instantly based on your balance — no plan changes or requests needed. A balance above $50 gives you the maximum 30 QPS.
+  <Accordion title="Is there really no rate limit on posting?">
+    Correct — we apply no QPS limit to `POST`, `DELETE` or `PATCH` endpoints. Those requests use
+    your own cookies and proxy, and X.com already limits them per account (about 300 posts per
+    15 minutes). A limit from us on top would only reject calls X would have accepted. Throughput
+    scales with the number of X accounts you use, not with your balance.
+  </Accordion>
+  <Accordion title="How do I increase my read QPS limit?">
+    Add credits. Your tier upgrades instantly based on balance — no plan changes or requests
+    needed. A balance above $200 gives you 100 QPS, and we provision custom limits above that on
+    request.
   </Accordion>
   <Accordion title="Does each endpoint have its own rate limit?">
-    No. The QPS limit is global across all endpoints. If your limit is 10 QPS, that means 10 total requests per second to any combination of endpoints.
+    No. The read QPS limit is global across all `GET` endpoints. If your limit is 10 QPS, that
+    means 10 total read requests per second to any combination of endpoints. Writes are counted
+    separately and are not limited.
   </Accordion>
   <Accordion title="What should I do when I get a 429 error?">
-    Wait for the number of seconds indicated in the `Retry-After` header, then retry. To permanently avoid 429 errors, add credits to increase your QPS tier or add delays between requests.
+    Check the `source` field first. If it is `apitwitter`, wait for `retry_after` seconds and
+    retry; add credits to raise your tier permanently. If it is `twitter`, the X account in your
+    `cookie` was throttled — rotate to another account. If `pool_limited` is `true`, the cap is
+    temporary and clears on its own.
+  </Accordion>
+  <Accordion title="What does a 503 mean?">
+    A transient capacity or dependency issue on our side — you are never charged for it. Retry
+    after the `Retry-After` header. If reads return 503 while writes keep working, our shared read
+    pool is briefly offline; writes are unaffected because they use your own credentials.
   </Accordion>
 </AccordionGroup>

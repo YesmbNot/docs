@@ -1,6 +1,6 @@
 ---
 title: "Introduction to ApiTwitter — Twitter/X REST API"
-description: "ApiTwitter is a third-party Twitter/X REST API with 56 endpoints. Pay-per-use pricing from $0.14/1K calls, 30 QPS, no X developer approval needed. Access tweets, users, search, DMs, lists, communities, topics. Python & JS SDKs."
+description: "ApiTwitter is a third-party Twitter/X REST API with 56 endpoints. Pay-per-use pricing from $0.14/1K calls, unlimited write throughput and up to 100 QPS on reads, no X developer approval needed. Access tweets, users, search, DMs, lists, communities, topics. Python & JS SDKs."
 seo: "ApiTwitter introduction Twitter API alternative X API documentation"
 icon: "book"
 ---
@@ -16,8 +16,8 @@ ApiTwitter is a **third-party Twitter/X REST API** that gives you full programma
   <Card title="Performance" icon="gauge-high">
     Average response time under **700ms**. Fast and reliable.
   </Card>
-  <Card title="High QPS" icon="bolt">
-    Up to **30 requests per second** per client.
+  <Card title="No Write Limits" icon="bolt">
+    **Unlimited QPS on writes.** Reads scale to **100 req/sec**.
   </Card>
   <Card title="56 Endpoints" icon="code">
     Tweets, users, search, DMs, lists, communities, topics — everything in one API.
@@ -117,6 +117,8 @@ https://api.apitwitter.com
 
 <Info>
 **GET endpoints** for read operations (user lookups, followers, tweets, search) use a server-side pool — you only need your API key. **POST endpoints** still require your own cookies and proxy for full control.
+
+Because writes run on your credentials, they carry **no QPS limit** from us. Reads share our pool, so they are rate-limited by tier — see [Rate Limits](/rate-limits).
 </Info>
 
 <Warning>
@@ -139,7 +141,7 @@ We do not provide proxies or cookies for POST requests. You must supply your own
     ApiTwitter provides official SDKs for Python (`pip install apitwitter`) and JavaScript/TypeScript (`npm install @apitwitter/sdk`). You can also use any language that supports HTTP requests — the API is a standard REST API with JSON responses.
   </Accordion>
   <Accordion title="How fast is the API?">
-    Average response time is under 700ms. You can make up to 30 requests per second (QPS) with a Business-tier balance ($50+). Free users get 0.2 QPS.
+    Average response time is under 700ms. **Write endpoints (POST/DELETE) have no QPS limit at all** — they run on your own accounts, so throughput scales with how many accounts you use. Read endpoints (GET) are tiered by balance: 0.2 QPS on the free tier, up to 100 QPS at $200+. See [Rate Limits](/rate-limits).
   </Accordion>
   <Accordion title="Is my data safe?">
     ApiTwitter never stores your Twitter cookies. Cookies are used only for the duration of the API call and are immediately discarded. Your API key is encrypted and only visible in your dashboard.

@@ -25,8 +25,9 @@ All errors return a JSON object with `status` and `msg` fields:
 | `402` | Payment Required | Insufficient credit balance |
 | `404` | Not Found | User, tweet, or resource doesn't exist |
 | `422` | Unprocessable Entity | Invalid request body or parameter format |
-| `429` | Too Many Requests | QPS rate limit exceeded |
-| `500` | Internal Server Error | Unexpected server error |
+| `429` | Too Many Requests | Read QPS limit exceeded, or X.com throttled your account |
+| `500` | Internal Server Error | Unexpected server error (not charged) |
+| `503` | Service Unavailable | Transient capacity issue — safe to retry (not charged) |
 
 ## Common Errors & Solutions
 
@@ -56,11 +57,32 @@ All errors return a JSON object with `status` and `msg` fields:
 
 ### Rate Limited (429)
 
+Check the `source` field to see who throttled the request. Our own read limit:
+
 ```json
-{"status": "error", "msg": "Rate limit exceeded.", "tier": "Free", "qps_limit": 0.2, "retry_after": 1.5}
+{"status": "error", "source": "apitwitter", "msg": "Rate limit exceeded.", "tier": "Free", "qps_limit": 0.2, "scope": "read", "retry_after": 1.5}
 ```
 
-**Fix:** Wait for `retry_after` seconds, or top up balance to increase your QPS tier.
+**Fix:** Wait for `retry_after` seconds, or top up balance to increase your read QPS tier. Note that
+[write endpoints have no QPS limit](/rate-limits) — a 429 with `"source": "apitwitter"` only ever
+comes from a `GET`.
+
+X.com throttling the account in your `cookie`:
+
+```json
+{"status": "error", "source": "twitter", "msg": "X.com rate limit reached for this account.", "twitter_rate_limit": {"limit": 300, "remaining": 0, "reset_in_seconds": 412}}
+```
+
+**Fix:** Rotate to another X account, or wait `reset_in_seconds`. Use the
+`X-Twitter-RateLimit-Remaining` header to pace yourself before hitting zero.
+
+### Service Unavailable (503)
+
+```json
+{"status": "error", "source": "apitwitter", "msg": "Service temporarily busy. Please retry in a moment."}
+```
+
+**Fix:** Retry after the `Retry-After` header. You are not charged for 503 responses.
 
 <Tip>
 Always check the `status` field in response JSON. Successful responses return `"status": "success"`.
